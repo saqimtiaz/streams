@@ -1,0 +1,10 @@
+{
+	"title": "$:/plugins/sq/bullets",
+	"description": "Bullet Stream - a different way to write",
+	"plugin-type": "plugin",	
+	"author": "Saq Imtiaz",
+	"version": "0.1.0",
+	"core-version": ">=5.1.21",
+	"list": "",
+	"source": ""
+}

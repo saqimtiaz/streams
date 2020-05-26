@@ -1,0 +1,11 @@
+created: 20200517151253282
+modified: 20200524083834759
+tags: $:/tags/PageControls
+title: New Bullet Tiddler Button
+type: text/vnd.tiddlywiki
+
+<$button class="tc-btn-invisible">
+b+
+<$action-createtiddler $basetitle="new bullet tiddler" sq-bullet-uuid=<<uuid>> $savetitle="$:/temp/new-bullet-tiddler" />
+<$action-navigate $to={{$:/temp/new-bullet-tiddler}}/>
+</$button>

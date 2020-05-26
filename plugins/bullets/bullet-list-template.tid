@@ -1,0 +1,127 @@
+created: 20171022203553093
+modified: 20171122050808722
+title: $:/plugins/sq/bullets/bullet-list-template
+
+\import [[$:/plugins/sq/bullets/action-macros]]
+\whitespace trim
+
+\define bullet-row-template()
+\whitespace trim
+<$set name="row-children-visibility-state" value=<<qualify "$:/state/sq/bullets/visibility/$(currentTiddler)$">> >
+<$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
+<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ sq-bullets-droppable [<enable-dnd>match[no]then[sq-bullets-disabled]] +[join[ ]]}}} >
+	<div class="tc-droppable-placeholder"/>
+	<div class={{{ sq-bullets-row [<row-children-visibility-state>get[text]match[hide]then[sq-bullets-row-children-collapsed]] [list[!!sq-bullets]is[tiddler]then[]else[sq-bullets-row-nochildren]] +[join[ ]]}}}>
+		<div class="sq-bullets-control">
+			<div class="sq-bullets-collapser">
+				<$button class="tc-btn-invisible">
+					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
+					{{$:/plugins/sq/bullets/icons/bullet-expand-arrow}}
+				</$button>
+			</div>
+			<div class="sq-bullets-handle-wrapper">
+				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
+					<$draggable tag="div" tiddler=<<currentTiddler>> class="sq-bullets-handle" startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> />
+				</$button>
+			</div>
+		</div>
+		<$button tag="div" class="sq-bullets-block" setTitle=<<row-edit-state>> setTo=<<currentTiddler>> >
+			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
+				<$transclude mode="block"/>
+			</$reveal>
+			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
+				<$keyboard key="ctrl+enter" actions=<<save-edit-bullet-actions>> >
+				<$keyboard key="tab" actions=<<indent-bullet-actions>> >
+				<$keyboard key="shift+tab" actions=<<unindent-bullet-actions>> >
+				<$keyboard key="ctrl+down" actions=<<focus-lower-bullet-actions>> >
+				<$keyboard key="ctrl+up" actions=<<focus-higher-bullet-actions>> >
+				<$keyboard key="enter" actions=<<savethenadd-bullet-actions>> >
+				<$keyboard key="escape" actions=<<cancel-edit-bullet-actions>> >
+				<$list filter="""[<currentTiddler>!has[text]]""" variable="_NULL">
+					<$keyboard key="backspace" actions=<<remove-empty-bullet-actions>> >
+						<$edit-text tag="textarea" autoHeight="yes" minHeight="1em" focus="yes" select="false" class="sq-bullet-editor"/>
+					</$keyboard>
+				</$list>
+				<$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">	
+					<$edit-text tag="textarea" autoHeight="yes" minHeight="1em" focus="yes" select="false" class="sq-bullet-editor"/>	
+				</$list>
+				</$keyboard>
+				</$keyboard>
+				</$keyboard>
+				</$keyboard>
+				</$keyboard>
+				</$keyboard>
+				</$keyboard>
+			</$reveal>
+		</$button>
+	</div>
+</$droppable>
+</$set>
+<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
+<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide">
+	<div class={{{ sq-bullets-row-children [<currentTiddler>!has[sq-bullets]then[sq-bullets-row-children-empty]] [<enable-dnd>match[no]then[sq-bullets-disabled]] +[join[ ]]}}} >
+		<$macrocall $name="list-bullets-draggable"/>
+	</div>
+</$reveal>
+</$set>
+</$set>
+\end
+
+
+\define list-bullets-draggable()
+\whitespace trim
+<div class="sq-bullet-list">
+	<$vars dropTargetTiddler=<<currentTiddler>> >
+	<$list filter="[all[current]has[sq-bullet-uuid]]">
+		<$list filter="[list[!!sq-bullets]!is[missing]]">
+		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
+			<<bullet-row-template>>
+		</$set>
+		</$list>
+		<!-- when we are at the bullet root and there are no bullets yet, display an input-->
+		<!-- xx bug with delete resilience, need to make sure that has at least one existing bullet-->
+		<$list filter="[list[!!sq-bullets]is[tiddler]count[]match[0]]" variable="_NULL">
+			<$qualify name="new-bullet-temp" title="$:/temp/bullets">
+			<$list filter="[<currentTiddler>match<bullet-root-title>]">
+				<div class="sq-bullets-row">
+					<div class="sq-bullets-control">
+						<div class="sq-bullets-control-wrapper">
+							<div class="sq-bullets-bullet"></div>
+						</div>
+					</div>
+					<div class="sq-bullets-block">
+							<$keyboard actions=<<save-first-bullet-actions>> key="ctrl+enter">
+							<$keyboard actions=<<save-first-bullet-actions proceed:'true'>> key="enter">
+								<$edit-text tiddler=<<new-bullet-temp>>  default="" class="tc-edit-texteditor" focus="yes" tag="textarea" autoHeight="yes" minHeight="1em"/>
+							</$keyboard>
+							</$keyboard>
+					</div>
+				</div>	
+			</$list>
+			</$qualify>		
+		</$list>
+	</$list>
+	<$tiddler tiddler="">
+		<!-- to drop after the last child of any list level-->
+		<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd>> class="sq-bullets-droppable">
+			<div class="tc-droppable-placeholder">
+			&nbsp;
+			</div><!-- idea only want below div with height when its a child with no more children-->
+			<$list filter="[<currentTiddler>!has[sq-bullets]]" variable="_NULL"><div class="sq-droppable-spacer"/></$list>
+		</$droppable>
+	</$tiddler>
+	</$vars>
+</div>
+\end
+
+<$vars bullet-root-title=<<currentTiddler>>
+	row-edit-state=<<qualify "$:/state/sq/bullets/current-edit-tiddler">>
+	drag-title-state=<<qualify "$:/state/sq/bullets/current-drag-title">>
+	drag-title-nextsibling-state=<<qualify "$:/state/sq/bullets/current-drag-nextsibling">> 
+	>
+	<div class={{{ sq-bullet-root [{$:/state/sq/bullets/global-drag-state}match[yes]then[sq-bullet-dragactive]] +[join[ ]] }}}>
+		<$macrocall $name="list-bullets-draggable"/>
+	</div>
+</$vars>
+
+

@@ -1,0 +1,160 @@
+created: 20170922203553093
+modified: 20170927050808722
+title: $:/plugins/sq/bullets/styles
+tags: [[$:/tags/Stylesheet]]
+
+.sq-bullet-root {
+	margin-left: -1em;
+}
+
+.sq-bullets-row {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.sq-bullets-row-children {
+	display:flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	padding-left: 0.5em;
+	border-left: 1px solid #bfccd6;
+	margin-left: 30px;
+}
+
+.sq-bullets-row-children.sq-bullets-row-children-empty {
+	border-left: none;
+}
+
+.sq-bullets-disabled,
+.sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div{
+	background-color: #ccc;
+}
+
+.sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div + 	.sq-bullets-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+	display: none;
+}
+
+.sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div + 	.sq-bullets-droppable.tc-droppable.tc-dragover {
+	cursor: not-allowed;
+}
+
+.sq-bullets-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+	margin-left: 30px;
+	line-height: 5px;
+	height: 5px;
+	border: 2px solid rgba(0,200,0,0.7);
+	background-color: rgba(0,200,0,0.7);
+}
+
+.sq-droppable-spacer {
+	height: 0.3em;
+}
+
+.sq-bullets-control {
+	display: flex;
+    flex: 0 0 45px;
+    padding-top: 4px;
+    padding-left: 4px;
+}
+
+.sq-bullets-control .sq-bullets-collapser,
+.sq-bullets-control .sq-bullets-handle-wrapper {
+    display: flex;
+    height: 13px;
+    width: 13px;
+    margin-top: 3px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.sq-bullets-control .sq-bullets-collapser {
+	height: 13px;
+	width: 20px;
+	opacity:0;
+}
+
+.sq-bullets-row-nochildren .sq-bullets-collapser {
+	visibility: hidden;
+}
+
+.sq-bullets-row:hover .sq-bullets-collapser,
+.sq-bullets-row-children-collapsed.sq-bullets-row:hover .sq-bullets-collapser {
+	opacity: 0.4;
+}
+
+.sq-bullets-row:hover .sq-bullets-collapser:hover,
+.sq-bullets-row-children-collapsed.sq-bullets-row:hover .sq-bullets-collapser:hover {
+	opacity: 0.9;
+}
+
+.sq-bullets-row-children-collapsed .sq-bullets-control .sq-bullets-collapser {
+	opacity: 0.4;
+}
+
+.sq-bullets-collapser button.tc-btn-invisible,
+.sq-bullets-collapser button.tc-btn-invisible:focus {
+	outline: none;
+}
+
+.sq-bullets-collapser svg {
+	transform: rotateZ(90deg);
+	transition: transform 200ms ease-in-out 0s;
+}
+
+.sq-bullets-row-children-collapsed .sq-bullets-collapser svg {
+	transform: rotateZ(0deg);
+}
+
+.sq-bullets-control .sq-bullets-handle-wrapper .sq-bullets-handle {
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    background-color: #394b59;
+}
+
+.sq-bullets-block {
+    overflow-wrap: break-word;
+	max-width: 550px;
+    min-height: calc(1.5em + 8px);
+    box-sizing: border-box;
+    margin-top: -1px;
+    min-width: 100px;
+    width: 100%;
+    line-height: 1.5em;
+    cursor: text;
+    padding-top: 4px;
+    padding-bottom: 4px;
+	/*white-space: pre-wrap;*/
+}
+
+.sq-bullets-block textarea {
+	width: 100%;
+	outline-color: #eee;
+	border: transparent;
+	resize: none;
+}
+
+.sq-bullets-block textarea.sq-bullet-editor {
+	line-height:1.5em;
+}
+
+.sq-bullets-block p:first-child {
+	margin-top:0;
+}
+
+.sq-bullets-block p:last-child {
+	margin-bottom:0;
+}
+
+<$reveal state="$:/state/sq/bullets/global-drag-state" type="match" text="yes">
+
+/** active drag css **/
+
+</$reveal>
+
+<$reveal state="$:/state/sq/bullets/global-drag-state" type="nomatch" text="yes">
+
+/**no active drag css **/
+
+</$reveal>

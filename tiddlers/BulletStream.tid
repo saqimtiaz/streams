@@ -1,0 +1,29 @@
+created: 20200526161435997
+modified: 20200526162801130
+tags: 
+title: BulletStream
+type: text/vnd.tiddlywiki
+
+Play around with the tiddlers:
+
+* [[Kafka]]
+* [[Werther]]
+* [[MyNotes]]
+
+Also trying dragging bullets between them, with and without the shift and ctrl modifiers.
+
+<$list filter="[[Keyboard Shortcuts]] [[Considerations and Known Issues]] [[Roadmap : things to do]]">
+<br>
+<hr>
+<br>
+<h2><$text text={{!!title}}/></h2>
+
+<$transclude mode="block"/>
+
+</$list>
+
+<hr>
+<br>
+<h2>Code</h2>
+
+* [[$:/plugins/sq/bullets]]
