@@ -25,8 +25,11 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				</$button>
 			</div>
 		</div>
-		<$button tag="div" class="sq-bullets-block" setTitle=<<row-edit-state>> setTo=<<currentTiddler>> >
+		<$button tag="div" class="sq-bullets-block" >
 			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
+				<$action-ifnoselection>
+					<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>> />
+				</$action-ifnoselection>
 				<$transclude mode="block"/>
 			</$reveal>
 			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
