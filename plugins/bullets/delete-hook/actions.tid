@@ -1,9 +1,14 @@
 created: 20200527200401408
-modified: 20200527232820598
+modified: 20200527234136578
 tags: $:/tags/deleteTiddlerAction
 title: $:/plugins/sq/bullets/delete-hook/actions
 type: text/vnd.tiddlywiki
 
 <$list filter="[<currentTiddler>has[sq-bullet-uuid]has[sq-bullet-parent]]">
 <$action-listops $tiddler={{{[sq-bullet-uuid{!!sq-bullet-parent}]}}} $field="sq-bullets" $subfilter="-[<currentTiddler>]" />
+<$list variable="count" filter="[enlist{!!sq-bullets}count[]!match[0]]">
+<$action-ifconfirmed  $message={{{[<count>addprefix[Do you also want to delete all ]addsuffix[ child bullets for this tiddler?]]}}}>
+<$action-deletetiddler $filter="[enlist{!!sq-bullets}]"/>
+</$action-ifconfirmed>
+</$set>
 </$list>
