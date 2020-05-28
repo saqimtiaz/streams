@@ -75,7 +75,6 @@ title: $:/plugins/sq/bullets/bullet-list-template
 \whitespace trim
 <div class="sq-bullet-list">
 	<$vars dropTargetTiddler=<<currentTiddler>> >
-	<$list filter="[all[current]has[sq-bullet-uuid]]">
 		<$list filter="[list[!!sq-bullets]!is[missing]]">
 		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
 			<<bullet-row-template>>
@@ -106,8 +105,6 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				</div>
 			</div>				
 		</$list>
-	</$list>
-
 	</$vars>
 </div>
 \end
