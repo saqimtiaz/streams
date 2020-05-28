@@ -68,6 +68,29 @@ tags: [[$:/tags/Stylesheet]]
     align-items: center;
 }
 
+.sq-bullets-control.sq-bullets-control-addnew .sq-bullets-handle-wrapper {
+	width: 20px;
+	height: 20px;
+	margin-top: 0;
+}
+
+.sq-bullets-control.sq-bullets-control-addnew .sq-bullets-collapser {
+	width: 16px;
+}
+
+.sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible svg {
+	opacity: 0.8;
+}
+
+.sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible:hover svg {
+	opacity: 1;
+}
+
+.sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible:hover svg circle {
+	fill: #dce0e2;
+}
+
+
 .sq-bullets-control .sq-bullets-collapser {
 	height: 13px;
 	width: 20px;

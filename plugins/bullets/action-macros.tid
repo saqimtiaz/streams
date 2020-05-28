@@ -46,10 +46,10 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define savethenadd-bullet-actions()
 <!-- handle saving a bullet edit and creating a new subsequent bullet -->
-<$set name="parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$set name="parent" filter="[<currentTiddler>match<bullet-root-title>then<currentTiddler>] [sq-bullet-uuid{!!sq-bullet-parent}] +[first[]]" select="0">
 <$set name="new-bullet-uuid" value=<<uuid>> >
 <$set name="new-bullet" filter={{{ [[$:/bullets/]addsuffix<new-bullet-uuid>] }}} select="0">
-	<$action-createtiddler $basetitle=<<new-bullet>> text="" sq-bullet-parent={{!!sq-bullet-parent}} sq-bullet-uuid=<<new-bullet-uuid>>/>
+	<$action-createtiddler $basetitle=<<new-bullet>> text="" sq-bullet-parent={{{[<parent>get[sq-bullet-uuid]]}}} sq-bullet-uuid=<<new-bullet-uuid>>/>
 	<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
 	<$set name="next-bullet" filter="[enlist<parent-bullets>is[tiddler]after<currentTiddler>]" select="0">
 	<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[insertbefore:next-bullet<new-bullet>]" />
@@ -130,32 +130,6 @@ title: $:/plugins/sq/bullets/action-macros
 		<<find-next-downwards-bullet>>
 	</$set>
 </$list>
-\end
-
-
-\define save-first-bullet-actions(proceed:"false")
-<!-- used to handle saving of first bullet on a new bullet-tiddler-->
-<$set name="parent-uuid" filter="[<currentTiddler>get[sq-bullet-uuid]] ~[<uuid>]">
-<$list filter="[<currentTiddler>!has[sq-bullet-uuid]]">
-	<$action-setfield $tiddler=<<currentTiddler>> sq-bullet-uuid=<<parent-uuid>> />
-</$list>
-<$set name="new-bullet-uuid" value=<<uuid>> >
-<$set name="new-bullet" filter={{{ [[$:/bullets/]addsuffix<new-bullet-uuid>] }}} select="0">
-	<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<new-bullet-temp>get[text]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
-	<$action-listops $tiddler=<<currentTiddler>> $field="sq-bullets" $subfilter="[<new-bullet>]"/>
-	<$action-deletetiddler $tiddler=<<new-bullet-temp>>/>
-</$set>
-</$set>
-<$list filter="[[$proceed$]match[true]]" variable="_NULL">
-	<$set name="next-bullet-uuid" value=<<uuid>> >
-	<$set name="next-bullet" filter={{{ [[$:/bullets/]addsuffix<next-bullet-uuid>] }}} select="0">
-		<$action-createtiddler $basetitle=<<next-bullet>> text="" sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<next-bullet-uuid>>/>
-		<$action-listops $tiddler=<<currentTiddler>> $field="sq-bullets" $subfilter="[<next-bullet>]" />
-		<$action-setfield $tiddler=<<row-edit-state>> text=<<next-bullet>>/>
-	</$set>
-	</$set>
-</$list>	
-</$set>
 \end
 
 

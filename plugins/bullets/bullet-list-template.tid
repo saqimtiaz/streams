@@ -81,38 +81,33 @@ title: $:/plugins/sq/bullets/bullet-list-template
 			<<bullet-row-template>>
 		</$set>
 		</$list>
-		<!-- when we are at the bullet root and there are no bullets yet, display an input-->
-		<!-- xx bug with delete resilience, need to make sure that has at least one existing bullet-->
-		<$list filter="[list[!!sq-bullets]is[tiddler]count[]match[0]]" variable="_NULL">
-			<$qualify name="new-bullet-temp" title="$:/temp/bullets">
-			<$list filter="[<currentTiddler>match<bullet-root-title>]">
-				<div class="sq-bullets-row">
-					<div class="sq-bullets-control">
-						<div class="sq-bullets-control-wrapper">
-							<div class="sq-bullets-bullet"></div>
-						</div>
+		<$tiddler tiddler="">
+			<!-- to drop after the last child of any list level-->
+			<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd>> class="sq-bullets-droppable">
+				<div class="tc-droppable-placeholder">
+				&nbsp;
+				</div><!-- idea only want below div with height when its a child with no more children-->
+				<$list filter="[<currentTiddler>!has[sq-bullets]]" variable="_NULL"><div class="sq-droppable-spacer"/></$list>
+			</$droppable>
+		</$tiddler>
+		<$list filter="[all[current]match<bullet-root-title>]" variable="_NULL">
+			<div class="sq-bullets-row">
+				<div class="sq-bullets-control sq-bullets-control-addnew">
+					<div class="sq-bullets-collapser">
 					</div>
-					<div class="sq-bullets-block">
-							<$keyboard actions=<<save-first-bullet-actions>> key="ctrl+enter">
-							<$keyboard actions=<<save-first-bullet-actions proceed:'true'>> key="enter">
-								<$edit-text tiddler=<<new-bullet-temp>>  default="" class="tc-edit-texteditor" focus="yes" tag="textarea" autoHeight="yes" minHeight="1em"/>
-							</$keyboard>
-							</$keyboard>
+					<div class="sq-bullets-handle-wrapper">
+						<$button tag="div" class="tc-btn-invisible" tooltip="add bullet">
+							<<savethenadd-bullet-actions>>
+							{{$:/plugins/sq/bullets/icons/new-bullet-btn}}
+						</$button>
 					</div>
-				</div>	
-			</$list>
-			</$qualify>		
+				</div>
+				<div class="sq-bullets-block">
+				</div>
+			</div>				
 		</$list>
 	</$list>
-	<$tiddler tiddler="">
-		<!-- to drop after the last child of any list level-->
-		<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd>> class="sq-bullets-droppable">
-			<div class="tc-droppable-placeholder">
-			&nbsp;
-			</div><!-- idea only want below div with height when its a child with no more children-->
-			<$list filter="[<currentTiddler>!has[sq-bullets]]" variable="_NULL"><div class="sq-droppable-spacer"/></$list>
-		</$droppable>
-	</$tiddler>
+
 	</$vars>
 </div>
 \end
