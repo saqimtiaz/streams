@@ -1,11 +1,8 @@
 created: 20200525150124043
-modified: 20200526162114573
+modified: 20200528214138345
 tags: 
 title: Considerations and Known Issues
 type: text/vnd.tiddlywiki
 
-* ''Starting workflow'' - how to create a new bullet tiddler?
-** a macro that has to be placed in a tiddler to treat it as a bullet tiddler? 
-** a field that has to be present in a tiddler to treat it as a bullet tiddler?
-*** how to add this field? a toolbar button? a button to create a new tiddler with that field, but would either open in edit mode and need to be saved, or in view mode but would need to be renamed.
 * ''Consider core patch for select parameter for EditText widget.''
+* Core does not have a usable rename tiddler hook

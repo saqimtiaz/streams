@@ -48,7 +48,7 @@ title: $:/plugins/sq/bullets/action-macros
 <!-- handle saving a bullet edit and creating a new subsequent bullet -->
 <$set name="parent" filter="[<currentTiddler>match<bullet-root-title>] ~[sq-bullet-uuid{!!sq-bullet-parent}] +[first[]]" select="0">
 <$set name="parent-uuid" filter="[<parent>get[sq-bullet-uuid]] ~[<uuid>]" select="0">
-<!-- if target has no uuid, assign one -->
+<!-- if parent has no uuid, assign one -->
 <$list filter="[<parent>!has[sq-bullet-uuid]]">
 	<$action-setfield $tiddler=<<parent>> sq-bullet-uuid=<<parent-uuid>>/>
 </$list>
