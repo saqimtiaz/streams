@@ -1,11 +1,13 @@
 created: 20200508132357558
-modified: 20200526175144572
+modified: 20200528145444370
 tags: 
 title: Roadmap : things to do
 type: text/vnd.tiddlywiki
 
 
-* ''use UUID and not titles in field sq-bullets''
+* ''workflow for adding new tiddler''
+* ''renaming''
+* use UUID and not titles in field sq-bullets
 * optimize and re-factor action macros
 * improve dnd css, using root class or conditional css
 * ''templating for list items and list item controls''

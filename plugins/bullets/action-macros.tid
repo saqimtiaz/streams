@@ -64,7 +64,7 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define cancel-edit-bullet-actions()
 <!-- handle cancelling the edit on an empty bullet -->
-<$list filter="[{!!text}is[blank]]" variable="_NULL">
+<$list filter="[<currentTiddler>!has[sq-bullets]!has[text]]" variable="_NULL">
 	<$action-listops $tiddler={{{[sq-bullet-uuid{!!sq-bullet-parent}]}}} $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
 	<$action-deletetiddler $tiddler=<<currentTiddler>> />
 </$list>
