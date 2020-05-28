@@ -10,5 +10,5 @@ type: text/vnd.tiddlywiki
 <$action-ifconfirmed  $message={{{[<count>addprefix[Do you also want to delete all ]addsuffix[ child bullets for this tiddler?]]}}}>
 <$action-deletetiddler $filter="[enlist{!!sq-bullets}]"/>
 </$action-ifconfirmed>
-</$set>
+</$list>
 </$list>
