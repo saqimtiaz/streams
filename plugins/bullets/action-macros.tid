@@ -54,7 +54,7 @@ title: $:/plugins/sq/bullets/action-macros
 </$list>
 <$set name="new-bullet-uuid" value=<<uuid>> >
 <$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
-	<$action-createtiddler $basetitle=<<new-bullet>> text="" sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
+	<$action-createtiddler $basetitle=<<new-bullet>> text="" $template={{$:/config/sq/bullets/new-bullet-tiddler-template}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
 	<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
 	<$set name="next-bullet" filter="[enlist<parent-bullets>is[tiddler]after<currentTiddler>]" select="0">
 	<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[insertbefore:next-bullet<new-bullet>]" />

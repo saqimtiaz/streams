@@ -1,14 +1,14 @@
 created: 20200508132357558
-modified: 20200529172736189
+modified: 20200529193615140
 sq-bullet-uuid: 60f2e340-2f0c-4554-bfea-960baa423e0a
 sq-bullets: 
 tags: 
 title: Roadmap : things to do
 type: text/vnd.tiddlywiki
 
+
 * ''breadcrumbs'', using text of bullets
 ** [[Breadcrumbs notes]]
-* ''default fields for new tiddlers''
 * ''handle renaming of child bullets'' - hook pull request?
 ** use Relink plugin?
 * long form data entry
@@ -16,7 +16,6 @@ type: text/vnd.tiddlywiki
 ** customizable split regexp
 * rename tiddler fields and css classes for brevity
 * use UUID and not titles in field sq-bullets
-* optimize and re-factor action macros
 *  flatten a bullet list to just one tiddler to publish/export
 * improve dnd css, using root class or conditional css
 * ''templating for list items and list item controls''
@@ -36,6 +35,6 @@ type: text/vnd.tiddlywiki
 ** should copy only work if its another tiddler and not just another parent?
 * ~~transclude to other tiddler (done, with shift modifier)~~
 ** doesnt transclude children (transclude via template?)
-
+* refactor to use macro parameters to initialize different types of bullets.
 
 

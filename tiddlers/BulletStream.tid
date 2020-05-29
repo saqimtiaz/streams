@@ -1,5 +1,5 @@
 created: 20200526161435997
-modified: 20200529161435918
+modified: 20200529193500092
 tags: 
 title: BulletStream
 type: text/vnd.tiddlywiki
@@ -23,7 +23,7 @@ The idea is to eventually refactor this to make it easy to create different type
 
 I am considering having the option to flatten a bullet list to just one tiddler. The code is already there as I do something similar for my task management. This is handy either for export, or to quickly create an outline in the correct hierarchy and then consolidate it.
 
-<$list filter="[[Keyboard Shortcuts]] [[Customizing bullet titles]] [[Considerations and Known Issues]] [[Roadmap : things to do]]">
+<$list filter="[[Keyboard Shortcuts]] [[Customizing bullet titles]] [[Configuration]] [[Considerations and Known Issues]] [[Roadmap : things to do]]">
 <br>
 <hr>
 <br>
