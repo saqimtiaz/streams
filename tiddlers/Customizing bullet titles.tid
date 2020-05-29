@@ -1,0 +1,21 @@
+created: 20200529161121459
+modified: 20200529161417368
+tags: 
+title: Customizing bullet titles
+type: text/vnd.tiddlywiki
+
+`$:/config/sq/bullets/new-bullet-title is wikified to get the title of a new bullet`
+
+Choose a structure that is likely to be unique
+
+The following variables are available
+
+* `new-bullet-uuid` : uuid of the new bullet tiddler
+* `parent` : title of the parent tiddler
+
+Examples:
+
+* `$:/bullets/<<new-bullet-uuid>>`
+* `<<parent>>/<<new-bullet-uuid>>`
+* `<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
+* `$:/<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`

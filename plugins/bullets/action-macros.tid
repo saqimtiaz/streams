@@ -53,7 +53,7 @@ title: $:/plugins/sq/bullets/action-macros
 	<$action-setfield $tiddler=<<parent>> sq-bullet-uuid=<<parent-uuid>>/>
 </$list>
 <$set name="new-bullet-uuid" value=<<uuid>> >
-<$set name="new-bullet" filter={{{ [[$:/bullets/]addsuffix<new-bullet-uuid>] }}} select="0">
+<$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
 	<$action-createtiddler $basetitle=<<new-bullet>> text="" sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
 	<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
 	<$set name="next-bullet" filter="[enlist<parent-bullets>is[tiddler]after<currentTiddler>]" select="0">
@@ -61,7 +61,7 @@ title: $:/plugins/sq/bullets/action-macros
 	</$set>
 	</$set>
 	<$action-setfield $tiddler=<<row-edit-state>> text=<<new-bullet>>/>
-</$set>
+</$wikify>
 </$set>
 </$set>
 </$set>
@@ -159,6 +159,7 @@ title: $:/plugins/sq/bullets/action-macros
 \define list-bullets-draggable-drop-actions()
 <!-- handles drag and drop -->
 <$set name="parent-uuid" filter="[<dropTargetTiddler>get[sq-bullet-uuid]] ~[<uuid>]">
+<$set name="parent" value=<<dropTargetTiddler>>>
 <!-- if target has no uuid, assign one -->
 <$list filter="[<dropTargetTiddler>!has[sq-bullet-uuid]]">
 	<$action-setfield $tiddler=<<dropTargetTiddler>> sq-bullet-uuid=<<parent-uuid>>/>
@@ -174,10 +175,10 @@ title: $:/plugins/sq/bullets/action-macros
 	<!-- insert into correct position on new parent -->
 	<$list filter="[<modifier>match[ctrl]]" variable="_NULL">		
 		<$set name="new-bullet-uuid" value=<<uuid>> >
-		<$set name="new-bullet" filter={{{ [[$:/bullets/]addsuffix<new-bullet-uuid>] }}} select="0">
+		<$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
 			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>get[text]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
 			<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<new-bullet>]"/>
-		</$set>
+		</$wikify>
 		</$set>
 	</$list>
 	<!-- no modifier key on drop event -->
@@ -194,10 +195,10 @@ title: $:/plugins/sq/bullets/action-macros
 	<$list filter="[<modifier>match[shift]]" variable="_NULL">
 		<!-- create new bullet on target, in correct position, text is a transclusion-->
 		<$set name="new-bullet-uuid" value=<<uuid>> >
-		<$set name="new-bullet" filter={{{ [[$:/bullets/]addsuffix<new-bullet-uuid>] }}} select="0">
+		<$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
 			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
 			<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<new-bullet>]"/>
-		</$set>
+		</$wikify>
 		</$set>		
 	</$list>
 </$list>
@@ -205,5 +206,6 @@ title: $:/plugins/sq/bullets/action-macros
 <$list filter="[<actionTiddler>get[sq-bullet-parent]match<parent-uuid>]" variable="_NULL">
 	<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<actionTiddler>]"/>
 </$list>
+</$set>
 </$set>
 \end
