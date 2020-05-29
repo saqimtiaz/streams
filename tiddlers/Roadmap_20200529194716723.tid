@@ -1,0 +1,8 @@
+created: 20200529194716723
+modified: 20200529194828572
+sq-bullet-parent: d8fa2052-4315-4089-82f3-357aa40ab1a1
+sq-bullet-uuid: 24d8562f-106f-4b04-9528-0721c6eeb746
+title: Roadmap/20200529194716723
+type: text/vnd.tiddlywiki
+
+''refactor to use macro parameters to initialize different types of bullets: paragraphs, to do items, comments etc.''

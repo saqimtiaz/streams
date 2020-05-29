@@ -1,5 +1,5 @@
 created: 20200526160039225
-modified: 20200526174239564
+modified: 20200529194143477
 tags: 
 title: Keyboard Shortcuts
 type: text/vnd.tiddlywiki
@@ -13,6 +13,7 @@ type: text/vnd.tiddlywiki
 * <kbd>Escape</kbd> - cancel edit (changes are saved). With no text in a bullet, cancel deletes the bullet.
 * <kbd>Tab</kbd> - indent bullet
 * <kbd>Shift+Tab</kbd> - unindent bullet
+* <kbd>Shift+Enter</kbd> - add a linebreak without saving
 
 ''Drag and drop''
 
