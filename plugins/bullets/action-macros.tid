@@ -170,17 +170,22 @@ title: $:/plugins/sq/bullets/action-macros
 </$list>
 <!-- if we are dropping onto a new parent, then we might need to handle modifier keys -->
 <$list filter="[<actionTiddler>get[sq-bullet-parent]!match<parent-uuid>]" variable="_NULL">
-	<!-- ctrl modifier key on drop event -->
-	<!-- create a new bullet with text of dropped bullet -->
-	<!-- insert into correct position on new parent -->
-	<$list filter="[<modifier>match[ctrl]]" variable="_NULL">		
-		<$set name="new-bullet-uuid" value=<<uuid>> >
-		<$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
+	<$set name="new-bullet-uuid" value=<<uuid>> >
+	<$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
+		<!-- ctrl modifier key on drop event -->
+		<!-- create a new bullet with text of dropped bullet -->
+		<$list filter="[<modifier>match[ctrl]]" variable="_NULL">
 			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>get[text]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
-			<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<new-bullet>]"/>
-		</$wikify>
-		</$set>
-	</$list>
+		</$list>
+		<!-- shift modifier key on drop event -->
+		<$list filter="[<modifier>match[shift]]" variable="_NULL">
+			<!-- create new bullet on target, in correct position, text is a transclusion-->
+			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
+		</$list>
+		<!-- insert into correct position on new parent -->			
+		<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<new-bullet>]"/>
+	</$wikify>
+	</$set>		
 	<!-- no modifier key on drop event -->
 	<!-- insert in correct position on new parent, and remove from old parent -->
 	<!-- assign new parent -->
@@ -190,16 +195,6 @@ title: $:/plugins/sq/bullets/action-macros
 		<$action-listops $tiddler={{{ [sq-bullet-uuid<original-parent-uuid>] }}} $field="sq-bullets" $subfilter="-[<actionTiddler>]"/>
 		</$set>
 		<$action-setfield $tiddler=<<actionTiddler>> sq-bullet-parent=<<parent-uuid>>/>
-	</$list>
-	<!-- shift modifier key on drop event -->
-	<$list filter="[<modifier>match[shift]]" variable="_NULL">
-		<!-- create new bullet on target, in correct position, text is a transclusion-->
-		<$set name="new-bullet-uuid" value=<<uuid>> >
-		<$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
-			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
-			<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<new-bullet>]"/>
-		</$wikify>
-		</$set>		
 	</$list>
 </$list>
 <!-- we are dropping on to the same parent, insert in the correct position -->
