@@ -116,7 +116,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 	drag-title-state=<<qualify "$:/state/sq/bullets/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/bullets/current-drag-nextsibling">> 
 	>
-	<div class={{{ sq-bullet-root [{$:/state/sq/bullets/global-drag-state}match[yes]then[sq-bullet-dragactive]] +[join[ ]] }}}>
+	<div class={{{ sq-bullet-root [{$:/state/sq/bullets/global-drag-state}match[yes]then[sq-bullet-dragactive]] [<currentTiddler>!has[sq-bullets]then[sq-bullet-newlist]] +[join[ ]] }}}>
 		<$macrocall $name="list-bullets-draggable"/>
 	</div>
 </$vars>

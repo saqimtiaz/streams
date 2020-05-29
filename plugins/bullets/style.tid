@@ -90,6 +90,20 @@ tags: [[$:/tags/Stylesheet]]
 	fill: #dce0e2;
 }
 
+.sq-bullet-newlist .sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible svg circle {
+	fill: #dce0e2;
+	opacity: 1;
+}
+
+.sq-bullet-newlist .sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible svg line.line {
+	stroke: #000;
+	opacity: 1;
+}
+
+.sq-bullet-newlist .sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible:hover svg circle {
+	fill: #aaaeb1;
+}
+
 
 .sq-bullets-control .sq-bullets-collapser {
 	height: 13px;
