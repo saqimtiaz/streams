@@ -168,7 +168,8 @@ tags: [[$:/tags/Stylesheet]]
 .sq-bullets-block textarea {
 	width: 100%;
 	outline-color: #eee;
-	border: transparent;
+	border: 1px solid #eee;
+
 	resize: none;
 }
 
