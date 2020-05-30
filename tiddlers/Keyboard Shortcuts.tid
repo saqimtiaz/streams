@@ -1,5 +1,5 @@
 created: 20200526160039225
-modified: 20200530103712508
+modified: 20200530160114184
 tags: 
 title: Keyboard Shortcuts
 type: text/vnd.tiddlywiki
@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 * <kbd>Ctrl+Enter</kbd> - save
 * <kbd>Enter</kbd> - save and create new bullet
 * <kbd>Shift+Enter</kbd> - add a linebreak without saving
-* <kbd> Alt+Enter</kbd> - split longform data into multiple bullets. 
+* <kbd> Alt+Enter</kbd> - split longform data into multiple bullets. (default is to split on two linebreaks) 
 * <kbd>Escape</kbd> - cancel edit (changes are saved). With no text in a bullet, cancel deletes the bullet.
 * <kbd>Ctrl+Down</kbd> - move to lower bullet
 * <kbd>Ctrl+Up</kbd> - move to upper bullet
