@@ -1,8 +1,14 @@
 created: 20200526161435997
-modified: 20200530105620493
+modified: 20200530175642674
 tags: 
 title: BulletStream
 type: text/vnd.tiddlywiki
+
+@@background-color:yellow;font-weight:bold;
+This is a prototype. Do not use it for anything important. <br>
+Major changes are likely that will make it very difficult to migrate your content to newer versions.<br>
+No support is available for content migration.
+@@
 
 Play around with the tiddlers:
 
@@ -22,7 +28,6 @@ The idea is to eventually refactor this to make it easy to create different type
 * task management (to do list)
 * etc
 
-I am considering having the option to flatten a bullet list to just one tiddler. The code is already there as I do something similar for my task management. This is handy either for export, or to quickly create an outline in the correct hierarchy and then consolidate it.
 
 <$list filter="[[Keyboard Shortcuts]] [[Customizing bullet titles]] [[Configuration]] [[Considerations and Known Issues]]">
 <br>
@@ -49,4 +54,4 @@ I am considering having the option to flatten a bullet list to just one tiddler.
 <br>
 <h2>Dependencies</h2>
 
-Relink plugin - might be removed if a more lightweight yet robust rename mechanism can be implemented
+Relink plugin - might be removed if a more lightweight yet robust rename mechanism can be implemented. See [[Roadmap]] for more details.
