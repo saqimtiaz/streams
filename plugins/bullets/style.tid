@@ -185,6 +185,18 @@ tags: [[$:/tags/Stylesheet]]
 	margin-bottom:0;
 }
 
+span.sq-breadcrumbs-fragment {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
+
+span.sq-breadcrumbs-fragment a.tc-tiddlylink {
+	color: #333;
+}
+
 <$reveal state="$:/state/sq/bullets/global-drag-state" type="match" text="yes">
 
 /** active drag css **/

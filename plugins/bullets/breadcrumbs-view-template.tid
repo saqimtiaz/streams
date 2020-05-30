@@ -1,0 +1,28 @@
+created: 20200529205858594
+list-before: $:/core/ui/ViewTemplate/body
+modified: 20200530055142652
+tags: $:/tags/ViewTemplate
+title: $:/plugins/sq/bullets/breadcrumbs-view-template
+type: text/vnd.tiddlywiki
+
+\define show-breadcrumbs()
+<$list filter="[<currentTiddler>has[sq-bullet-uuid]]">
+	<$list filter="[<currentTiddler>has[sq-bullet-parent]]">
+		<$set name="currentTiddler" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+			<<show-breadcrumbs>>
+		</$set>
+	</$list>	
+	<$list filter="[<currentTiddler>!match<storyTiddler>]">
+		<$wikify name="display-title" text={{{ [<currentTiddler>get[text]!is[blank]] ~[{!!title}] }}}>
+			<span class="sq-breadcrumbs-fragment">
+			<$link to=<<currentTiddler>>>
+				<$text text={{{ [<display-title>split[]first[50]join[]] }}}/>
+			</$link>>
+			</span>
+		</$wikify>
+	</$list>
+</$list>
+\end
+
+<<show-breadcrumbs>>
+
