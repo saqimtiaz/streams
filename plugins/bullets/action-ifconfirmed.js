@@ -41,7 +41,8 @@ Render this widget into the DOM
 IfConfirmedWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
-	//this.renderChildren(parent,nextSibling);
+	this.parentDomNode = parent;
+	this.renderChildren(parent,nextSibling);
 };
 
 /*

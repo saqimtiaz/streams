@@ -1,8 +1,8 @@
 created: 20200529194452679
-modified: 20200529194502745
+modified: 20200530055932606
 sq-bullet-parent: d8fa2052-4315-4089-82f3-357aa40ab1a1
 sq-bullet-uuid: 9c29c819-5707-44d1-a2fa-00f9db1ea945
 title: Roadmap/20200529194452679
 type: text/vnd.tiddlywiki
 
-Use UUIS and not titles in sq-bullets field
+Use UUIDs and not titles in sq-bullets field

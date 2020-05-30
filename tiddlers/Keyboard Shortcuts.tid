@@ -1,5 +1,5 @@
 created: 20200526160039225
-modified: 20200529194143477
+modified: 20200530090708032
 tags: 
 title: Keyboard Shortcuts
 type: text/vnd.tiddlywiki
@@ -14,6 +14,7 @@ type: text/vnd.tiddlywiki
 * <kbd>Tab</kbd> - indent bullet
 * <kbd>Shift+Tab</kbd> - unindent bullet
 * <kbd>Shift+Enter</kbd> - add a linebreak without saving
+* <kbd>Delete</kbd> - delete bullet
 
 ''Drag and drop''
 

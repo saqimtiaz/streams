@@ -85,6 +85,14 @@ title: $:/plugins/sq/bullets/action-macros
 \end
 
 
+\define delete-bullet-actions()
+<$action-ifconfirmed  $message="Do you wish to delete this tiddler?">
+	<$transclude tiddler="$:/plugins/sq/bullets/delete-hook/actions"/>
+	<$action-deletetiddler $tiddler=<<currentTiddler>> />
+</$action-ifconfirmed>
+\end
+
+
 \define find-last-child()
 <!-- used by focus-higher-bullet-actions macro -->
 <$list filter="[enlist{!!sq-bullets}is[tiddler]last[]]" emptyMessage="""<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>>/>""">
