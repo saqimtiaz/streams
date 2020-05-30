@@ -1,9 +1,10 @@
 created: 20200529193203610
-modified: 20200529193425996
+modified: 20200530104115818
 tags: 
 title: Configuration
 type: text/vnd.tiddlywiki
 
 <$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/bullets/]]">
 <li><$link/></li>
+{{!!description}}
 </$list>

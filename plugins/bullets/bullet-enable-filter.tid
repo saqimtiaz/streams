@@ -1,9 +1,8 @@
 created: 20200528183035516
 modified: 20200528184917861
-sq-bullet-uuid: fbc1c97f-552b-4552-8a7d-47c8e053476a
-sq-bullets: $:/bullets/db90e9cf-9933-4f69-985d-c82abb9d9c9d
 tags: 
 title: $:/config/sq/bullets/bullet-enable-filter
 type: text/vnd.tiddlywiki
+description: Filter that determines which tiddlers get the add bullet button at the bottom
 
 [!is[shadow]]

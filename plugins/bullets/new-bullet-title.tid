@@ -3,5 +3,6 @@ modified: 20200529153832215
 tags: 
 title: $:/config/sq/bullets/new-bullet-title
 type: text/vnd.tiddlywiki
+description: wikitext that is wikified to generate the title for new bullets
 
 <<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>
