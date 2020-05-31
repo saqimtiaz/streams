@@ -38,7 +38,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				<$keyboard key="shift+tab" actions=<<unindent-bullet-actions>> >
 				<$keyboard key="ctrl+down" actions=<<focus-lower-bullet-actions>> >
 				<$keyboard key="ctrl+up" actions=<<focus-higher-bullet-actions>> >
-				<$keyboard key="enter" actions=<<savethenadd-bullet-actions>> >
+				<$keyboard key="enter" actions=<<save-bullet-actions>> >
 				<$keyboard key="alt+enter" actions=<<save-longform-actions>> >
 				<$keyboard key="escape" actions=<<cancel-edit-bullet-actions>> >
 				<$keyboard key="delete" actions=<<delete-bullet-actions>> >
@@ -101,7 +101,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 					</div>
 					<div class="sq-bullets-handle-wrapper">
 						<$button tag="div" class="tc-btn-invisible" tooltip="add bullet">
-							<<savethenadd-bullet-actions>>
+							<<add-bullet-actions>>
 							{{$:/plugins/sq/bullets/icons/new-bullet-btn}}
 						</$button>
 					</div>

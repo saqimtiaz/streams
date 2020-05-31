@@ -14,7 +14,7 @@ title: $:/plugins/sq/bullets/action-macros
 <$set name="old-parent-bullets" filter="[<old-parent>get[sq-bullets]]" select="0">
 <$set name="previous-bullet" filter="[enlist<old-parent-bullets>is[tiddler]before<currentTiddler>]" select="0">
 <$list filter="[<previous-bullet>minlength[1]]" variable="_NULL">
-	<$action-listops $tiddler=<<previous-bullet>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[append<currentTiddler>]"/>
+	<$action-listops $tiddler=<<previous-bullet>> $field="sq-bullets" $subfilter="+[is[tiddler]] [<currentTiddler>]"/>
 	<$action-listops $tiddler=<<old-parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
 	<$action-setfield $tiddler=<<currentTiddler>> sq-bullet-parent={{{[<previous-bullet>get[sq-bullet-uuid]]}}} />
 </$list>
@@ -44,7 +44,12 @@ title: $:/plugins/sq/bullets/action-macros
 \end
 
 
-\define savethenadd-bullet-actions(startText:"")
+\define save-bullet-actions()
+<<add-bullet-actions>>
+\end
+
+
+\define add-bullet-actions(startText:"")
 <!-- handle saving a bullet edit and creating a new subsequent bullet -->
 <$set name="parent" filter="[<currentTiddler>match<bullet-root-title>] ~[sq-bullet-uuid{!!sq-bullet-parent}] +[first[]]" select="0">
 <$set name="parent-uuid" filter="[<parent>get[sq-bullet-uuid]] ~[<uuid>]" select="0">
@@ -69,11 +74,12 @@ title: $:/plugins/sq/bullets/action-macros
 
 
 \define save-longform-actions()
+<!-- handle multiple bullets entered at once -->
 <$list filter="[{!!text}splitregexp{$:/config/sq/bullets/bullet-split-regexp}rest[]]" variable="fragment">
-	<$macrocall $name="savethenadd-bullet-actions" startText=<<fragment>> />
+	<$macrocall $name="add-bullet-actions" startText=<<fragment>> />
 </$list>
 <$action-setfield $tiddler=<<currentTiddler>> text={{{[{!!text}splitregexp{$:/config/sq/bullets/bullet-split-regexp}first[]]}}}/>
-<<savethenadd-bullet-actions>>
+<<add-bullet-actions>>
 \end
 
 
