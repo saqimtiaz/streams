@@ -45,7 +45,12 @@ title: $:/plugins/sq/bullets/action-macros
 
 
 \define save-bullet-actions()
-<<add-bullet-actions>>
+<$action-withselection actions="""
+<$list filter="[<currentTiddler>get[text]length[]subtract<selectionEnd>!match[0]]" variable="_NULL" emptyMessage=<<add-bullet-actions>>>
+	<$macrocall $name="add-bullet-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]]}}} />
+	<$action-setfield $tiddler=<<currentTiddler>> text={{{[<currentTiddler>get[text]split[]first<selectionEnd>join[]]}}}/>
+</$list>
+"""/>
 \end
 
 
