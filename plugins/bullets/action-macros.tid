@@ -44,6 +44,28 @@ title: $:/plugins/sq/bullets/action-macros
 \end
 
 
+\define demote-bullet-actions()
+<$set name="parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
+	<$list filter="[enlist<parent-bullets>after<currentTiddler>]" variable="next-bullet">
+		<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<next-bullet>]"/>
+	</$list>
+</$set>
+</$set>
+\end
+
+
+\define promote-bullet-actions()
+<$set name="parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
+	<$list filter="[enlist<parent-bullets>before<currentTiddler>]" variable="previous-bullet">
+		<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[insertbefore:previous-bullet<currentTiddler>]"/>
+	</$list>
+</$set>
+</$set>
+\end
+
+
 \define save-bullet-actions()
 <$action-withselection actions="""
 <$list filter="[<currentTiddler>get[text]length[]subtract<selectionEnd>!match[0]]" variable="_NULL" emptyMessage=<<add-bullet-actions>>>

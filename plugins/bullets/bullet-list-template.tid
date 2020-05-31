@@ -38,6 +38,8 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				<$keyboard key="shift+tab" actions=<<unindent-bullet-actions>> >
 				<$keyboard key="ctrl+down" actions=<<focus-lower-bullet-actions>> >
 				<$keyboard key="ctrl+up" actions=<<focus-higher-bullet-actions>> >
+				<$keyboard key="alt+down" actions=<<demote-bullet-actions>> >
+				<$keyboard key="alt+up" actions=<<promote-bullet-actions>> >
 				<$keyboard key="enter" actions=<<save-bullet-actions>> >
 				<$keyboard key="alt+enter" actions=<<save-longform-actions>> >
 				<$keyboard key="escape" actions=<<cancel-edit-bullet-actions>> >
@@ -50,6 +52,8 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				<$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">	
 					<$edit-text tag="textarea" autoHeight="yes" minHeight="1em" focus="yes" select="false" class="sq-bullet-editor"/>	
 				</$list>
+				</$keyboard>
+				</$keyboard>
 				</$keyboard>
 				</$keyboard>
 				</$keyboard>
