@@ -62,6 +62,10 @@ Refresh the widget by ensuring our attributes are up to date
 */
 WithSelectionWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
+	if(changedAttributes["actions"]) {
+		this.refreshSelf();
+		return true;
+	}	
 	return this.refreshChildren(changedTiddlers);
 };
 
