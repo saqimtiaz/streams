@@ -1,0 +1,8 @@
+created: 20200601072405393
+modified: 20200601072419498
+sq-bullet-parent: d8fa2052-4315-4089-82f3-357aa40ab1a1
+sq-bullet-uuid: f47b43af-fdb2-4cab-b481-22dec598c317
+title: Roadmap/20200601072405393
+type: text/vnd.tiddlywiki
+
+Potential bug with delete tiddler hook when deleting root via edit template
