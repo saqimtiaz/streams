@@ -1,5 +1,5 @@
 created: 20200526160039225
-modified: 20200531152421947
+modified: 20200601054952654
 sq-bullets: 
 tags: 
 title: Keyboard Shortcuts
@@ -16,6 +16,8 @@ type: text/vnd.tiddlywiki
 * <kbd>Ctrl+Up</kbd> - move to upper bullet
 * <kbd>Tab</kbd> - indent bullet
 * <kbd>Shift+Tab</kbd> - unindent bullet
+* <kbd>Alt+Down</kbd> - move bullet lower
+* <kbd>Alt+Up</kbd> - move bullet higher
 * <kbd>Delete</kbd> - delete bullet
 
 ''Drag and drop''
