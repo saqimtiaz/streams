@@ -1,0 +1,10 @@
+created: 20200602185611122
+modified: 20200602185709202
+sq-bullet-parent: d1c7419b-37ed-45a3-b8f5-b2e467a0c774
+sq-bullet-uuid: e855111c-4d7a-4c5d-8937-3ae424835e2b
+title: Roadmap/20200602185611122
+type: text/vnd.tiddlywiki
+
+* sq-type: stream, as trigger for the UI
+* streams or stream-list : for the list of titles
+* parent: for parent title

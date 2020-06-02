@@ -208,9 +208,11 @@ span.sq-breadcrumbs-fragment a.tc-tiddlylink {
 	margin-bottom: -1.6em;
 }
 
+<$reveal state="$:/config/sq/bullets/enable-edit-toolbar" type="nomatch" text="yes">
 .sq-bullets-block .tc-editor-toolbar {
 	display: none;
 }
+</$reveal>
 
 <$reveal state="$:/state/sq/bullets/global-drag-state" type="match" text="yes">
 

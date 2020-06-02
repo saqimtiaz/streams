@@ -1,6 +1,6 @@
 {
 	"title": "$:/plugins/sq/bullets",
-	"description": "Bullet Stream - a different way to write",
+	"description": "Streams - a different way to write",
 	"plugin-type": "plugin",	
 	"author": "Saq Imtiaz",
 	"version": "0.1.0",
