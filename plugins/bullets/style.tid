@@ -175,6 +175,7 @@ tags: [[$:/tags/Stylesheet]]
 
 .sq-bullets-block textarea.sq-bullet-editor {
 	line-height:1.5em;
+	margin-bottom: 0.6em;
 }
 
 .sq-bullets-block p:first-child {
@@ -195,6 +196,20 @@ span.sq-breadcrumbs-fragment {
 
 span.sq-breadcrumbs-fragment a.tc-tiddlylink {
 	color: #333;
+}
+
+/*** framed engine styles ***/
+
+.tc-tiddler-frame input.tc-edit-texteditor,
+.tc-tiddler-frame textarea.tc-edit-texteditor,
+.tc-tiddler-frame iframe.tc-edit-texteditor {
+	background: #fff !important;
+	margin-top:0;
+	margin-bottom: -1.6em;
+}
+
+.sq-bullets-block .tc-editor-toolbar {
+	display: none;
 }
 
 <$reveal state="$:/state/sq/bullets/global-drag-state" type="match" text="yes">
