@@ -200,9 +200,9 @@ span.sq-breadcrumbs-fragment a.tc-tiddlylink {
 
 /*** framed engine styles ***/
 
-.tc-tiddler-frame input.tc-edit-texteditor,
-.tc-tiddler-frame textarea.tc-edit-texteditor,
-.tc-tiddler-frame iframe.tc-edit-texteditor {
+.tc-tiddler-frame .sq-bullets-block input.tc-edit-texteditor,
+.tc-tiddler-frame .sq-bullets-block textarea.tc-edit-texteditor,
+.tc-tiddler-frame .sq-bullets-block iframe.tc-edit-texteditor {
 	background: #fff !important;
 	margin-top:0;
 	margin-bottom: -1.6em;
