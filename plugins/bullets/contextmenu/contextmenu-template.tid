@@ -1,0 +1,26 @@
+created: 20200602163018613
+modified: 20200603055942658
+tags: 
+title: $:/plugins/sq/bullets/contextmenu/contextmenu-template
+type: text/vnd.tiddlywiki
+
+\define menu-item(title,subtitle:"",actions:"")
+		<$button class="tc-menu-list-item tc-btn-invisible" actions=<<__actions__>> >
+			<span class="sq-contextmenu-itemwrapper">
+				<span class="sq-contextmenu-itemtext">$title$</span>
+				<span class="sq-contextmenu-itemicon">$subtitle$</span>
+			</span>
+		</$button>
+\end
+
+\define menu-divider() <div class="sq-contextmenu-divider"/>
+
+<$reveal type="popup" state=<<context-state>>  position="belowleft" tag="div">
+	<div class="tc-drop-down sq-contextmenu">
+		<$macrocall $name="menu-item" title="Open" actions="""<$action-navigate/>"""/>
+		<$macrocall $name="menu-item" title="Rename" subtitle="Alt+R" actions=<<rename-bullet-actions>>/>
+		<$macrocall $name="menu-item" title="Delete" subtitle="Delete" actions=<<delete-bullet-actions>>/>
+		<<menu-divider>>
+		<$macrocall $name="menu-item" title="Keyboard Shortcuts (?)" actions="""<$action-navigate $to="Keyboard Shortcuts"/>"""/>
+	</div>
+</$reveal>

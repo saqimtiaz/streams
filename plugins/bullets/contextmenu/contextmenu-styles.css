@@ -1,0 +1,51 @@
+.sq-contextmenu {
+	padding: 12px 0;
+	box-shadow: rgba(0, 0, 0, 0.40) 0px 2px 20px;
+	font-family: "Segoe UI", Roboto, Helvetica, Arial;
+	font-size: 13px;
+	margin-top: 4px;
+	min-width: 100px;
+	max-width: 240px;
+	left: -16px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 6px;
+	border: 1px solid #dce0e2;
+	transition: opacity 200ms ease 0s, transform 200ms ease 0s;
+}
+
+.sq-contextmenu .tc-menu-list-item {
+	padding: 0 18px;
+	line-height: 24px;
+	white-space: nowrap;
+	color: #4b5155;
+	cursor: default !important;
+}
+
+.sq-contextmenu-itemwrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;	
+}
+
+.sq-contextmenu-itemtext {
+	display: flex;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	flex-grow: 1;
+	overflow: hidden;	
+}
+
+.sq-contextmenu-itemicon {
+	color: #b7bcbf;
+	margin-left: 16px;
+	min-width: 22px;	
+}
+
+.sq-contextmenu-divider {
+	border-top-width: 1px;
+	border-top-color: #eceef0;
+	border-top-style: solid;
+	margin: 6px 0;
+}

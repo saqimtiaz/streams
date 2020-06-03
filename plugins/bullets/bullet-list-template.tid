@@ -19,11 +19,13 @@ title: $:/plugins/sq/bullets/bullet-list-template
 					{{$:/plugins/sq/bullets/icons/bullet-expand-arrow}}
 				</$button>
 			</div>
-			<div class="sq-bullets-handle-wrapper">
-				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
-					<$draggable tag="div" tiddler=<<currentTiddler>> class="sq-bullets-handle" startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> />
-				</$button>
-			</div>
+			<$qualify name="context-state" title={{{[[$:/state/sq-context-popup/]addsuffix<bullet-root-title>]}}}>
+				<$contextmenu popup=<<context-state>> tag="div" class="sq-bullets-handle-wrapper" set={{{[<context-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> >
+					<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
+						<$draggable tag="div" tiddler=<<currentTiddler>> class="sq-bullets-handle" startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> />
+					</$button>
+				</$contextmenu>
+			</$qualify>
 		</div>
 		<$button tag="div" class="sq-bullets-block" >
 			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
@@ -114,6 +116,11 @@ title: $:/plugins/sq/bullets/bullet-list-template
 					<!--consider moving last child dropzone in here, though thats for children too-->
 				</div>
 			</div>				
+			<$qualify name="context-state" title={{{[[$:/state/sq-context-popup/]addsuffix<bullet-root-title>]}}}>
+			<$set name="currentTiddler" filter={{{[<context-state>get[current]]}}} select="0">
+				{{||$:/plugins/sq/bullets/contextmenu/contextmenu-template}}
+			</$set>
+			</$qualify>																												 
 		</$list>
 	</$vars>
 </div>
