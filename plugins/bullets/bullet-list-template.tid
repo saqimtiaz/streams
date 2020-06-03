@@ -117,7 +117,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				</div>
 			</div>				
 			<$qualify name="context-state" title={{{[[$:/state/sq-context-popup/]addsuffix<bullet-root-title>]}}}>
-			<$set name="currentTiddler" filter={{{[<context-state>get[current]]}}} select="0">
+			<$set name="currentTiddler" filter={{{[<context-state>get[current]]}}}>
 				{{||$:/plugins/sq/bullets/contextmenu/contextmenu-template}}
 			</$set>
 			</$qualify>																												 
