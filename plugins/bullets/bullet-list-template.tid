@@ -20,7 +20,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				</$button>
 			</div>
 			<$qualify name="context-state" title={{{[[$:/state/sq-context-popup/]addsuffix<bullet-root-title>]}}}>
-				<$contextmenu popup=<<context-state>> tag="div" class="sq-bullets-handle-wrapper" set={{{[<context-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> >
+				<$contextmenu popup=<<context-state>> tag="div" class="sq-bullets-handle-wrapper" set={{{[<context-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
 					<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
 						<$draggable tag="div" tiddler=<<currentTiddler>> class="sq-bullets-handle" startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> />
 					</$button>

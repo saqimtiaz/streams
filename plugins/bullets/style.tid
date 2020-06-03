@@ -150,6 +150,11 @@ tags: [[$:/tags/Stylesheet]]
     background-color: #394b59;
 }
 
+.sq-bullets-control .sq-bullets-handle-wrapper.sq-contextmenu-active .sq-bullets-handle {
+	border: 5px solid #5778d8; /*b74e4e*/
+}
+
+
 .sq-bullets-block {
     overflow-wrap: break-word;
 	max-width: 550px;

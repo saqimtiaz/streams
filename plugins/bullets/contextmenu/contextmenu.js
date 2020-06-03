@@ -33,7 +33,7 @@ exports.prototype.render = function(parent,nextSibling) {
 	var classes = this["class"].split(" ") || [];
 	var isPoppedUp = (this.popup || this.popupTitle) && this.isPoppedUp();
 	if(this.selectedClass) {
-		if(isPoppedUp) {
+		if((this.set || this.setTitle) && this.setTo && this.isSelected()) {
 			$tw.utils.pushTop(classes,this.selectedClass.split(" "));
 		}
 	}
