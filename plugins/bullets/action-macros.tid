@@ -131,6 +131,9 @@ title: $:/plugins/sq/bullets/action-macros
 <$action-ifconfirmed  $message="Do you wish to delete this tiddler?">
 	<$transclude tiddler="$:/plugins/sq/bullets/delete-hook/actions"/>
 	<$action-deletetiddler $tiddler=<<currentTiddler>> />
+	<$list filter="[<row-edit-state>get[text]match<currentTiddler>]">
+		<<focus-higher-bullet-actions>>
+	</$list>
 </$action-ifconfirmed>
 \end
 
