@@ -135,6 +135,14 @@ title: $:/plugins/sq/bullets/action-macros
 \end
 
 
+\define rename-bullet-actions()
+<$action-withinput message="Rename this tiddler?" default=<<currentTiddler>> actions="""
+	<$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<userInput>>/>
+	<$action-setfield $tiddler=<<row-edit-state>> text=<<userInput>>/>
+"""/>
+\end
+
+
 \define find-last-child()
 <!-- used by focus-higher-bullet-actions macro -->
 <$list filter="[enlist{!!sq-bullets}is[tiddler]last[]]" emptyMessage="""<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>>/>""">
