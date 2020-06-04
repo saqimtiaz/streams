@@ -12,6 +12,8 @@ tags: [[$:/tags/Stylesheet]]
     flex: 0 0 auto;
 }
 
+
+
 .sq-bullets-row-children {
 	display:flex;
 	flex: 0 0 auto;
@@ -28,6 +30,11 @@ tags: [[$:/tags/Stylesheet]]
 .sq-bullets-disabled,
 .sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div{
 	background-color: #ccc;
+}
+
+.sq-bullets-row-selected,
+.sq-bullets-droppable.tc-droppable.sq-bullets-row-selected + div {
+	background: <<color notification-background>>;
 }
 
 .sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div + 	.sq-bullets-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {

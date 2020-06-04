@@ -9,7 +9,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 \whitespace trim
 <$set name="row-children-visibility-state" value=<<qualify "$:/state/sq/bullets/visibility/$(currentTiddler)$">> >
 <$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
-<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ sq-bullets-droppable [<enable-dnd>match[no]then[sq-bullets-disabled]] +[join[ ]]}}} >
+<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ sq-bullets-droppable [<enable-dnd>match[no]then[sq-bullets-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[sq-bullets-row-selected]else[]] +[join[ ]]}}} >
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ sq-bullets-row [<row-children-visibility-state>get[text]match[hide]then[sq-bullets-row-children-collapsed]] [list[!!sq-bullets]is[tiddler]then[]else[sq-bullets-row-nochildren]] +[join[ ]]}}}>
 		<div class="sq-bullets-control">
@@ -19,14 +19,12 @@ title: $:/plugins/sq/bullets/bullet-list-template
 					{{$:/plugins/sq/bullets/icons/bullet-expand-arrow}}
 				</$button>
 			</div>
-			<$qualify name="context-state" title={{{[[$:/state/sq-context-popup/]addsuffix<bullet-root-title>]}}}>
-				<$contextmenu popup=<<context-state>> tag="div" class="sq-bullets-handle-wrapper" set={{{[<context-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
-					<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
-						<$draggable tag="div" tiddler=<<currentTiddler>> class="sq-bullets-handle" startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> />
-					</$button>
-				</$contextmenu>
-			</$qualify>
-		</div>
+			<$contextmenu popup=<<contextmenu-state>> tag="div" class="sq-bullets-handle-wrapper" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
+				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
+					<$draggable tag="div" tiddler=<<currentTiddler>> class="sq-bullets-handle" startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> />
+				</$button>
+			</$contextmenu>
+			</div>
 		<$button tag="div" class="sq-bullets-block" >
 			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
 				<$action-ifnoselection>
@@ -116,17 +114,16 @@ title: $:/plugins/sq/bullets/bullet-list-template
 					<!--consider moving last child dropzone in here, though thats for children too-->
 				</div>
 			</div>				
-			<$qualify name="context-state" title={{{[[$:/state/sq-context-popup/]addsuffix<bullet-root-title>]}}}>
-			<$set name="currentTiddler" filter={{{[<context-state>get[current]]}}}>
+			<$set name="currentTiddler" filter={{{[<contextmenu-state>get[current]]}}}>
 				{{||$:/plugins/sq/bullets/contextmenu/contextmenu-template}}
 			</$set>
-			</$qualify>																												 
 		</$list>
 	</$vars>
 </div>
 \end
 
 <$vars bullet-root-title=<<currentTiddler>>
+	contextmenu-state=<<qualify "$:/state/sq-context-popup/">>
 	row-edit-state=<<qualify "$:/state/sq/bullets/current-edit-tiddler">>
 	drag-title-state=<<qualify "$:/state/sq/bullets/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/bullets/current-drag-nextsibling">> 
