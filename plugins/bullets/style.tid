@@ -151,14 +151,33 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .sq-bullets-control .sq-bullets-handle-wrapper .sq-bullets-handle {
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    background-color: #394b59;
+	width: 9px;
+	height: 9px;
+	display: flex;
+	align-items : center;
 }
 
-.sq-bullets-control .sq-bullets-handle-wrapper.sq-contextmenu-active .sq-bullets-handle {
+.sq-bullets-control .sq-bullets-handle-wrapper .sq-bullets-handle-inner {
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: #394b59;
+	opacity: 0.4;
+}
+
+/*
+.sq-bullets-row:hover .sq-bullets-control .sq-bullets-handle-wrapper .sq-bullets-handle-inner {
+	opacity: 0.7;
+}
+*/
+
+.sq-bullets-row:hover .sq-bullets-control .sq-bullets-handle-wrapper:hover .sq-bullets-handle-inner {
+	opacity: 1;
+} 
+
+.sq-bullets-control .sq-bullets-handle-wrapper.sq-contextmenu-active .sq-bullets-handle-inner {
 	border: 5px solid #5778d8; /*b74e4e*/
+	opacity: 1;
 }
 
 
