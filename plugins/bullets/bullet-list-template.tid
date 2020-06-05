@@ -12,19 +12,19 @@ title: $:/plugins/sq/bullets/bullet-list-template
 <$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ sq-bullets-droppable [<enable-dnd>match[no]then[sq-bullets-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[sq-bullets-row-selected]else[]] +[join[ ]]}}} >
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ sq-bullets-row [<row-children-visibility-state>get[text]match[hide]then[sq-bullets-row-children-collapsed]] [list[!!sq-bullets]is[tiddler]then[]else[sq-bullets-row-nochildren]] +[join[ ]]}}}>
-		<div class="sq-bullets-control">
+		<$contextmenu popup=<<contextmenu-state>> class="sq-bullets-control" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
 			<div class="sq-bullets-collapser">
 				<$button class="tc-btn-invisible">
 					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
 					{{$:/plugins/sq/bullets/icons/bullet-expand-arrow}}
 				</$button>
 			</div>
-			<$contextmenu popup=<<contextmenu-state>> tag="div" class="sq-bullets-handle-wrapper" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
+			<div class="sq-bullets-handle-wrapper">
 				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
 					<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> class="sq-bullets-handle"><div class="sq-bullets-handle-inner"/></$draggable>
 				</$button>
-			</$contextmenu>
-			</div>
+			</div>	
+		</$contextmenu>
 		<$button tag="div" class="sq-bullets-block" >
 			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
 				<$action-ifnoselection>

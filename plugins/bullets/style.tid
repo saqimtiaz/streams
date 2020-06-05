@@ -46,7 +46,7 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .sq-bullets-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
-	margin-left: 30px;
+	margin-left: 29px;
 	line-height: 5px;
 	height: 5px;
 	border: 2px solid rgba(0,200,0,0.7);
@@ -69,7 +69,7 @@ tags: [[$:/tags/Stylesheet]]
     display: flex;
     height: 13px;
     width: 13px;
-    margin-top: 3px;
+    margin-top: 4px;
     border-radius: 50%;
     justify-content: center;
     align-items: center;
@@ -175,7 +175,7 @@ tags: [[$:/tags/Stylesheet]]
 	opacity: 1;
 } 
 
-.sq-bullets-control .sq-bullets-handle-wrapper.sq-contextmenu-active .sq-bullets-handle-inner {
+.sq-bullets-control.sq-contextmenu-active .sq-bullets-handle-wrapper .sq-bullets-handle-inner {
 	border: 5px solid #5778d8; /*b74e4e*/
 	opacity: 1;
 }
