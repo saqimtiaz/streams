@@ -43,7 +43,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				<$keyboard key="enter" actions=<<save-bullet-actions>> >
 				<$keyboard key="alt+enter" actions=<<save-longform-actions>> >
 				<$keyboard key="escape" actions=<<cancel-edit-bullet-actions>> >
-				<$keyboard key="delete" actions=<<delete-bullet-actions>> >
+				<$keyboard key="ctrl+delete" actions=<<delete-bullet-actions>> >
 				<$keyboard key="alt+r" actions=<<rename-bullet-actions>> >
 				<$list filter="""[<currentTiddler>!has[text]]""" variable="_NULL">
 					<$keyboard key="backspace" actions=<<remove-empty-bullet-actions>> >
