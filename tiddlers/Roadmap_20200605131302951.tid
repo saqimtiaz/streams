@@ -1,0 +1,9 @@
+created: 20200605131302951
+modified: 20200605131446267
+sq-bullet-parent: 267e339d-18cb-4000-88fc-5999723018a0
+sq-bullet-uuid: 3a307dff-9dba-437c-811f-a262d9b25173
+sq-bullets: Roadmap/20200605131425044
+title: Roadmap/20200605131302951
+type: text/vnd.tiddlywiki
+
+Use keyboard widget(s), one set, for all rows. Read current Tiddler from row-edit-state. Potential issue would be input fields in the view mode getting their keys trapped

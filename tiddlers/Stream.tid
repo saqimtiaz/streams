@@ -1,5 +1,5 @@
 created: 20200526161435997
-modified: 20200602090208747
+modified: 20200606092351843
 tags: 
 title: Stream
 type: text/vnd.tiddlywiki
@@ -9,6 +9,9 @@ This is a prototype. Do not use it for anything important. <br>
 Major changes are likely that will make it very difficult to migrate your content to newer versions.<br>
 No support is available for content migration.
 @@
+
+''Note: you now need to double click to edit''
+
 
 Play around with the tiddlers:
 
