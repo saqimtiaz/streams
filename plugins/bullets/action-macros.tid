@@ -10,13 +10,13 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define indent-bullet-actions()
 <!-- handle indenting a bullet -->
-<$set name="old-parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$set name="old-parent" filter="[{!!parent}]" select="0">
 <$set name="old-parent-bullets" filter="[<old-parent>get[sq-bullets]]" select="0">
 <$set name="previous-bullet" filter="[enlist<old-parent-bullets>is[tiddler]before<currentTiddler>]" select="0">
 <$list filter="[<previous-bullet>minlength[1]]" variable="_NULL">
 	<$action-listops $tiddler=<<previous-bullet>> $field="sq-bullets" $subfilter="+[is[tiddler]] [<currentTiddler>]"/>
 	<$action-listops $tiddler=<<old-parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
-	<$action-setfield $tiddler=<<currentTiddler>> sq-bullet-parent={{{[<previous-bullet>get[sq-bullet-uuid]]}}} />
+	<$action-setfield $tiddler=<<currentTiddler>> parent={{{[<previous-bullet>]}}} />
 </$list>
 </$set>
 </$set>
@@ -26,17 +26,15 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define unindent-bullet-actions()
 <!-- handle unindenting a bullet -->
-<$set name="old-parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
-<$set name="new-parent-uuid" filter="[<old-parent>get[sq-bullet-parent]]" select="0">
-<$set name="new-parent" filter="[sq-bullet-uuid<new-parent-uuid>]" select="0">
+<$set name="old-parent" filter="[{!!parent}]" select="0">
+<$set name="new-parent" filter="[<old-parent>get[parent]]" select="0">
 <$set name="new-parent-bullets" filter="[<new-parent>get[sq-bullets]]" select="0">
 <$set name="new-next-bullet" filter="[enlist<new-parent-bullets>is[tiddler]after<old-parent>]" select="0">
-<$list filter="[<new-parent-uuid>minlength[1]]" variable="_NULL">
+<$list filter="[<new-parent>minlength[1]]" variable="_NULL">
 	<$action-listops $tiddler=<<new-parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[insertbefore:new-next-bullet<currentTiddler>]"/>
 	<$action-listops $tiddler=<<old-parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
-	<$action-setfield $tiddler=<<currentTiddler>> sq-bullet-parent=<<new-parent-uuid>> />
+	<$action-setfield $tiddler=<<currentTiddler>> parent=<<new-parent>> />
 </$list>
-</$set>
 </$set>
 </$set>
 </$set>
@@ -45,7 +43,7 @@ title: $:/plugins/sq/bullets/action-macros
 
 
 \define demote-bullet-actions()
-<$set name="parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$set name="parent" filter="[{!!parent}]" select="0">
 <$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
 	<$list filter="[enlist<parent-bullets>after<currentTiddler>]" variable="next-bullet">
 		<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<next-bullet>]"/>
@@ -56,7 +54,7 @@ title: $:/plugins/sq/bullets/action-macros
 
 
 \define promote-bullet-actions()
-<$set name="parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$set name="parent" filter="[{!!parent}]" select="0">
 <$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
 	<$list filter="[enlist<parent-bullets>before<currentTiddler>]" variable="previous-bullet">
 		<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[insertbefore:previous-bullet<currentTiddler>]"/>
@@ -78,24 +76,19 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define add-bullet-actions(startText:"")
 <!-- handle saving a bullet edit and creating a new subsequent bullet -->
-<$set name="parent" filter="[<currentTiddler>match<bullet-root-title>] ~[sq-bullet-uuid{!!sq-bullet-parent}] +[first[]]" select="0">
-<$set name="parent-uuid" filter="[<parent>get[sq-bullet-uuid]] ~[<uuid>]" select="0">
-<!-- if parent has no uuid, assign one -->
-<$list filter="[<parent>!has[sq-bullet-uuid]]">
-	<$action-setfield $tiddler=<<parent>> sq-bullet-uuid=<<parent-uuid>>/>
-</$list>
-<$set name="new-bullet-uuid" value=<<uuid>> >
+<$set name="parent" filter="[<currentTiddler>match<bullet-root-title>] ~[{!!parent}] +[first[]]" select="0">
 <$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
-	<$action-createtiddler $basetitle=<<new-bullet>> text="$startText$" $template={{$:/config/sq/bullets/new-bullet-tiddler-template}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
+	<$action-createtiddler $basetitle=<<new-bullet>> text="$startText$" $template={{$:/config/sq/bullets/new-bullet-tiddler-template}} parent=<<parent>> stream-type="default"/>
 	<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
 	<$set name="next-bullet" filter="[enlist<parent-bullets>is[tiddler]after<currentTiddler>]" select="0">
-	<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[insertbefore:next-bullet<new-bullet>]" />
+	<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[insertbefore:next-bullet<new-bullet>]"/>
+	<$list filter="[<parent>has[stream-type]]" variable="_NULL">
+		<$action-setfield $tiddler=<<parent>> stream-type="default"/>
+	</$list>
 	</$set>
 	</$set>
 	<$action-setfield $tiddler=<<row-edit-state>> text=<<new-bullet>>/>
 </$wikify>
-</$set>
-</$set>
 </$set>
 \end
 
@@ -113,7 +106,7 @@ title: $:/plugins/sq/bullets/action-macros
 \define cancel-edit-bullet-actions()
 <!-- handle cancelling the edit on an empty bullet -->
 <$list filter="[<currentTiddler>!has[sq-bullets]!has[text]]" variable="_NULL">
-	<$action-listops $tiddler={{{[sq-bullet-uuid{!!sq-bullet-parent}]}}} $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
+	<$action-listops $tiddler={{{[{!!parent}]}}} $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
 	<$action-deletetiddler $tiddler=<<currentTiddler>> />
 </$list>
 <$action-deletetiddler $tiddler=<<row-edit-state>> />
@@ -156,7 +149,7 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define focus-higher-bullet-actions()
 <!-- handles moving up in the bullets with the keyboard -->
-<$set name="old-parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$set name="old-parent" filter="[{!!parent}]" select="0">
 <$set name="old-parent-bullets" filter="[<old-parent>get[sq-bullets]]" select="0">
 <$set name="old-active-bullet" value=<<currentTiddler>> >
 <$list filter="[enlist<old-parent-bullets>is[tiddler]before<currentTiddler>]" emptyMessage="""<$list filter="[<old-parent>!match<bullet-root-title>]"><$action-setfield $tiddler=<<row-edit-state>> text=<<old-parent>> /></$list>""">
@@ -170,8 +163,8 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define find-next-downwards-bullet()
 <!-- used by focus-lower-bullet-actions macro -->
-<$list filter="[<currentTiddler>has[sq-bullet-parent]]" variable="_NULL">
-<$set name="old-parent" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$list filter="[<currentTiddler>has[parent]]" variable="_NULL">
+<$set name="old-parent" filter="[{!!parent}]" select="0">
 <$set name="old-parent-bullets" filter="[<old-parent>get[sq-bullets]]" select="0">
 <$list filter="[enlist<old-parent-bullets>is[tiddler]after<currentTiddler>]" emptyMessage="""<$set name="currentTiddler" value=<<old-parent>>><<find-next-downwards-bullet>></$set>""">
 	<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>>/>	
@@ -204,7 +197,7 @@ title: $:/plugins/sq/bullets/action-macros
 <!-- parameter to draggable widget -->
 <$action-setfield $tiddler=<<drag-title-state>> text=<<currentTiddler>>/>
 <$action-setfield $tiddler="$:/state/sq/bullets/global-drag-state" text="yes"/>
-<$set name="siblings" filter="[sq-bullet-uuid{!!sq-bullet-parent}get[sq-bullets]]" select="0">
+<$set name="siblings" filter="[{!!parent}get[sq-bullets]]" select="0">
 <$list filter="[enlist<siblings>after<currentTiddler>]" variable="next-bullet">
 	<$action-setfield $tiddler=<<drag-title-nextsibling-state>> text=<<next-bullet>> />
 </$set>
@@ -219,49 +212,45 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define list-bullets-draggable-drop-actions()
 <!-- handles drag and drop -->
-<$set name="parent-uuid" filter="[<dropTargetTiddler>get[sq-bullet-uuid]] ~[<uuid>]">
 <$set name="parent" value=<<dropTargetTiddler>>>
-<!-- if target has no uuid, assign one -->
-<$list filter="[<dropTargetTiddler>!has[sq-bullet-uuid]]">
-	<$action-setfield $tiddler=<<dropTargetTiddler>> sq-bullet-uuid=<<parent-uuid>>/>
+<!-- if target has no stream-type, assign one -->
+<$list filter="[<dropTargetTiddler>!has[stream-type]]">
+	<$action-setfield $tiddler=<<dropTargetTiddler>> stream-type="default"/>
 </$list>
-<!-- if action tiddler has no uuid, assign one -->
-<$list filter="[<actionTiddler>!has[sq-bullet-uuid]]" variable="_NULL">
-	<$action-setfield $tiddler=<<actionTiddler>> sq-bullet-uuid=<<uuid>> />
+<!-- if action tiddler has no stream-type, assign one -->
+<$list filter="[<actionTiddler>!has[stream-type]]" variable="_NULL">
+	<$action-setfield $tiddler=<<actionTiddler>> stream-type="default" />
 </$list>
 <!-- if we are dropping onto a new parent, then we might need to handle modifier keys -->
-<$list filter="[<actionTiddler>get[sq-bullet-parent]!match<parent-uuid>]" variable="_NULL">
-	<$set name="new-bullet-uuid" value=<<uuid>> >
+<$list filter="[<actionTiddler>get[parent]!match<parent>]" variable="_NULL">
 	<$wikify name="new-bullet" text={{$:/config/sq/bullets/new-bullet-title}}>
 		<!-- ctrl modifier key on drop event -->
 		<!-- create a new bullet with text of dropped bullet -->
 		<$list filter="[<modifier>match[ctrl]]" variable="_NULL">
-			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>get[text]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
+			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>get[text]] }}} parent=<<parent>> stream-type="default"/>
 		</$list>
 		<!-- shift modifier key on drop event -->
 		<$list filter="[<modifier>match[shift]]" variable="_NULL">
 			<!-- create new bullet on target, in correct position, text is a transclusion-->
-			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} sq-bullet-parent=<<parent-uuid>> sq-bullet-uuid=<<new-bullet-uuid>>/>
+			<$action-createtiddler $basetitle=<<new-bullet>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} parent=<<parent>> stream-type="default"/>
 		</$list>
 		<!-- insert into correct position on new parent -->			
 		<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<new-bullet>]"/>
 	</$wikify>
-	</$set>		
 	<!-- no modifier key on drop event -->
 	<!-- insert in correct position on new parent, and remove from old parent -->
 	<!-- assign new parent -->
 	<$list filter="[<modifier>match[normal]]" variable="_NULL">
 		<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<actionTiddler>]"/>
-		<$set name="original-parent-uuid" filter="[<actionTiddler>get[sq-bullet-parent]]">
-		<$action-listops $tiddler={{{ [sq-bullet-uuid<original-parent-uuid>] }}} $field="sq-bullets" $subfilter="-[<actionTiddler>]"/>
+		<$set name="original-parent" filter="[<actionTiddler>get[parent]]">
+			<$action-listops $tiddler=<<original-parent>> $field="sq-bullets" $subfilter="-[<actionTiddler>]"/>
 		</$set>
-		<$action-setfield $tiddler=<<actionTiddler>> sq-bullet-parent=<<parent-uuid>>/>
+		<$action-setfield $tiddler=<<actionTiddler>> parent=<<parent>>/>
 	</$list>
 </$list>
 <!-- we are dropping on to the same parent, insert in the correct position -->
-<$list filter="[<actionTiddler>get[sq-bullet-parent]match<parent-uuid>]" variable="_NULL">
+<$list filter="[<actionTiddler>get[parent]match<parent>]" variable="_NULL">
 	<$action-listops $tiddler=<<dropTargetTiddler>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<actionTiddler>]"/>
 </$list>
-</$set>
 </$set>
 \end

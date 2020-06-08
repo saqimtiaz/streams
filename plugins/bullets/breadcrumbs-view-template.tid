@@ -6,9 +6,9 @@ title: $:/plugins/sq/bullets/breadcrumbs-view-template
 type: text/vnd.tiddlywiki
 
 \define sq-bullets-show-breadcrumbs()
-<$list filter="[<currentTiddler>has[sq-bullet-uuid]]">
-	<$list filter="[<currentTiddler>has[sq-bullet-parent]]">
-		<$set name="currentTiddler" filter="[sq-bullet-uuid{!!sq-bullet-parent}]" select="0">
+<$list filter="[<currentTiddler>has[stream-type]]">
+	<$list filter="[<currentTiddler>has[parent]]">
+		<$set name="currentTiddler" filter="[{!!parent}]" select="0">
 			<<sq-bullets-show-breadcrumbs>>
 		</$set>
 	</$list>	
