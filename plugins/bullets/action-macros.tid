@@ -10,15 +10,13 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define indent-bullet-actions()
 <!-- handle indenting a bullet -->
-<$set name="old-parent" filter="[{!!parent}]" select="0">
-<$set name="old-parent-bullets" filter="[<old-parent>get[sq-bullets]]" select="0">
+<$set name="old-parent-bullets" filter="[{!!parent}get[sq-bullets]]" select="0">
 <$set name="previous-bullet" filter="[enlist<old-parent-bullets>is[tiddler]before<currentTiddler>]" select="0">
 <$list filter="[<previous-bullet>minlength[1]]" variable="_NULL">
 	<$action-listops $tiddler=<<previous-bullet>> $field="sq-bullets" $subfilter="+[is[tiddler]] [<currentTiddler>]"/>
-	<$action-listops $tiddler=<<old-parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
-	<$action-setfield $tiddler=<<currentTiddler>> parent={{{[<previous-bullet>]}}} />
+	<$action-listops $tiddler={{!!parent}} $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
+	<$action-setfield $tiddler=<<currentTiddler>> parent=<<previous-bullet>> />
 </$list>
-</$set>
 </$set>
 </$set>
 \end
@@ -26,16 +24,14 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define unindent-bullet-actions()
 <!-- handle unindenting a bullet -->
-<$set name="old-parent" filter="[{!!parent}]" select="0">
-<$set name="new-parent" filter="[<old-parent>get[parent]]" select="0">
+<$set name="new-parent" filter="[{!!parent}get[parent]]" select="0">
 <$set name="new-parent-bullets" filter="[<new-parent>get[sq-bullets]]" select="0">
-<$set name="new-next-bullet" filter="[enlist<new-parent-bullets>is[tiddler]after<old-parent>]" select="0">
+<$set name="new-next-bullet" filter="[enlist<new-parent-bullets>is[tiddler]after{!!parent}]" select="0">
 <$list filter="[<new-parent>minlength[1]]" variable="_NULL">
 	<$action-listops $tiddler=<<new-parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[insertbefore:new-next-bullet<currentTiddler>]"/>
-	<$action-listops $tiddler=<<old-parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
+	<$action-listops $tiddler={{!!parent}} $field="sq-bullets" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
 	<$action-setfield $tiddler=<<currentTiddler>> parent=<<new-parent>> />
 </$list>
-</$set>
 </$set>
 </$set>
 </$set>
@@ -43,23 +39,19 @@ title: $:/plugins/sq/bullets/action-macros
 
 
 \define demote-bullet-actions()
-<$set name="parent" filter="[{!!parent}]" select="0">
-<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
+<$set name="parent-bullets" filter="[{!!parent}get[sq-bullets]]" select="0">
 	<$list filter="[enlist<parent-bullets>after<currentTiddler>]" variable="next-bullet">
-		<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<next-bullet>]"/>
+		<$action-listops $tiddler={{!!parent}} $field="sq-bullets" $subfilter="+[insertbefore:currentTiddler<next-bullet>]"/>
 	</$list>
-</$set>
 </$set>
 \end
 
 
 \define promote-bullet-actions()
-<$set name="parent" filter="[{!!parent}]" select="0">
-<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
+<$set name="parent-bullets" filter="[{!!parent}get[sq-bullets]]" select="0">
 	<$list filter="[enlist<parent-bullets>before<currentTiddler>]" variable="previous-bullet">
-		<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[insertbefore:previous-bullet<currentTiddler>]"/>
+		<$action-listops $tiddler={{!!parent}} $field="sq-bullets" $subfilter="+[insertbefore:previous-bullet<currentTiddler>]"/>
 	</$list>
-</$set>
 </$set>
 \end
 
