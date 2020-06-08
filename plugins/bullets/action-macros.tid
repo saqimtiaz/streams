@@ -82,7 +82,7 @@ title: $:/plugins/sq/bullets/action-macros
 	<$set name="parent-bullets" filter="[<parent>get[sq-bullets]]" select="0">
 	<$set name="next-bullet" filter="[enlist<parent-bullets>is[tiddler]after<currentTiddler>]" select="0">
 	<$action-listops $tiddler=<<parent>> $field="sq-bullets" $subfilter="+[is[tiddler]] +[insertbefore:next-bullet<new-bullet>]"/>
-	<$list filter="[<parent>has[stream-type]]" variable="_NULL">
+	<$list filter="[<parent>!has[stream-type]]" variable="_NULL">
 		<$action-setfield $tiddler=<<parent>> stream-type="default"/>
 	</$list>
 	</$set>

@@ -104,8 +104,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 					<div class="sq-bullets-collapser">
 					</div>
 					<div class="sq-bullets-handle-wrapper">
-						<$button tag="div" class="tc-btn-invisible" tooltip="add bullet">
-							<<add-bullet-actions>>
+						<$button tag="div" class="tc-btn-invisible" tooltip="add bullet" actions=<<add-bullet-actions>> >
 							{{$:/plugins/sq/bullets/icons/new-bullet-btn}}
 						</$button>
 					</div>
