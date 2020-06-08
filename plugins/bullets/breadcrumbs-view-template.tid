@@ -5,11 +5,11 @@ tags: $:/tags/ViewTemplate
 title: $:/plugins/sq/bullets/breadcrumbs-view-template
 type: text/vnd.tiddlywiki
 
-\define sq-bullets-show-breadcrumbs()
+\define stream-list-show-breadcrumbs()
 <$list filter="[<currentTiddler>has[stream-type]]">
 	<$list filter="[<currentTiddler>has[parent]]">
 		<$set name="currentTiddler" filter="[{!!parent}]" select="0">
-			<<sq-bullets-show-breadcrumbs>>
+			<<stream-list-show-breadcrumbs>>
 		</$set>
 	</$list>	
 	<$list filter="[<currentTiddler>!match<storyTiddler>]">
@@ -24,5 +24,5 @@ type: text/vnd.tiddlywiki
 </$list>
 \end
 
-<<sq-bullets-show-breadcrumbs>>
+<<stream-list-show-breadcrumbs>>
 

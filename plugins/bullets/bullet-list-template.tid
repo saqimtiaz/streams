@@ -11,7 +11,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 <$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
 <$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ sq-bullets-droppable [<enable-dnd>match[no]then[sq-bullets-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[sq-bullets-row-selected]else[]] +[join[ ]]}}} >
 	<div class="tc-droppable-placeholder"/>
-	<div class={{{ sq-bullets-row [<row-children-visibility-state>get[text]match[hide]then[sq-bullets-row-children-collapsed]] [list[!!sq-bullets]is[tiddler]then[]else[sq-bullets-row-nochildren]] +[join[ ]]}}}>
+	<div class={{{ sq-bullets-row [<row-children-visibility-state>get[text]match[hide]then[sq-bullets-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[sq-bullets-row-nochildren]] +[join[ ]]}}}>
 		<$contextmenu popup=<<contextmenu-state>> class="sq-bullets-control" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
 			<div class="sq-bullets-collapser">
 				<$button class="tc-btn-invisible">
@@ -70,7 +70,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 </$set>
 <$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
 <$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide">
-	<div class={{{ sq-bullets-row-children [<currentTiddler>!has[sq-bullets]then[sq-bullets-row-children-empty]] [<enable-dnd>match[no]then[sq-bullets-disabled]] +[join[ ]]}}} >
+	<div class={{{ sq-bullets-row-children [<currentTiddler>!has[stream-list]then[sq-bullets-row-children-empty]] [<enable-dnd>match[no]then[sq-bullets-disabled]] +[join[ ]]}}} >
 		<$macrocall $name="list-bullets-draggable"/>
 	</div>
 </$reveal>
@@ -83,7 +83,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 \whitespace trim
 <div class="sq-bullet-list">
 	<$vars dropTargetTiddler=<<currentTiddler>> >
-		<$list filter="[list[!!sq-bullets]!is[missing]]">
+		<$list filter="[list[!!stream-list]!is[missing]]">
 		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
 			<<bullet-row-template>>
 		</$set>
@@ -94,7 +94,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				<div class="tc-droppable-placeholder">
 				&nbsp;
 				</div><!-- idea only want below div with height when its a child with no more children-->
-				<$list filter="[<currentTiddler>!has[sq-bullets]]" variable="_NULL"><div class="sq-droppable-spacer"/></$list>
+				<$list filter="[<currentTiddler>!has[stream-list]]" variable="_NULL"><div class="sq-droppable-spacer"/></$list>
 			</$droppable>
 		</$tiddler>
 		<$list filter="[all[current]match<bullet-root-title>]" variable="_NULL">
@@ -127,7 +127,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 	drag-title-state=<<qualify "$:/state/sq/bullets/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/bullets/current-drag-nextsibling">> 
 	>
-	<div class={{{ sq-bullet-root [{$:/state/sq/bullets/global-drag-state}match[yes]then[sq-bullet-dragactive]] [<currentTiddler>!has[sq-bullets]then[sq-bullet-newlist]] +[join[ ]] }}}>
+	<div class={{{ sq-bullet-root [{$:/state/sq/bullets/global-drag-state}match[yes]then[sq-bullet-dragactive]] [<currentTiddler>!has[stream-list]then[sq-bullet-newlist]] +[join[ ]] }}}>
 		<$macrocall $name="list-bullets-draggable"/>
 	</div>
 </$vars>

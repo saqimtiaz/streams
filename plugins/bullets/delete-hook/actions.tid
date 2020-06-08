@@ -5,17 +5,17 @@ title: $:/plugins/sq/bullets/delete-hook/actions
 type: text/vnd.tiddlywiki
 
 \define delete-children()
-	<$list filter="[enlist{!!sq-bullets}]">
+	<$list filter="[enlist{!!stream-list}]">
 		<<delete-children>>
 	</$list>
-	<<$action-deletetiddler $filter="[enlist{!!sq-bullets}]"/>
+	<<$action-deletetiddler $filter="[enlist{!!stream-list}]"/>
 \end
 
 <$list filter="[<currentTiddler>has[stream-type]]">
 	<$list filter="[<currentTiddler>has[parent]]">
-		<$action-listops $tiddler={{!!parent}} $field="sq-bullets" $subfilter="-[<currentTiddler>]" />
+		<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="-[<currentTiddler>]" />
 	</$list>
-	<$list variable="count" filter="[enlist{!!sq-bullets}count[]!match[0]]">
+	<$list variable="count" filter="[enlist{!!stream-list}count[]!match[0]]">
 		<$action-ifconfirmed  $message="Do you wish to delete all tiddlers descended from this tiddler?">
 			<<delete-children>>
 		</$action-ifconfirmed>
