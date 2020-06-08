@@ -1,8 +1,0 @@
-created: 20200601055604487
-modified: 20200608164620875
-parent: Roadmap/20200603080248881
-stream-type: default
-title: Roadmap/20200601055604487
-type: text/vnd.tiddlywiki
-
-Consider removing UUID usage in child->parent relationship if relying on Relink for renaming resilience. Will considerably simplify and shorten code in action macros
