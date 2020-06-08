@@ -134,7 +134,9 @@ title: $:/plugins/sq/bullets/action-macros
 \define rename-bullet-actions()
 <$action-withinput message="Rename this tiddler?" default=<<currentTiddler>> actions="""
 	<$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<userInput>>/>
-	<$action-setfield $tiddler=<<row-edit-state>> text=<<userInput>>/>
+	<$list filter="[<row-edit-state>match<currentTiddler>]" variable="_NULL">
+		<$action-setfield $tiddler=<<row-edit-state>> text=<<userInput>>/>
+	</$list>
 """/>
 \end
 
