@@ -143,7 +143,7 @@ title: $:/plugins/sq/bullets/action-macros
 
 \define focus-higher-bullet-actions()
 <!-- handles moving up in the bullets with the keyboard -->
-<$set name="old-parent" filter="[{!!parent}]" select="0">
+<$set name="old-parent" value={{!!parent}} select="0">
 <$set name="old-parent-bullets" filter="[<old-parent>get[sq-bullets]]" select="0">
 <$set name="old-active-bullet" value=<<currentTiddler>> >
 <$list filter="[enlist<old-parent-bullets>is[tiddler]before<currentTiddler>]" emptyMessage="""<$list filter="[<old-parent>!match<bullet-root-title>]"><$action-setfield $tiddler=<<row-edit-state>> text=<<old-parent>> /></$list>""">
@@ -158,7 +158,7 @@ title: $:/plugins/sq/bullets/action-macros
 \define find-next-downwards-bullet()
 <!-- used by focus-lower-bullet-actions macro -->
 <$list filter="[<currentTiddler>has[parent]]" variable="_NULL">
-<$set name="old-parent" filter="[{!!parent}]" select="0">
+<$set name="old-parent" value={{!!parent}} select="0">
 <$set name="old-parent-bullets" filter="[<old-parent>get[sq-bullets]]" select="0">
 <$list filter="[enlist<old-parent-bullets>is[tiddler]after<currentTiddler>]" emptyMessage="""<$set name="currentTiddler" value=<<old-parent>>><<find-next-downwards-bullet>></$set>""">
 	<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>>/>	
