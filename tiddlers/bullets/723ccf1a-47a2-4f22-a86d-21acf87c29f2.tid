@@ -1,8 +1,8 @@
 created: 20200515193314862
-modified: 20200526033810090
-sq-bullet-parent: 84869507-c40d-41a8-9eb2-278032149431
-sq-bullet-uuid: 723ccf1a-47a2-4f22-a86d-21acf87c29f2
+modified: 20200608164620962
+parent: Kafka
 sq-bullets: $:/bullets/c8a4749c-ac87-4135-a26f-6d382d6cb01b $:/bullets/51427c83-0e75-4510-a3a4-c2a1f7ae18cd $:/bullets/42a5b170-f033-4aa1-abae-7ac4575572c9 $:/bullets/60a4985c-b67a-44ca-b454-dfac602b5fd6
+stream-type: default
 title: $:/bullets/723ccf1a-47a2-4f22-a86d-21acf87c29f2
 type: text/vnd.tiddlywiki
 

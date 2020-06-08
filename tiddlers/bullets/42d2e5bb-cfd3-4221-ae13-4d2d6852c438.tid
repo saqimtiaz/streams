@@ -1,7 +1,7 @@
 created: 20200526031830434
-modified: 20200526032550920
-sq-bullet-parent: 906a73e0-14bb-4827-93a7-984ee3426318
-sq-bullet-uuid: 42d2e5bb-cfd3-4221-ae13-4d2d6852c438
+modified: 20200608164620974
+parent: $:/bullets/906a73e0-14bb-4827-93a7-984ee3426318
+stream-type: default
 title: $:/bullets/42d2e5bb-cfd3-4221-ae13-4d2d6852c438
 type: text/vnd.tiddlywiki
 
