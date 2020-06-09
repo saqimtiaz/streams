@@ -52,3 +52,13 @@ DroppableWidget.prototype.leaveDrag = function(event) {
         }
     }
 };
+
+DroppableWidget.prototype.execute = function() {
+	this.droppableActions = this.getAttribute("actions");
+	this.droppableEffect = this.getAttribute("effect","copy");
+	this.droppableTag = this.getAttribute("tag");
+	this.droppableClass = this.getAttribute("class");
+	this.droppableEnable = (this.getAttribute("enable") || "yes") === "yes";
+	// Make child widgets
+	this.makeChildWidgets();
+};
