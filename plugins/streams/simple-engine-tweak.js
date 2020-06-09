@@ -1,3 +1,11 @@
+/*\
+
+title: $:/plugins/sq/streams/simple-engine-tweak
+type: application/javascript
+module-type: startup
+
+\*/
+
 var SimpleEngine = require("$:/core/modules/editor/engines/simple.js").SimpleEngine;
 
 SimpleEngine.prototype.focus = function() {

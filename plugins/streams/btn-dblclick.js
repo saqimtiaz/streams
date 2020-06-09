@@ -1,6 +1,6 @@
 /*\
 
-title: $:/plugins/sq/bullets/btn-dblclick
+title: $:/plugins/sq/streams/btn-dblclick
 type: application/javascript
 module-type: widget-subclass
 

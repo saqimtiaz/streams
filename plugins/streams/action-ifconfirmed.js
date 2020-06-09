@@ -1,6 +1,6 @@
 /*\
 
-title: $:/plugins/sq/bullets/action-ifconfirmed.js
+title: $:/plugins/sq/streams/action-ifconfirmed.js
 type: application/javascript
 module-type: widget
 

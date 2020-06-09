@@ -1,6 +1,6 @@
 /*\
 
-title: $:/plugins/sq/bullets/contextmenu/contextmenu
+title: $:/plugins/sq/streams/contextmenu/contextmenu
 type: application/javascript
 module-type: widget-subclass
 

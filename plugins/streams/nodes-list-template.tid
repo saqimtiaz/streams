@@ -1,27 +1,27 @@
 created: 20171022203553093
 modified: 20171122050808722
-title: $:/plugins/sq/bullets/bullet-list-template
+title: $:/plugins/sq/streams/nodes-list-template
 
-\import [[$:/plugins/sq/bullets/action-macros]]
+\import [[$:/plugins/sq/streams/action-macros]]
 \whitespace trim
 
-\define bullet-row-template()
+\define stream-row-template()
 \whitespace trim
 <$set name="row-children-visibility-state" value=<<qualify "$:/state/sq/bullets/visibility/$(currentTiddler)$">> >
 <$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
-<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ sq-bullets-droppable [<enable-dnd>match[no]then[sq-bullets-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[sq-bullets-row-selected]else[]] +[join[ ]]}}} >
+<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ sq-bullets-droppable [<enable-dnd>match[no]then[sq-bullets-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[sq-bullets-row-selected]else[]] +[join[ ]]}}} >
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ sq-bullets-row [<row-children-visibility-state>get[text]match[hide]then[sq-bullets-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[sq-bullets-row-nochildren]] +[join[ ]]}}}>
 		<$contextmenu popup=<<contextmenu-state>> class="sq-bullets-control" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
 			<div class="sq-bullets-collapser">
 				<$button class="tc-btn-invisible">
 					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
-					{{$:/plugins/sq/bullets/icons/bullet-expand-arrow}}
+					{{$:/plugins/sq/streams/icons/node-expand-arrow}}
 				</$button>
 			</div>
 			<div class="sq-bullets-handle-wrapper">
 				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
-					<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<bullet-drag-start-actions>> endactions=<<bullet-drag-end-actions>> class="sq-bullets-handle"><div class="sq-bullets-handle-inner"/></$draggable>
+					<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="sq-bullets-handle"><div class="sq-bullets-handle-inner"/></$draggable>
 				</$button>
 			</div>	
 		</$contextmenu>
@@ -33,24 +33,24 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				<$transclude mode="block"/>
 			</$reveal>
 			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
-				<$keyboard key="ctrl+enter" actions=<<save-edit-bullet-actions>> >
-				<$keyboard key="tab" actions=<<indent-bullet-actions>> >
-				<$keyboard key="shift+tab" actions=<<unindent-bullet-actions>> >
-				<$keyboard key="ctrl+down" actions=<<focus-lower-bullet-actions>> >
-				<$keyboard key="ctrl+up" actions=<<focus-higher-bullet-actions>> >
-				<$keyboard key="alt+down" actions=<<demote-bullet-actions>> >
-				<$keyboard key="alt+up" actions=<<promote-bullet-actions>> >
-				<$keyboard key="enter" actions=<<save-bullet-actions>> >
-				<$keyboard key="alt+enter" actions=<<save-longform-actions>> >
-				<$keyboard key="escape" actions=<<cancel-edit-bullet-actions>> >
-				<$keyboard key="ctrl+delete" actions=<<delete-bullet-actions>> >
-				<$keyboard key="alt+r" actions=<<rename-bullet-actions>> >
+				<$keyboard key="ctrl+enter" actions=<<save-edit-node-actions>> >
+				<$keyboard key="tab" actions=<<indent-node-actions>> >
+				<$keyboard key="shift+tab" actions=<<unindent-node-actions>> >
+				<$keyboard key="ctrl+down" actions=<<focus-lower-node-actions>> >
+				<$keyboard key="ctrl+up" actions=<<focus-higher-node-actions>> >
+				<$keyboard key="alt+down" actions=<<demote-node-actions>> >
+				<$keyboard key="alt+up" actions=<<promote-node-actions>> >
+				<$keyboard key="enter" actions=<<save-node-actions>> >
+				<$keyboard key="alt+enter" actions=<<save-node-actions>> >
+				<$keyboard key="escape" actions=<<cancel-edit-node-actions>> >
+				<$keyboard key="ctrl+delete" actions=<<delete-node-actions>> >
+				<$keyboard key="alt+r" actions=<<rename-node-actions>> >
 				<$list filter="""[<currentTiddler>!has[text]]""" variable="_NULL">
-					<$keyboard key="backspace" actions=<<remove-empty-bullet-actions>> >
+					<$keyboard key="backspace" actions=<<remove-empty-node-actions>> >
 						<$edit-text tag="textarea" autoHeight="yes" minHeight="1em" focus="yes" select="false" class="sq-bullet-editor"/>
 					</$keyboard>
 				</$list>
-				<$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">{{||$:/plugins/sq/bullets/framed-editor-template}}</$list>
+				<$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">{{||$:/plugins/sq/streams/framed-editor-template}}</$list>
 				</$keyboard>
 				</$keyboard>
 				</$keyboard>
@@ -71,7 +71,7 @@ title: $:/plugins/sq/bullets/bullet-list-template
 <$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
 <$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide">
 	<div class={{{ sq-bullets-row-children [<currentTiddler>!has[stream-list]then[sq-bullets-row-children-empty]] [<enable-dnd>match[no]then[sq-bullets-disabled]] +[join[ ]]}}} >
-		<$macrocall $name="list-bullets-draggable"/>
+		<$macrocall $name="stream"/>
 	</div>
 </$reveal>
 </$set>
@@ -79,33 +79,33 @@ title: $:/plugins/sq/bullets/bullet-list-template
 \end
 
 
-\define list-bullets-draggable()
+\define stream()
 \whitespace trim
 <div class="sq-bullet-list">
 	<$vars dropTargetTiddler=<<currentTiddler>> >
 		<$list filter="[list[!!stream-list]!is[missing]]">
 		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
-			<<bullet-row-template>>
+			<<stream-row-template>>
 		</$set>
 		</$list>
 		<$tiddler tiddler="">
 			<!-- to drop after the last child of any list level-->
-			<$droppable actions=<<list-bullets-draggable-drop-actions>> tag="div" enable=<<enable-dnd>> class="sq-bullets-droppable">
+			<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd>> class="sq-bullets-droppable">
 				<div class="tc-droppable-placeholder">
 				&nbsp;
 				</div><!-- idea only want below div with height when its a child with no more children-->
 				<$list filter="[<currentTiddler>!has[stream-list]]" variable="_NULL"><div class="sq-droppable-spacer"/></$list>
 			</$droppable>
 		</$tiddler>
-		<$list filter="[all[current]match<bullet-root-title>]" variable="_NULL">
+		<$list filter="[all[current]match<stream-root-title>]" variable="_NULL">
 			<!-- if we are the root, add a button to add more bullets-->
 			<div class="sq-bullets-row">
 				<div class="sq-bullets-control sq-bullets-control-addnew">
 					<div class="sq-bullets-collapser">
 					</div>
 					<div class="sq-bullets-handle-wrapper">
-						<$button tag="div" class="tc-btn-invisible" tooltip="add bullet" actions=<<add-bullet-actions>> >
-							{{$:/plugins/sq/bullets/icons/new-bullet-btn}}
+						<$button tag="div" class="tc-btn-invisible" tooltip="add node" actions=<<add-node-actions>> >
+							{{$:/plugins/sq/streams/icons/new-node-btn}}
 						</$button>
 					</div>
 				</div>
@@ -114,21 +114,21 @@ title: $:/plugins/sq/bullets/bullet-list-template
 				</div>
 			</div>				
 			<$set name="currentTiddler" filter={{{[<contextmenu-state>get[current]]}}}>
-				{{||$:/plugins/sq/bullets/contextmenu/contextmenu-template}}
+				{{||$:/plugins/sq/streams/contextmenu/contextmenu-template}}
 			</$set>
 		</$list>
 	</$vars>
 </div>
 \end
 
-<$vars bullet-root-title=<<currentTiddler>>
+<$vars stream-root-title=<<currentTiddler>>
 	contextmenu-state=<<qualify "$:/state/sq-context-popup/">>
 	row-edit-state=<<qualify "$:/state/sq/bullets/current-edit-tiddler">>
 	drag-title-state=<<qualify "$:/state/sq/bullets/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/bullets/current-drag-nextsibling">> 
 	>
-	<div class={{{ sq-bullet-root [{$:/state/sq/bullets/global-drag-state}match[yes]then[sq-bullet-dragactive]] [<currentTiddler>!has[stream-list]then[sq-bullet-newlist]] +[join[ ]] }}}>
-		<$macrocall $name="list-bullets-draggable"/>
+	<div class={{{ sq-bullet-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[sq-bullet-dragactive]] [<currentTiddler>!has[stream-list]then[sq-bullet-newlist]] +[join[ ]] }}}>
+		<$macrocall $name="stream"/>
 	</div>
 </$vars>
 

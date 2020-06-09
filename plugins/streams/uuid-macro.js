@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/sq/bullets/uuid-macro.js
+title: $:/plugins/sq/streams/uuid-macro.js
 type: application/javascript
 module-type: macro
 Macro to return a UUID

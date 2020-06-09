@@ -1,6 +1,6 @@
 /*\
 
-title: $:/plugins/sq/bullets/action-ifnoselection.js
+title: $:/plugins/sq/streams/action-ifnoselection.js
 type: application/javascript
 module-type: widget
 

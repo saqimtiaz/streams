@@ -1,0 +1,8 @@
+created: 20200529131431245
+modified: 20200529153832215
+tags: 
+title: $:/config/sq/streams/new-node-title
+type: text/vnd.tiddlywiki
+description: wikitext that is wikified to generate the title for new nodes
+
+<<stream-root-title>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>

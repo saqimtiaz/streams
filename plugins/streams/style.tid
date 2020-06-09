@@ -1,6 +1,6 @@
 created: 20170922203553093
 modified: 20170927050808722
-title: $:/plugins/sq/bullets/styles
+title: $:/plugins/sq/streams/styles
 tags: [[$:/tags/Stylesheet]]
 
 .sq-bullet-root {
@@ -239,19 +239,19 @@ span.sq-breadcrumbs-fragment a.tc-tiddlylink {
 	margin-bottom: -1.6em;
 }
 
-<$reveal state="$:/config/sq/bullets/enable-edit-toolbar" type="nomatch" text="yes">
+<$reveal state="$:/config/sq/streams/enable-edit-toolbar" type="nomatch" text="yes">
 .sq-bullets-block .tc-editor-toolbar {
 	display: none;
 }
 </$reveal>
 
-<$reveal state="$:/state/sq/bullets/global-drag-state" type="match" text="yes">
+<$reveal state="$:/state/sq/streams/global-drag-state" type="match" text="yes">
 
 /** active drag css **/
 
 </$reveal>
 
-<$reveal state="$:/state/sq/bullets/global-drag-state" type="nomatch" text="yes">
+<$reveal state="$:/state/sq/streams/global-drag-state" type="nomatch" text="yes">
 
 /**no active drag css **/
 

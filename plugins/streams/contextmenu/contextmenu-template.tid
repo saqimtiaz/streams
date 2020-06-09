@@ -1,7 +1,7 @@
 created: 20200602163018613
 modified: 20200603055942658
 tags: 
-title: $:/plugins/sq/bullets/contextmenu/contextmenu-template
+title: $:/plugins/sq/streams/contextmenu/contextmenu-template
 type: text/vnd.tiddlywiki
 
 \define menu-item(title,subtitle:"",actions:"")
@@ -18,8 +18,8 @@ type: text/vnd.tiddlywiki
 <$reveal type="popup" state=<<contextmenu-state>>  position="belowleft" tag="div">
 	<div class="tc-drop-down sq-contextmenu">
 		<$macrocall $name="menu-item" title="Open" actions="""<$action-navigate/>"""/>
-		<$macrocall $name="menu-item" title="Rename" subtitle="Alt+R" actions=<<rename-bullet-actions>>/>
-		<$macrocall $name="menu-item" title="Delete" subtitle="Delete" actions=<<delete-bullet-actions>>/>
+		<$macrocall $name="menu-item" title="Rename" subtitle="Alt+R" actions=<<rename-node-actions>>/>
+		<$macrocall $name="menu-item" title="Delete" subtitle="Delete" actions=<<delete-node-actions>>/>
 		<<menu-divider>>
 		<$macrocall $name="menu-item" title="Keyboard Shortcuts (?)" actions="""<$action-navigate $to="Keyboard Shortcuts"/>"""/>
 	</div>

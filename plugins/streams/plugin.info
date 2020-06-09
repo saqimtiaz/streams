@@ -1,10 +1,10 @@
 {
-	"title": "$:/plugins/sq/bullets",
+	"title": "$:/plugins/sq/streams",
 	"description": "Streams - a different way to write",
 	"plugin-type": "plugin",	
 	"author": "Saq Imtiaz",
-	"version": "0.1.0",
-	"core-version": ">=5.1.21",
+	"version": "0.1.1",
+	"core-version": ">=5.1.22",
 	"list": "",
 	"source": ""
 }

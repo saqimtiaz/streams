@@ -1,6 +1,6 @@
 /*\
 
-title: $:/plugins/sq/bullets/action-withinput.js
+title: $:/plugins/sq/streams/action-withinput.js
 type: application/javascript
 module-type: widget
 

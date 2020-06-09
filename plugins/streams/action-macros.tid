@@ -1,0 +1,250 @@
+title: $:/plugins/sq/streams/action-macros
+
+\whitespace trim
+
+\define save-edit-node-actions()
+<!-- handle saving a node being edited -->
+<!-- XXX draft -->
+<$action-deletetiddler $tiddler=<<row-edit-state>> />
+\end
+
+\define indent-node-actions()
+<!-- handle indenting a node -->
+<$set name="old-parent-nodes" filter="[{!!parent}get[stream-list]]" select="0">
+<$set name="previous-node" filter="[enlist<old-parent-nodes>is[tiddler]before<currentTiddler>]" select="0">
+<$list filter="[<previous-node>minlength[1]]" variable="_NULL">
+	<$action-listops $tiddler=<<previous-node>> $field="stream-list" $subfilter="+[is[tiddler]] [<currentTiddler>]"/>
+	<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
+	<$action-setfield $tiddler=<<currentTiddler>> parent=<<previous-node>> />
+</$list>
+</$set>
+</$set>
+\end
+
+
+\define unindent-node-actions()
+<!-- handle unindenting a node -->
+<$set name="new-parent" filter="[{!!parent}get[parent]]" select="0">
+<$set name="new-parent-nodes" filter="[<new-parent>get[stream-list]]" select="0">
+<$set name="new-next-node" filter="[enlist<new-parent-nodes>is[tiddler]after{!!parent}]" select="0">
+<$list filter="[<new-parent>minlength[1]]" variable="_NULL">
+	<$action-listops $tiddler=<<new-parent>> $field="stream-list" $subfilter="+[is[tiddler]] +[insertbefore:new-next-node<currentTiddler>]"/>
+	<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
+	<$action-setfield $tiddler=<<currentTiddler>> parent=<<new-parent>> />
+</$list>
+</$set>
+</$set>
+</$set>
+\end
+
+
+\define demote-node-actions()
+<$set name="parent-nodes" filter="[{!!parent}get[stream-list]]" select="0">
+	<$list filter="[enlist<parent-nodes>after<currentTiddler>]" variable="next-node">
+		<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[insertbefore:currentTiddler<next-node>]"/>
+	</$list>
+</$set>
+\end
+
+
+\define promote-node-actions()
+<$set name="parent-nodes" filter="[{!!parent}get[stream-list]]" select="0">
+	<$list filter="[enlist<parent-nodes>before<currentTiddler>]" variable="previous-node">
+		<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[insertbefore:previous-node<currentTiddler>]"/>
+	</$list>
+</$set>
+\end
+
+
+\define save-node-actions()
+<$action-withselection actions="""
+<$list filter="[<currentTiddler>get[text]length[]subtract<selectionEnd>!match[0]]" variable="_NULL" emptyMessage=<<add-node-actions>>>
+	<$macrocall $name="add-node-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]]}}} />
+	<$action-setfield $tiddler=<<currentTiddler>> text={{{[<currentTiddler>get[text]split[]first<selectionEnd>join[]]}}}/>
+</$list>
+"""/>
+\end
+
+
+\define add-node-actions(startText:"")
+<!-- handle saving a node edit and creating a new subsequent node -->
+<$set name="parent" filter="[<currentTiddler>match<stream-root-title>] ~[{!!parent}] +[first[]]" select="0">
+<$wikify name="new-node" text={{$:/config/sq/streams/new-node-title}}>
+	<$action-createtiddler $basetitle=<<new-node>> text="$startText$" $template={{$:/config/sq/streams/new-node-tiddler-template}} parent=<<parent>> stream-type="default"/>
+	<$set name="parent-nodes" filter="[<parent>get[stream-list]]" select="0">
+	<$set name="next-node" filter="[enlist<parent-nodes>is[tiddler]after<currentTiddler>]" select="0">
+	<$action-listops $tiddler=<<parent>> $field="stream-list" $subfilter="+[is[tiddler]] +[insertbefore:next-node<new-node>]"/>
+	<$list filter="[<parent>!has[stream-type]]" variable="_NULL">
+		<$action-setfield $tiddler=<<parent>> stream-type="default"/>
+	</$list>
+	</$set>
+	</$set>
+	<$action-setfield $tiddler=<<row-edit-state>> text=<<new-node>>/>
+</$wikify>
+</$set>
+\end
+
+
+\define save-multiple-actions()
+<!-- handle multiple nodes entered at once -->
+<$list filter="[{!!text}splitregexp{$:/config/sq/streams/node-split-regexp}rest[]]" variable="fragment">
+	<$macrocall $name="add-node-actions" startText=<<fragment>> />
+</$list>
+<$action-setfield $tiddler=<<currentTiddler>> text={{{[{!!text}splitregexp{$:/config/sq/nodes/node-split-regexp}first[]]}}}/>
+<<add-node-actions>>
+\end
+
+
+\define cancel-edit-node-actions()
+<!-- handle cancelling the edit on an empty node -->
+<$list filter="[<currentTiddler>!has[stream-list]!has[text]]" variable="_NULL">
+	<$action-listops $tiddler={{{[{!!parent}]}}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
+	<$action-deletetiddler $tiddler=<<currentTiddler>> />
+</$list>
+<$action-deletetiddler $tiddler=<<row-edit-state>> />
+\end
+
+
+\define remove-empty-node-actions()
+<!-- handle backspace on an empty node -->
+<<cancel-edit-node-actions>>
+<<focus-higher-node-actions>>
+\end
+
+
+\define delete-node-actions()
+<$action-ifconfirmed  $message="Do you wish to delete this tiddler?">
+	<$transclude tiddler="$:/plugins/sq/streams/delete-hook/actions"/>
+	<$action-deletetiddler $tiddler=<<currentTiddler>> />
+	<$list filter="[<row-edit-state>get[text]match<currentTiddler>]">
+		<<focus-higher-node-actions>>
+	</$list>
+</$action-ifconfirmed>
+\end
+
+
+\define rename-node-actions()
+<$action-withinput message="Rename this tiddler?" default=<<currentTiddler>> actions="""
+	<$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<userInput>>/>
+	<$list filter="[<row-edit-state>match<currentTiddler>]" variable="_NULL">
+		<$action-setfield $tiddler=<<row-edit-state>> text=<<userInput>>/>
+	</$list>
+"""/>
+\end
+
+
+\define find-last-child()
+<!-- used by focus-higher-node-actions macro -->
+<$list filter="[enlist{!!stream-list}is[tiddler]last[]]" emptyMessage="""<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>>/>""">
+	<$macrocall $name="find-last-child"/>
+</$list>
+\end
+
+
+\define focus-higher-node-actions()
+<!-- handles moving up in the nodes with the keyboard -->
+<$set name="old-parent" value={{!!parent}} select="0">
+<$set name="old-parent-nodes" filter="[<old-parent>get[stream-list]]" select="0">
+<$set name="old-active-node" value=<<currentTiddler>> >
+<$list filter="[enlist<old-parent-nodes>is[tiddler]before<currentTiddler>]" emptyMessage="""<$list filter="[<old-parent>!match<stream-root-title>]"><$action-setfield $tiddler=<<row-edit-state>> text=<<old-parent>> /></$list>""">
+	<$macrocall $name="find-last-child"/>
+</$list>
+</$set>
+</$set>
+</$set>
+\end
+
+
+\define find-next-downwards-node()
+<!-- used by focus-lower-node-actions macro -->
+<$list filter="[<currentTiddler>has[parent]]" variable="_NULL">
+<$set name="old-parent" value={{!!parent}} select="0">
+<$set name="old-parent-nodes" filter="[<old-parent>get[stream-list]]" select="0">
+<$list filter="[enlist<old-parent-nodes>is[tiddler]after<currentTiddler>]" emptyMessage="""<$set name="currentTiddler" value=<<old-parent>>><<find-next-downwards-node>></$set>""">
+	<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>>/>	
+</$list>
+</$set>
+</$set>
+</$list>
+\end
+
+
+\define focus-lower-node-actions()
+<!-- handles moving down in the nodes with the keyboard -->
+<!--if children, get the first child-->
+<$list filter="[<currentTiddler>has[stream-list]]" variable="_NULL">
+	<$set name="next-node" filter="[enlist{!!stream-list}is[tiddler]first[]]">
+		<$action-setfield $tiddler=<<row-edit-state>> text=<<next-node>> />
+	</$set>
+</$list>
+<!-- if no children-->
+<!--- get closest ancestor with next sibling -->
+<$list filter="[<currentTiddler>!has[stream-list]]" variable="_NULL">
+	<$set name="old-active-node" value=<<currentTiddler>> >
+		<<find-next-downwards-node>>
+	</$set>
+</$list>
+\end
+
+
+\define node-drag-start-actions()
+<!-- parameter to draggable widget -->
+<$action-setfield $tiddler=<<drag-title-state>> text=<<currentTiddler>>/>
+<$action-setfield $tiddler="$:/state/sq/nodes/global-drag-state" text="yes"/>
+<$set name="siblings" filter="[{!!parent}get[stream-list]]" select="0">
+<$list filter="[enlist<siblings>after<currentTiddler>]" variable="next-node">
+	<$action-setfield $tiddler=<<drag-title-nextsibling-state>> text=<<next-node>> />
+</$set>
+\end
+
+
+\define node-drag-end-actions()
+<!-- parameter to draggable widget -->
+<$action-deletetiddler $filter="""[<drag-title-state>][<drag-title-nextsibling-state>][[$:/state/sq/nodes/global-drag-state]]""" />
+\end
+
+
+\define stream-drop-actions()
+<!-- handles drag and drop -->
+<$set name="parent" value=<<dropTargetTiddler>>>
+<!-- if target has no stream-type, assign one -->
+<$list filter="[<dropTargetTiddler>!has[stream-type]]">
+	<$action-setfield $tiddler=<<dropTargetTiddler>> stream-type="default"/>
+</$list>
+<!-- if action tiddler has no stream-type, assign one -->
+<$list filter="[<actionTiddler>!has[stream-type]]" variable="_NULL">
+	<$action-setfield $tiddler=<<actionTiddler>> stream-type="default" />
+</$list>
+<!-- if we are dropping onto a new parent, then we might need to handle modifier keys -->
+<$list filter="[<actionTiddler>get[parent]!match<parent>]" variable="_NULL">
+	<$wikify name="new-node" text={{$:/config/sq/nodes/new-node-title}}>
+		<!-- ctrl modifier key on drop event -->
+		<!-- create a new node with text of dropped node -->
+		<$list filter="[<modifier>match[ctrl]]" variable="_NULL">
+			<$action-createtiddler $basetitle=<<new-node>> text={{{ [<actionTiddler>get[text]] }}} parent=<<parent>> stream-type="default"/>
+		</$list>
+		<!-- shift modifier key on drop event -->
+		<$list filter="[<modifier>match[shift]]" variable="_NULL">
+			<!-- create new node on target, in correct position, text is a transclusion-->
+			<$action-createtiddler $basetitle=<<new-node>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} parent=<<parent>> stream-type="default"/>
+		</$list>
+		<!-- insert into correct position on new parent -->			
+		<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<new-node>]"/>
+	</$wikify>
+	<!-- no modifier key on drop event -->
+	<!-- insert in correct position on new parent, and remove from old parent -->
+	<!-- assign new parent -->
+	<$list filter="[<modifier>match[normal]]" variable="_NULL">
+		<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<actionTiddler>]"/>
+		<$set name="original-parent" filter="[<actionTiddler>get[parent]]">
+			<$action-listops $tiddler=<<original-parent>> $field="stream-list" $subfilter="-[<actionTiddler>]"/>
+		</$set>
+		<$action-setfield $tiddler=<<actionTiddler>> parent=<<parent>>/>
+	</$list>
+</$list>
+<!-- we are dropping on to the same parent, insert in the correct position -->
+<$list filter="[<actionTiddler>get[parent]match<parent>]" variable="_NULL">
+	<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<actionTiddler>]"/>
+</$list>
+</$set>
+\end

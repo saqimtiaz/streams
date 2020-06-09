@@ -1,7 +1,7 @@
 created: 20200527200401408
 modified: 20200527234136578
 tags: $:/tags/deleteTiddlerAction
-title: $:/plugins/sq/bullets/delete-hook/actions
+title: $:/plugins/sq/streams/delete-hook/actions
 type: text/vnd.tiddlywiki
 
 \define delete-children()

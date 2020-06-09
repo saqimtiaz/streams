@@ -1,0 +1,8 @@
+created: 20170922203553093
+modified: 20170929050808722
+title: $:/plugins/sq/streams/stream-view-template
+tags: [[$:/tags/ViewTemplate]]
+
+<$list filter="""[all[current]subfilter{$:/config/sq/streams/stream-enable-filter}]""">
+{{||$:/plugins/sq/streams/nodes-list-template}}
+</$list>

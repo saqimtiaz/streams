@@ -1,6 +1,6 @@
 /*\
 
-title: $:/plugins/sq/bullets/action-withselection.js
+title: $:/plugins/sq/streams/action-withselection.js
 type: application/javascript
 module-type: widget
 

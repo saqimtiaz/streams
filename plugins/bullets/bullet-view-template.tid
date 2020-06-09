@@ -1,8 +1,0 @@
-created: 20170922203553093
-modified: 20170929050808722
-title: $:/plugins/sq/bullets/bullet-view-template
-tags: [[$:/tags/ViewTemplate]]
-
-<$list filter="""[all[current]subfilter{$:/config/sq/bullets/bullet-enable-filter}]""">
-{{||$:/plugins/sq/bullets/bullet-list-template}}
-</$list>
