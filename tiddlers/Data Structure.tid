@@ -1,0 +1,20 @@
+created: 20200609182019083
+modified: 20200609182032351
+tags: 
+title: Data Structure
+type: text/vnd.tiddlywiki
+
+''Streams'' uses the following tiddler fields to maintain the structure of a stream:
+
+* each node tiddler has a field `stream-type`
+* each node that has children, contains their titles in a list in the field `stream-list`
+* each node that has a parent, contains the parent's title in the field `parent`
+
+
+Eventually this will be further developed to make it easy to create different types of streams using the same code:
+
+* bullet point nodes as in this demo
+* nodes styled as paragraphs in a tiddler
+* comments (threaded)
+* task management (to do list)
+* etc

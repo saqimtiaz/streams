@@ -1,0 +1,21 @@
+created: 20200526161435997
+modified: 20200609182137780
+tags: 
+title: Streams
+type: text/vnd.tiddlywiki
+
+@@background-color:yellow;font-weight:bold;
+This is in active development. Back up your wiki regularly.
+@@
+
+Streams is a keyboard friendly way to write and easily divide your text into separate tiddlers while writing. Every time you want a new tiddler, just hit <kbd>Enter</kbd>. A new tiddler is created in the background and you can just continue writing. 
+
+A stream consists of multiple tiddlers, that we refer to as nodes. By default, a node is styled as a bullet. Note that each node is an entire tiddler, so the content can be whatever you like, and is not limited to short pieces of text. You can also indent and un-indent nodes, creating hierarchies in your content, as well as drag and drop nodes to re-organize your content.
+
+* [[Demos]]
+* [[Keyboard Shortcuts]]
+* [[Data Structure]]
+* [[Installation]]
+* [[Configuration]]
+* [[Roadmap]]
+

@@ -1,5 +1,5 @@
 created: 20200526160039225
-modified: 20200605042255548
+modified: 20200609180557185
 sq-bullets: 
 tags: 
 title: Keyboard Shortcuts
@@ -8,24 +8,24 @@ type: text/vnd.tiddlywiki
 ''These will be made configurable''
 
 * <kbd>Ctrl+Enter</kbd> - save
-* <kbd>Enter</kbd> - save and create new bullet
+* <kbd>Enter</kbd> - save and create new node
 * <kbd>Shift+Enter</kbd> - add a linebreak without saving
-* <kbd> Alt+Enter</kbd> - split longform data into multiple bullets. (default is to split on two linebreaks) 
-* <kbd>Escape</kbd> - cancel edit (changes are saved). With no text in a bullet, cancel deletes the bullet.
-* <kbd>Ctrl+Down</kbd> - move to lower bullet
-* <kbd>Ctrl+Up</kbd> - move to upper bullet
-* <kbd>Tab</kbd> - indent bullet
-* <kbd>Shift+Tab</kbd> - unindent bullet
-* <kbd>Alt+Down</kbd> - move bullet lower
-* <kbd>Alt+Up</kbd> - move bullet higher
-* <kbd>Ctrl+Delete</kbd> - delete bullet
+* <kbd> Alt+Enter</kbd> - split longer text into multiple nodes. (default is to split on two linebreaks) 
+* <kbd>Escape</kbd> - cancel edit (changes are saved). With no text in a node, cancel deletes the node.
+* <kbd>Ctrl+Down</kbd> - move to lower node
+* <kbd>Ctrl+Up</kbd> - move to upper node
+* <kbd>Tab</kbd> - indent node
+* <kbd>Shift+Tab</kbd> - unindent node
+* <kbd>Alt+Down</kbd> - move node lower
+* <kbd>Alt+Up</kbd> - move node higher
+* <kbd>Ctrl+Delete</kbd> - delete node
 * <kbd>Alt+R</kbd> - rename
 
 ''Drag and drop''
 
-* hold <kbd>control</kbd> key to drag and drop and create a copy of the bullet in another bullet list tiddler
-* hold <kbd>shift</kbd> key to drag and drop and create a a bullet that transcludes the contents of this bullet, in another bullet list tiddler
+* hold <kbd>control</kbd> key to drag and drop and create a copy of the node in another stream tiddler
+* hold <kbd>shift</kbd> key to drag and drop and create a node that transcludes the contents of this node, in another stream tiddler
 
-''for the moment it is a design decision to disallow copying/transcluding the bullet inside the same root (story) tiddler''
+''for the moment it is a design decision to disallow copying/transcluding the node inside the same root (story) tiddler''
 
-//Note that it is a known limitation that copy the bullet or transcluding it does not apply to the children of the bullet. This is on the [[list of things to implement|Roadmap]].//
+//Note that it is a known limitation that copying a node or transcluding it does not apply to the children of the node. This is on the [[list of things to implement|Roadmap]].//

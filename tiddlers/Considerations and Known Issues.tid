@@ -1,9 +1,7 @@
 created: 20200525150124043
-modified: 20200530163938831
+modified: 20200609180746449
 tags: 
 title: Considerations and Known Issues
 type: text/vnd.tiddlywiki
 
-* copy or transclude to another tiddler via drag and drop doesn't yet copy nested bullets
-* ''Consider core patch for select parameter for EditText widget.''
-* Core does not have a usable rename tiddler hook. See [[Roadmap]] for strategies for dealing with renaming of child bullets
+* copy or transclude to another tiddler via drag and drop doesn't yet copy nested nodes

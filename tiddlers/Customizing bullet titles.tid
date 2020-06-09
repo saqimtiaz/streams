@@ -1,5 +1,5 @@
 created: 20200529161121459
-modified: 20200530130959207
+modified: 20200609175939441
 tags: 
 title: Customizing bullet titles
 type: text/vnd.tiddlywiki
@@ -10,13 +10,12 @@ Choose a structure that is likely to be unique
 
 The following variables are available
 
-* `new-bullet-uuid` : uuid of the new bullet tiddler
 * `parent` : title of the parent tiddler
-* `bullet-root-title` : title of root bullet tiddler
+* `stream-root-title` : title of root bullet tiddler
 
 Examples:
 
-* `$:/bullets/<<new-bullet-uuid>>`
-* `<<parent>>/<<new-bullet-uuid>>`
+* `$:/streams/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
+* `<<stream-root-title>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
 * `<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
 * `$:/<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
