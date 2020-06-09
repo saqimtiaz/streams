@@ -1,5 +1,5 @@
 created: 20200526161435997
-modified: 20200609182137780
+modified: 20200609183028896
 tags: 
 title: Streams
 type: text/vnd.tiddlywiki
@@ -18,4 +18,14 @@ A stream consists of multiple tiddlers, that we refer to as nodes. By default, a
 * [[Installation]]
 * [[Configuration]]
 * [[Roadmap]]
+
+---
+
+Eventually this will be further developed to make it easy to create different types of streams using the same code:
+
+* bullet point nodes as in this demo
+* nodes styled as paragraphs in a tiddler
+* comments (threaded)
+* task management (to do list)
+* etc
 
