@@ -3,18 +3,16 @@ modified: 20170927050808722
 title: $:/plugins/sq/streams/styles
 tags: [[$:/tags/Stylesheet]]
 
-.sq-bullet-root {
+.stream-root {
 	margin-left: -1em;
 }
 
-.sq-bullets-row {
+.stream-row {
     display: flex;
     flex: 0 0 auto;
 }
 
-
-
-.sq-bullets-row-children {
+.stream-row-children {
 	display:flex;
 	flex: 0 0 auto;
 	flex-direction: column;
@@ -23,29 +21,29 @@ tags: [[$:/tags/Stylesheet]]
 	margin-left: 30px;
 }
 
-.sq-bullets-row-children.sq-bullets-row-children-empty {
+.stream-row-children.stream-row-children-empty {
 	border-left: none;
 }
 
-.sq-bullets-disabled,
-.sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div{
+.stream-node-disabled,
+.stream-droppable.tc-droppable.stream-node-disabled + div{
 	background-color: #ccc;
 }
 
-.sq-bullets-row-selected,
-.sq-bullets-droppable.tc-droppable.sq-bullets-row-selected + div {
+.stream-row-selected,
+.stream-droppable.tc-droppable.stream-row-selected + div {
 	background: <<color notification-background>>;
 }
 
-.sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div + 	.sq-bullets-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+.stream-droppable.tc-droppable.stream-node-disabled + div + 	.stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
 	display: none;
 }
 
-.sq-bullets-droppable.tc-droppable.sq-bullets-disabled + div + 	.sq-bullets-droppable.tc-droppable.tc-dragover {
+.stream-droppable.tc-droppable.stream-node-disabled + div + 	.stream-droppable.tc-droppable.tc-dragover {
 	cursor: not-allowed;
 }
 
-.sq-bullets-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+.stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
 	margin-left: 29px;
 	line-height: 5px;
 	height: 5px;
@@ -53,19 +51,19 @@ tags: [[$:/tags/Stylesheet]]
 	background-color: rgba(0,200,0,0.7);
 }
 
-.sq-droppable-spacer {
+.stream-droppable-spacer {
 	height: 0.3em;
 }
 
-.sq-bullets-control {
+.stream-node-control {
 	display: flex;
     flex: 0 0 45px;
     padding-top: 4px;
     padding-left: 4px;
 }
 
-.sq-bullets-control .sq-bullets-collapser,
-.sq-bullets-control .sq-bullets-handle-wrapper {
+.stream-node-control .stream-node-collapser,
+.stream-node-control .stream-node-handle-wrapper {
     display: flex;
     height: 13px;
     width: 13px;
@@ -75,89 +73,89 @@ tags: [[$:/tags/Stylesheet]]
     align-items: center;
 }
 
-.sq-bullets-control.sq-bullets-control-addnew .sq-bullets-handle-wrapper {
+.stream-node-control.stream-node-control-addnew .stream-node-handle-wrapper {
 	width: 20px;
 	height: 20px;
 	margin-top: 0;
 }
 
-.sq-bullets-control.sq-bullets-control-addnew .sq-bullets-collapser {
+.stream-node-control.stream-node-control-addnew .stream-node-collapser {
 	width: 16px;
 }
 
-.sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible svg {
+.stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg {
 	opacity: 0.8;
 }
 
-.sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible:hover svg {
+.stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg {
 	opacity: 1;
 }
 
-.sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible:hover svg circle {
+.stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg circle {
 	fill: #dce0e2;
 }
 
-.sq-bullet-newlist .sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible svg circle {
+.stream-newlist .stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg circle {
 	fill: #dce0e2;
 	opacity: 1;
 }
 
-.sq-bullet-newlist .sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible svg line.line {
+.stream-newlist .stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg line.line {
 	stroke: #000;
 	opacity: 1;
 }
 
-.sq-bullet-newlist .sq-bullets-control.sq-bullets-control-addnew div.tc-btn-invisible:hover svg circle {
+.stream-newlist .stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg circle {
 	fill: #aaaeb1;
 }
 
 
-.sq-bullets-control .sq-bullets-collapser {
+.stream-node-control .stream-node-collapser {
 	height: 13px;
 	width: 20px;
 	opacity:0;
 }
 
-.sq-bullets-row-nochildren .sq-bullets-collapser {
+.stream-row-nochildren .stream-node-collapser {
 	visibility: hidden;
 }
 
-.sq-bullets-row:hover .sq-bullets-collapser,
-.sq-bullets-row-children-collapsed.sq-bullets-row:hover .sq-bullets-collapser {
+.stream-row:hover .stream-node-collapser,
+.stream-row-children-collapsed.stream-row:hover .stream-node-collapser {
 	opacity: 0.4;
 }
 
-.sq-bullets-row:hover .sq-bullets-collapser:hover,
-.sq-bullets-row-children-collapsed.sq-bullets-row:hover .sq-bullets-collapser:hover {
+.stream-row:hover .stream-node-collapser:hover,
+.stream-row-children-collapsed.stream-row:hover .stream-node-collapser:hover {
 	opacity: 0.9;
 }
 
-.sq-bullets-row-children-collapsed .sq-bullets-control .sq-bullets-collapser {
+.stream-row-children-collapsed .stream-node-control .stream-node-collapser {
 	opacity: 0.4;
 }
 
-.sq-bullets-collapser button.tc-btn-invisible,
-.sq-bullets-collapser button.tc-btn-invisible:focus {
+.stream-node-collapser button.tc-btn-invisible,
+.stream-node-collapser button.tc-btn-invisible:focus {
 	outline: none;
 }
 
-.sq-bullets-collapser svg {
+.stream-node-collapser svg {
 	transform: rotateZ(90deg);
 	transition: transform 200ms ease-in-out 0s;
 }
 
-.sq-bullets-row-children-collapsed .sq-bullets-collapser svg {
+.stream-row-children-collapsed .stream-node-collapser svg {
 	transform: rotateZ(0deg);
 }
 
-.sq-bullets-control .sq-bullets-handle-wrapper .sq-bullets-handle {
+.stream-node-control .stream-node-handle-wrapper .stream-node-handle {
 	width: 9px;
 	height: 9px;
 	display: flex;
 	align-items : center;
 }
 
-.sq-bullets-control .sq-bullets-handle-wrapper .sq-bullets-handle-inner {
+.stream-node-control .stream-node-handle-wrapper .stream-node-handle-inner {
     border-radius: 50%;
     width: 6px;
     height: 6px;
@@ -166,22 +164,22 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 /*
-.sq-bullets-row:hover .sq-bullets-control .sq-bullets-handle-wrapper .sq-bullets-handle-inner {
+.stream-row:hover .stream-node-control .stream-node-handle-wrapper .stream-node-handle-inner {
 	opacity: 0.7;
 }
 */
 
-.sq-bullets-row:hover .sq-bullets-control .sq-bullets-handle-wrapper:hover .sq-bullets-handle-inner {
+.stream-row:hover .stream-node-control .stream-node-handle-wrapper:hover .stream-node-handle-inner {
 	opacity: 1;
 } 
 
-.sq-bullets-control.sq-contextmenu-active .sq-bullets-handle-wrapper .sq-bullets-handle-inner {
+.stream-node-control.sq-contextmenu-active .stream-node-handle-wrapper .stream-node-handle-inner {
 	border: 5px solid #5778d8; /*b74e4e*/
 	opacity: 1;
 }
 
 
-.sq-bullets-block {
+.stream-node-block {
     overflow-wrap: break-word;
 	max-width: 550px;
     min-height: calc(1.5em + 8px);
@@ -196,7 +194,7 @@ tags: [[$:/tags/Stylesheet]]
 	/*white-space: pre-wrap;*/
 }
 
-.sq-bullets-block textarea {
+.stream-node-block textarea {
 	width: 100%;
 	outline-color: #eee;
 	border: 1px solid #eee;
@@ -204,16 +202,16 @@ tags: [[$:/tags/Stylesheet]]
 	resize: none;
 }
 
-.sq-bullets-block textarea.streams-editor {
+.stream-node-block textarea.streams-editor {
 	line-height:1.5em;
 	margin-bottom: 0.6em;
 }
 
-.sq-bullets-block p:first-child {
+.stream-node-block p:first-child {
 	margin-top:0;
 }
 
-.sq-bullets-block p:last-child {
+.stream-node-block p:last-child {
 	margin-bottom:0;
 }
 
@@ -231,16 +229,16 @@ span.sq-breadcrumbs-fragment a.tc-tiddlylink {
 
 /*** framed engine styles ***/
 
-.tc-tiddler-frame .sq-bullets-block input.tc-edit-texteditor,
-.tc-tiddler-frame .sq-bullets-block textarea.tc-edit-texteditor,
-.tc-tiddler-frame .sq-bullets-block iframe.tc-edit-texteditor {
+.tc-tiddler-frame .stream-node-block input.tc-edit-texteditor,
+.tc-tiddler-frame .stream-node-block textarea.tc-edit-texteditor,
+.tc-tiddler-frame .stream-node-block iframe.tc-edit-texteditor {
 	background: #fff !important;
 	margin-top:0;
 	margin-bottom: -1.6em;
 }
 
 <$reveal state="$:/config/sq/streams/enable-edit-toolbar" type="nomatch" text="yes">
-.sq-bullets-block .tc-editor-toolbar {
+.stream-node-block .tc-editor-toolbar {
 	display: none;
 }
 </$reveal>
