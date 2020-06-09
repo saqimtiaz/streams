@@ -1,8 +1,8 @@
 created: 20200530202553129
-modified: 20200608164620880
+modified: 20200609203129615
 parent: Roadmap/20200530202542060
 stream-type: default
 title: Roadmap/20200530202553129
 type: text/vnd.tiddlywiki
 
-https://github.com/Jermolene/TiddlyWiki5/blob/54fc9327408a8e0bb355bbebe9e4679ef76eaf2c/core/modules/widgets/navigator.js#L266
+navigator.js L266
