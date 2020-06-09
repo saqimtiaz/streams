@@ -47,7 +47,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 				<$keyboard key="alt+r" actions=<<rename-node-actions>> >
 				<$list filter="""[<currentTiddler>!has[text]]""" variable="_NULL">
 					<$keyboard key="backspace" actions=<<remove-empty-node-actions>> >
-						<$edit-text tag="textarea" autoHeight="yes" minHeight="1em" focus="yes" select="false" class="sq-bullet-editor"/>
+						<$edit-text tag="textarea" autoHeight="yes" minHeight="1em" focus="yes" select="false" class="streams-editor"/>
 					</$keyboard>
 				</$list>
 				<$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">{{||$:/plugins/sq/streams/framed-editor-template}}</$list>

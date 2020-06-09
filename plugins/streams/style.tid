@@ -204,7 +204,7 @@ tags: [[$:/tags/Stylesheet]]
 	resize: none;
 }
 
-.sq-bullets-block textarea.sq-bullet-editor {
+.sq-bullets-block textarea.streams-editor {
 	line-height:1.5em;
 	margin-bottom: 0.6em;
 }

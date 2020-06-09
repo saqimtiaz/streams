@@ -74,7 +74,7 @@ Invoke the action associated with this widget
 */
 WithSelectionWidget.prototype.invokeAction = function(triggeringWidget,event) {
 	var selection;
-	var iframe = triggeringWidget.domNodes[0].querySelector("iframe.sq-bullet-editor.tc-edit-texteditor.tc-edit-texteditor-body");
+	var iframe = triggeringWidget.domNodes[0].querySelector("iframe.streams-editor.tc-edit-texteditor.tc-edit-texteditor-body");
 	if(iframe) {
 		var idoc= iframe.contentDocument || iframe.contentWindow.document;
 		selection = idoc.getSelection();
