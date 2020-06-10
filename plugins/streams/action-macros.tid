@@ -236,8 +236,8 @@ title: $:/plugins/sq/streams/action-macros
 	<!-- assign new parent -->
 	<$list filter="[<modifier>match[normal]]" variable="_NULL">
 		<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<actionTiddler>]"/>
-		<$set name="original-parent" filter="[<actionTiddler>get[parent]]">
-			<$action-listops $tiddler=<<original-parent>> $field="stream-list" $subfilter="-[<actionTiddler>]"/>
+		<$set name="original-parent" filter="[<actionTiddler>get[parent]]" select="0">
+			<$action-listops $tiddler=<<original-parent>> $field="stream-list" $subfilter="-[title<actionTiddler>]"/>
 		</$set>
 		<$action-setfield $tiddler=<<actionTiddler>> parent=<<parent>>/>
 	</$list>
