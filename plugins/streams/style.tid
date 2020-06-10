@@ -89,14 +89,9 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 
-.stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg {
-	opacity: 1;
-}
-
-
 .stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg circle {
-	fill: <<color wikilist-background>>;
-	opacity: 1;
+	fill: <<color tiddler-controls-foreground>>;
+	opacity: 0.6;
 }
 
 .stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg line.line {
@@ -105,7 +100,7 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg circle {
-	fill: <<color wikilist-button-background>>;
+	fill: <<color tiddler-controls-foreground-hover>>;
 }
 
 .stream-node-control .stream-node-collapser {
