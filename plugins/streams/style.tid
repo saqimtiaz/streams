@@ -17,8 +17,8 @@ tags: [[$:/tags/Stylesheet]]
 	flex: 0 0 auto;
 	flex-direction: column;
 	padding-left: 0.5em;
-	border-left: 1px solid #bfccd6;
-	margin-left: 30px;
+	border-left: 1px solid <<color message-border>>;
+	margin-left: 29px;
 }
 
 .stream-row-children.stream-row-children-empty {
@@ -27,19 +27,20 @@ tags: [[$:/tags/Stylesheet]]
 
 .stream-node-disabled,
 .stream-droppable.tc-droppable.stream-node-disabled + div{
-	background-color: #ccc;
+	background-color: <<color tiddler-editor-border>>;
 }
 
 .stream-row-selected,
 .stream-droppable.tc-droppable.stream-row-selected + div {
 	background: <<color notification-background>>;
+	color: <<color message-foreground>>;
 }
 
-.stream-droppable.tc-droppable.stream-node-disabled + div + 	.stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+.stream-droppable.tc-droppable.stream-node-disabled + div + .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
 	display: none;
 }
 
-.stream-droppable.tc-droppable.stream-node-disabled + div + 	.stream-droppable.tc-droppable.tc-dragover {
+.stream-droppable.tc-droppable.stream-node-disabled + div + .stream-droppable.tc-droppable.tc-dragover {
 	cursor: not-allowed;
 }
 
@@ -47,8 +48,8 @@ tags: [[$:/tags/Stylesheet]]
 	margin-left: 29px;
 	line-height: 5px;
 	height: 5px;
-	border: 2px solid rgba(0,200,0,0.7);
-	background-color: rgba(0,200,0,0.7);
+	border: 2px solid <<color dropzone-background>>;
+	background-color: <<color dropzone-background>>;
 }
 
 .stream-droppable-spacer {
@@ -87,28 +88,25 @@ tags: [[$:/tags/Stylesheet]]
 	opacity: 0.8;
 }
 
+
 .stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg {
 	opacity: 1;
 }
 
+
+.stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg circle {
+	fill: <<color wikilist-background>>;
+	opacity: 1;
+}
+
+.stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg line.line {
+	stroke: <<color foreground>>;
+	opacity: 1;
+}
+
 .stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg circle {
-	fill: #dce0e2;
+	fill: <<color wikilist-button-background>>;
 }
-
-.stream-newlist .stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg circle {
-	fill: #dce0e2;
-	opacity: 1;
-}
-
-.stream-newlist .stream-node-control.stream-node-control-addnew div.tc-btn-invisible svg line.line {
-	stroke: #000;
-	opacity: 1;
-}
-
-.stream-newlist .stream-node-control.stream-node-control-addnew div.tc-btn-invisible:hover svg circle {
-	fill: #aaaeb1;
-}
-
 
 .stream-node-control .stream-node-collapser {
 	height: 13px;
@@ -159,8 +157,8 @@ tags: [[$:/tags/Stylesheet]]
     border-radius: 50%;
     width: 6px;
     height: 6px;
-    background-color: #394b59;
-	opacity: 0.4;
+    background-color: <<color foreground>>;
+	opacity: 0.3;
 }
 
 /*
@@ -196,8 +194,8 @@ tags: [[$:/tags/Stylesheet]]
 
 .stream-node-block textarea {
 	width: 100%;
-	outline-color: #eee;
-	border: 1px solid #eee;
+	outline-color: <<color tiddler-editor-border>>;
+	border: 1px solid <<color tiddler-editor-border>>;
 
 	resize: none;
 }
@@ -224,7 +222,7 @@ span.sq-breadcrumbs-fragment {
 }
 
 span.sq-breadcrumbs-fragment a.tc-tiddlylink {
-	color: #333;
+	color: <<color foreground>>;
 }
 
 /*** framed engine styles ***/
@@ -232,7 +230,7 @@ span.sq-breadcrumbs-fragment a.tc-tiddlylink {
 .tc-tiddler-frame .stream-node-block input.tc-edit-texteditor,
 .tc-tiddler-frame .stream-node-block textarea.tc-edit-texteditor,
 .tc-tiddler-frame .stream-node-block iframe.tc-edit-texteditor {
-	background: #fff !important;
+	background: <<color background>> !important;
 	margin-top:0;
 	margin-bottom: -1.6em;
 }

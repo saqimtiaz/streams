@@ -20,6 +20,7 @@
 	white-space: nowrap;
 	color: #4b5155;
 	cursor: default !important;
+	text-indent: 0;
 }
 
 .sq-contextmenu-itemwrapper {
