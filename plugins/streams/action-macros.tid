@@ -217,7 +217,7 @@ title: $:/plugins/sq/streams/action-macros
 </$list>
 <!-- if we are dropping onto a new parent, then we might need to handle modifier keys -->
 <$list filter="[<actionTiddler>get[parent]!match<parent>]" variable="_NULL">
-	<$wikify name="new-node" text={{$:/config/sq/nodes/new-node-title}}>
+	<$wikify name="new-node" text={{$:/config/sq/streams/new-node-title}}>
 		<!-- ctrl modifier key on drop event -->
 		<!-- create a new node with text of dropped node -->
 		<$list filter="[<modifier>match[ctrl]]" variable="_NULL">
