@@ -173,7 +173,7 @@ title: $:/plugins/sq/streams/action-macros
 <!-- handles moving down in the nodes with the keyboard -->
 <!--if children, get the first child-->
 <$list filter="[<currentTiddler>has[stream-list]]" variable="_NULL">
-	<$set name="next-node" filter="[enlist{!!stream-list}is[tiddler]first[]]">
+	<$set name="next-node" filter="[enlist{!!stream-list}is[tiddler]first[]]" select="0">
 		<$action-setfield $tiddler=<<row-edit-state>> text=<<next-node>> />
 	</$set>
 </$list>
