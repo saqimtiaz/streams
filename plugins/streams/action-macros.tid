@@ -59,7 +59,7 @@ title: $:/plugins/sq/streams/action-macros
 \define save-node-actions()
 <$action-withselection actions="""
 <$list filter="[<currentTiddler>get[text]length[]subtract<selectionEnd>!match[0]]" variable="_NULL" emptyMessage=<<add-node-actions>>>
-	<$macrocall $name="add-node-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]]}}} />
+	<$macrocall $name="add-node-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]trim[]]}}} />
 	<$action-setfield $tiddler=<<currentTiddler>> text={{{[<currentTiddler>get[text]split[]first<selectionEnd>join[]]}}}/>
 </$list>
 """/>
@@ -70,7 +70,7 @@ title: $:/plugins/sq/streams/action-macros
 <!-- handle saving a node edit and creating a new subsequent node -->
 <$set name="parent" filter="[<currentTiddler>match<stream-root-title>] ~[{!!parent}] +[first[]]" select="0">
 <$wikify name="new-node" text={{$:/config/sq/streams/new-node-title}}>
-	<$action-createtiddler $basetitle=<<new-node>> text="$startText$" $template={{$:/config/sq/streams/new-node-tiddler-template}} parent=<<parent>> stream-type="default"/>
+	<$action-createtiddler $basetitle=<<new-node>> text=<<__startText__>> $template={{$:/config/sq/streams/new-node-tiddler-template}} parent=<<parent>> stream-type="default"/>
 	<$set name="parent-nodes" filter="[<parent>get[stream-list]]" select="0">
 	<$set name="next-node" filter="[enlist<parent-nodes>is[tiddler]after<currentTiddler>]" select="0">
 	<$action-listops $tiddler=<<parent>> $field="stream-list" $subfilter="+[is[tiddler]] +[insertbefore:next-node<new-node>]"/>
@@ -90,7 +90,7 @@ title: $:/plugins/sq/streams/action-macros
 <$list filter="[{!!text}splitregexp{$:/config/sq/streams/node-split-regexp}rest[]]" variable="fragment">
 	<$macrocall $name="add-node-actions" startText=<<fragment>> />
 </$list>
-<$action-setfield $tiddler=<<currentTiddler>> text={{{[{!!text}splitregexp{$:/config/sq/nodes/node-split-regexp}first[]]}}}/>
+<$action-setfield $tiddler=<<currentTiddler>> text={{{[{!!text}splitregexp{$:/config/sq/streams/node-split-regexp}first[]]}}}/>
 <<add-node-actions>>
 \end
 

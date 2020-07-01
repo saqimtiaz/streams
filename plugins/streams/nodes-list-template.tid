@@ -41,7 +41,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 				<$keyboard key="alt+down" actions=<<demote-node-actions>> >
 				<$keyboard key="alt+up" actions=<<promote-node-actions>> >
 				<$keyboard key="enter" actions=<<save-node-actions>> >
-				<$keyboard key="alt+enter" actions=<<save-node-actions>> >
+				<$keyboard key="alt+enter" actions=<<save-multiple-actions>> >
 				<$keyboard key="escape" actions=<<cancel-edit-node-actions>> >
 				<$keyboard key="ctrl+delete" actions=<<delete-node-actions>> >
 				<$keyboard key="alt+r" actions=<<rename-node-actions>> >
