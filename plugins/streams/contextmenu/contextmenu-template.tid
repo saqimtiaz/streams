@@ -15,7 +15,7 @@ type: text/vnd.tiddlywiki
 
 \define menu-divider() <div class="sq-contextmenu-divider"/>
 
-<$reveal type="popup" state=<<contextmenu-state>>  position="belowleft" tag="div">
+<$reveal type="popup" state=<<contextmenu-state>>  position="left" tag="div">
 	<div class="tc-drop-down sq-contextmenu">
 		<$macrocall $name="menu-item" title="Open" actions="""<$action-navigate/>"""/>
 		<$macrocall $name="menu-item" title="Rename" subtitle="Alt+R" actions=<<rename-node-actions>>/>
