@@ -1,5 +1,5 @@
 created: 20200529161121459
-modified: 20200609175939441
+modified: 20200703153235913
 tags: 
 title: Customizing bullet titles
 type: text/vnd.tiddlywiki
@@ -19,3 +19,4 @@ Examples:
 * `<<stream-root-title>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
 * `<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
 * `$:/<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
+* `<$macrocall $name="unusedtitle" baseName=<<stream-root-title>>/>`

@@ -1,0 +1,8 @@
+created: 20200611161522721
+modified: 20200611161551830
+parent: Roadmap/20200603061628734
+stream-type: default
+title: Roadmap/20200611161522720
+type: text/vnd.tiddlywiki
+
+Consider inserting a new node before current one, if caret position is at the start of non-empty text
