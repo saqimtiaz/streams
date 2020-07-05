@@ -16,7 +16,7 @@ tags: [[$:/tags/Stylesheet]]
 	display:flex;
 	flex: 0 0 auto;
 	flex-direction: column;
-	padding-left: 0.5em;
+	/*padding-left: 0.5em;*/
 	border-left: 1px solid <<color message-border>>;
 	margin-left: 30px;
 }
