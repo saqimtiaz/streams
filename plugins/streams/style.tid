@@ -18,7 +18,7 @@ tags: [[$:/tags/Stylesheet]]
 	flex-direction: column;
 	padding-left: 0.5em;
 	border-left: 1px solid <<color message-border>>;
-	margin-left: 29px;
+	margin-left: 30px;
 }
 
 .stream-row-children.stream-row-children-empty {
@@ -142,10 +142,11 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .stream-node-control .stream-node-handle-wrapper .stream-node-handle {
-	width: 9px;
-	height: 9px;
+	width: 13px;
+	height: 13px;
 	display: flex;
 	align-items : center;
+	justify-content: center;
 }
 
 .stream-node-control .stream-node-handle-wrapper .stream-node-handle-inner {
