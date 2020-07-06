@@ -1,10 +1,10 @@
 created: 20200529161121459
-modified: 20200703153235913
+modified: 20200706075751160
 tags: 
 title: Customizing bullet titles
 type: text/vnd.tiddlywiki
 
-`$:/config/sq/bullets/new-bullet-title` is wikified to get the title of a new bullet
+`$:/config/sq/streams/new-node-title` is wikified to get the title of a new node
 
 Choose a structure that is likely to be unique
 
