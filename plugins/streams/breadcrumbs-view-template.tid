@@ -5,6 +5,7 @@ tags: $:/tags/ViewTemplate
 title: $:/plugins/sq/streams/breadcrumbs-view-template
 type: text/vnd.tiddlywiki
 
+\whitespace trim
 \define stream-show-breadcrumbs()
 <$list filter="[<currentTiddler>has[stream-type]]">
 	<$list filter="[<currentTiddler>has[parent]]">
@@ -23,6 +24,7 @@ type: text/vnd.tiddlywiki
 	</$list>
 </$list>
 \end
-
+<$list filter="[{$:/config/sq/streams/enable-breadcrumbs}match[yes]]" variable="_NULL">
 <<stream-show-breadcrumbs>>
+</$list>
 
