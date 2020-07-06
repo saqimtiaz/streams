@@ -1,5 +1,5 @@
 created: 20200609181950286
-modified: 20200609182216055
+modified: 20200706162104109
 tags: 
 title: Demos
 type: text/vnd.tiddlywiki
@@ -16,3 +16,9 @@ Play around with the tiddlers:
 * Or create any new tiddler (any title), save it and look for the + button.
 
 Also trying dragging nodes between them, with and without the shift and ctrl modifiers.
+
+---
+
+A stream visualized as a graph:
+
+* [[Roadmap - graph]]

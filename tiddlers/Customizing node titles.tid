@@ -1,7 +1,7 @@
 created: 20200529161121459
-modified: 20200706075751160
+modified: 20200706162120044
 tags: 
-title: Customizing bullet titles
+title: Customizing node titles
 type: text/vnd.tiddlywiki
 
 `$:/config/sq/streams/new-node-title` is wikified to get the title of a new node
@@ -11,7 +11,7 @@ Choose a structure that is likely to be unique
 The following variables are available
 
 * `parent` : title of the parent tiddler
-* `stream-root-title` : title of root bullet tiddler
+* `stream-root-title` : title of root tiddler
 
 Examples:
 

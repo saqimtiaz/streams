@@ -1,5 +1,7 @@
 created: 20200609182019083
-modified: 20200609183013737
+modified: 20200706162314117
+parent: Working with streams tiddlers
+stream-type: default
 tags: 
 title: Data Structure
 type: text/vnd.tiddlywiki
@@ -10,4 +12,4 @@ type: text/vnd.tiddlywiki
 * each node that has children, contains their titles in a list in the field `stream-list`
 * each node that has a parent, contains the parent's title in the field `parent`
 
-You can manipulate these tiddlers just as you would any other tiddlers, with list and action widgets
+''You can manipulate these tiddlers just as you would any other tiddlers, with list and action widgets''
