@@ -20,6 +20,9 @@ type: text/vnd.tiddlywiki
 		<$macrocall $name="menu-item" title="Open" actions="""<$action-navigate/>"""/>
 		<$macrocall $name="menu-item" title="Rename" subtitle="Alt+R" actions=<<rename-node-actions>>/>
 		<$macrocall $name="menu-item" title="Delete" subtitle="Delete" actions=<<delete-node-actions>>/>
+		<$list filter="[tag[$:/tags/streams/contextmenu]]" variable="listItem">
+			<$macrocall $name="menu-item" title={{{[<listItem>get[sq-contextmenu-name]]}}} subtitle={{{[<listItem>get[sq-contextmenu-subtitle]]}}} actions={{{[<listItem>get[text]]}}} />
+		</$list>
 		<<menu-divider>>
 		<$macrocall $name="menu-item" title="Keyboard Shortcuts (?)" actions="""<$action-navigate $to="Keyboard Shortcuts"/>"""/>
 	</div>
