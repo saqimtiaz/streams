@@ -1,0 +1,58 @@
+created: 20200706171822795
+modified: 20200706172400313
+parent: Working with streams tiddlers
+stream-type: default
+title: Working with streams tiddlers/Export
+type: text/vnd.tiddlywiki
+
+Here is an example of a macro that can be used to export a stream using a custom HTML structure:
+
+```
+\define print-row()
+\whitespace trim
+	<$(innerTag)$>{{!!text}}
+	<$list filter="[<currentTiddler>has[stream-list]]" variable="_NULL">
+		<$(outerTag)$>
+		<$list filter="[enlist{!!stream-list}is[tiddler]]">
+			<<print-row>>
+		</$list>
+		</$(outerTag)$>
+	</$list>
+	</$(innerTag)$>
+\end
+
+\define print-stream()
+\whitespace trim
+<$(outerTag)$>
+<$list filter="[enlist{!!stream-list}is[tiddler]]">
+	<<print-row>>
+</$list>
+</$(outerTag)$>
+\end
+
+\define export-stream(tiddler:"" outerTag:"article" innerTag:"section")
+\whitespace trim
+<$vars outerTag="$outerTag$" innerTag="$innerTag$" currentTiddler="$tiddler$">
+<<print-stream>>
+</$vars>
+\end
+
+```
+
+Try the following:
+
+* `<<export-stream tiddler:Roadmap>>` to export using article and section tags
+* `<<export-stream tiddler:Roadmap outerTag:ul innerTag:li>>` to export as a list in HTML
+
+If you need a copy to clipboard button it would look something like this:
+
+```
+<$button>
+<$wikify name="stream-html" text=<<export-stream tiddler:Roadmap>> output="html" >
+<$action-sendmessage $message="tm-copy-to-clipboard" $param=<<stream-html>>/>
+</$wikify>
+Copy stream to clipboard as HTML
+</$button>
+```
+
+Similarly you can write recursive macros to output as just flat text (with no structure or hierarchy) or wiki text list syntax (assuming you have no multi-line content).
