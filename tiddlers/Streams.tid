@@ -1,5 +1,5 @@
 created: 20200526161435997
-modified: 20200610092626405
+modified: 20200706165438177
 tags: 
 title: Streams
 type: text/vnd.tiddlywiki
@@ -16,10 +16,12 @@ A stream consists of multiple tiddlers, that we refer to as nodes. By default, a
 
 * [[Demos]]
 * [[Keyboard Shortcuts]]
-* [[Data Structure]]
 * [[Installation]]
+* [[Data Structure]]
 * [[Configuration]]
+* [[Working with streams tiddlers]]
 * [[Roadmap]]
+* [[Extending the Context Menu]]
 
 ---
 
