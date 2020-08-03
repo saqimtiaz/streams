@@ -107,8 +107,10 @@ title: $:/plugins/sq/streams/action-macros
 
 \define remove-empty-node-actions()
 <!-- handle backspace on an empty node -->
-<<cancel-edit-node-actions>>
-<<focus-higher-node-actions>>
+<$list filter="""[<currentTiddler>!has[text]]""" variable="_NULL">
+	<<cancel-edit-node-actions>>
+	<<focus-higher-node-actions>>
+</$list>
 \end
 
 

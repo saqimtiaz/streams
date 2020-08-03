@@ -45,12 +45,9 @@ title: $:/plugins/sq/streams/nodes-list-template
 				<$keyboard key="escape" actions=<<cancel-edit-node-actions>> >
 				<$keyboard key="ctrl+delete" actions=<<delete-node-actions>> >
 				<$keyboard key="alt+r" actions=<<rename-node-actions>> >
-				<$list filter="""[<currentTiddler>!has[text]]""" variable="_NULL">
-					<$keyboard key="backspace" actions=<<remove-empty-node-actions>> >
-						{{||$:/plugins/sq/streams/framed-editor-template}}
-					</$keyboard>
-				</$list>
-				<$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">{{||$:/plugins/sq/streams/framed-editor-template}}</$list>
+				<$keyboard key="backspace" preventDefault="false" actions=<<remove-empty-node-actions>> >
+					{{||$:/plugins/sq/streams/framed-editor-template}}
+				</$keyboard>
 				</$keyboard>
 				</$keyboard>
 				</$keyboard>
