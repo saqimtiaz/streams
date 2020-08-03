@@ -1,5 +1,5 @@
 created: 20200529161121459
-modified: 20200706162120044
+modified: 20200721161728811
 tags: 
 title: Customizing node titles
 type: text/vnd.tiddlywiki
@@ -20,3 +20,15 @@ Examples:
 * `<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
 * `$:/<<parent>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
 * `<$macrocall $name="unusedtitle" baseName=<<stream-root-title>>/>`
+* `{{{[<stream-root-title>split[/]limit[1]]}}}/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>`
+
+or
+
+```
+ \define streamroot()
+ <$list filter="[<stream-root-title>]+[split[/]limit[1]]"/>
+\end
+
+
+<<streamroot>>/<<now "[UTC]YYYY0MM0DD0hh0mm0ssXXX">>
+```
