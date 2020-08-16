@@ -4,6 +4,8 @@ title: $:/plugins/sq/streams/stream-view-template
 tags: [[$:/tags/ViewTemplate]]
 list-after: $:/core/ui/ViewTemplate/body
 
+<$list filter="""[<folded-state>get[text]!is[blank]else[show]!match[hide]]""" variable="_NULL">
 <$list filter="""[all[current]subfilter{$:/config/sq/streams/stream-enable-filter}]""">
 {{||$:/plugins/sq/streams/nodes-list-template}}
+</$list>
 </$list>
