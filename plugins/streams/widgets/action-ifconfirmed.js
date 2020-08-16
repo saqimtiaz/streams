@@ -50,6 +50,7 @@ Compute the internal state of the widget
 */
 IfConfirmedWidget.prototype.execute = function() {
 	this.message = this.getAttribute("$message");
+	this.prompt = this.getAttribute("$prompt","yes") == "yes" ? true : false;
 	this.makeChildWidgets();
 };
 
@@ -70,9 +71,12 @@ Invoke the action associated with this widget
 */
 IfConfirmedWidget.prototype.invokeAction = function(triggeringWidget,event) {
 	if(this.message) {
-		var status = confirm(this.message);
+		var status = true;
+		if(this.prompt) {
+			status = confirm(this.message);
+		}
 		if(status) {
-			this.invokeActions(this,event);
+			this.invokeActions(triggeringWidget,event);
 			return true;
 		}
 	}

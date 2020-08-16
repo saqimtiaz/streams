@@ -111,6 +111,26 @@ title: $:/plugins/sq/streams/action-macros
 	<<cancel-edit-node-actions>>
 	<<focus-higher-node-actions>>
 </$list>
+
+<$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">
+<$action-ifconfirmed $message="Merge with previous node?" $prompt={{$:/config/sq/streams/merge-with-previous}}>
+<$action-withselection actions="""
+<$list filter="[<selectionEnd>match[0]]" variable="_NULL">
+<!--<$action-log/>-->
+	<$set name="parent" value={{!!parent}} select="0">
+	<$set name="stream-list" filter="[<parent>get[stream-list]]" select="0">
+	<$list filter="[enlist<stream-list>before<currentTiddler>]" variable="previous-node">
+		<$action-setfield $tiddler=<<previous-node>> text={{{[<previous-node>get[text]addsuffix{!!text}]}}}/>
+		<$action-setfield $tiddler=<<row-edit-state>> text=<<previous-node>>/>
+		<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+	</$list>
+	</$set>
+	</$set>
+</$list>
+"""/>
+</$action-ifconfirmed>
+</$list>
+
 \end
 
 
