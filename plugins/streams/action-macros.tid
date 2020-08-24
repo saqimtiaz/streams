@@ -120,7 +120,7 @@ title: $:/plugins/sq/streams/action-macros
 	<$set name="parent" value={{!!parent}} select="0">
 	<$set name="stream-list" filter="[<parent>get[stream-list]]" select="0">
 	<$list filter="[enlist<stream-list>before<currentTiddler>]" variable="previous-node">
-		<$action-setfield $tiddler=<<previous-node>> text={{{[<previous-node>get[text]addsuffix{!!text}]}}}/>
+		<$action-setfield $tiddler=<<previous-node>> text={{{[<previous-node>get[text]!is[blank]else[]addsuffix{!!text}]}}}/>
 		<$action-setfield $tiddler=<<row-edit-state>> text=<<previous-node>>/>
 		<$action-deletetiddler $tiddler=<<currentTiddler>>/>
 	</$list>
