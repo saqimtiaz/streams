@@ -115,7 +115,7 @@ title: $:/plugins/sq/streams/action-macros
 <$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">
 <$action-withselection actions="""
 <$list filter="[<selectionEnd>match[0]]" variable="_NULL">
-<$action-ifconfirmed $message="Merge with previous node?" $prompt={{$:/config/sq/streams/merge-with-previous}}>
+<$action-ifconfirmed $message="Merge with previous node?" $prompt={{$:/config/sq/streams/prompt-merge-with-previous}}>
 <!--<$action-log/>-->
 	<$set name="parent" value={{!!parent}} select="0">
 	<$set name="stream-list" filter="[<parent>get[stream-list]]" select="0">
