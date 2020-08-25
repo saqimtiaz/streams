@@ -57,12 +57,10 @@ title: $:/plugins/sq/streams/action-macros
 
 
 \define save-node-actions()
-<$action-withselection actions="""
 <$list filter="[<currentTiddler>get[text]length[]subtract<selectionEnd>!match[0]]" variable="_NULL" emptyMessage=<<add-node-actions>>>
 	<$macrocall $name="add-node-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]trim[]]}}} />
 	<$action-setfield $tiddler=<<currentTiddler>> text={{{[<currentTiddler>get[text]split[]first<selectionEnd>join[]]}}}/>
 </$list>
-"""/>
 \end
 
 
@@ -113,7 +111,6 @@ title: $:/plugins/sq/streams/action-macros
 </$list>
 
 <$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">
-<$action-withselection actions="""
 <$list filter="[<selectionEnd>match[0]]" variable="_NULL">
 <$action-ifconfirmed $message="Merge with previous node?" $prompt={{$:/config/sq/streams/prompt-merge-with-previous}}>
 <!--<$action-log/>-->
@@ -128,7 +125,6 @@ title: $:/plugins/sq/streams/action-macros
 	</$set>
 </$action-ifconfirmed>	
 </$list>
-"""/>
 </$list>
 
 \end
