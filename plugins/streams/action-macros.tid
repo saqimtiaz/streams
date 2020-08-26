@@ -57,10 +57,12 @@ title: $:/plugins/sq/streams/action-macros
 
 
 \define save-node-actions()
+<$list filter="""[{$:/config/sq/streams/split-at-caret}match[yes]]""" variable="_NULL" emptyMessage=<<add-node-actions>> >
 <$list filter="[<currentTiddler>get[text]length[]subtract<selectionEnd>!match[0]]" variable="_NULL" emptyMessage=<<add-node-actions>>>
 	<$macrocall $name="add-node-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]trim[]]}}} />
 	<$action-setfield $tiddler="$:/state/sq/streams/caret-position" text="0"/>
 	<$action-setfield $tiddler=<<currentTiddler>> text={{{[<currentTiddler>get[text]split[]first<selectionEnd>join[]]}}}/>
+</$list>
 </$list>
 \end
 
