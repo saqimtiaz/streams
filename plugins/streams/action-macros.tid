@@ -86,11 +86,13 @@ title: $:/plugins/sq/streams/action-macros
 
 \define save-multiple-actions()
 <!-- handle multiple nodes entered at once -->
+<$action-ifconfirmed $message="Split into multiple nodes?" $prompt={{$:/config/sq/streams/prompt-split-to-multiple}}>
 <$list filter="[{!!text}splitregexp{$:/config/sq/streams/node-split-regexp}rest[]]" variable="fragment">
 	<$macrocall $name="add-node-actions" startText=<<fragment>> />
 </$list>
 <$action-setfield $tiddler=<<currentTiddler>> text={{{[{!!text}splitregexp{$:/config/sq/streams/node-split-regexp}first[]]}}}/>
 <<add-node-actions>>
+</$action-ifconfirmed>
 \end
 
 
