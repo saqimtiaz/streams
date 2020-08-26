@@ -1,0 +1,11 @@
+created: 20200706164134654
+modified: 20200706165333919
+sq-contextmenu-name: Flatten
+sq-contextmenu-subtitle: Alt + f
+title: $:/streams/contextmenu/flatten
+type: text/vnd.tiddlywiki
+
+<!-- code from Jan -->
+<$action-sendmessage $message="tm-modal" $param="$:/plugins/sq/streams/implode-node-modal" startTiddler=<<currentTiddler>>/>
+<<export-flat>>
+<$action-setfield $tiddler="$:/temp/NewStreamTitle" text=<<currentTiddler>>/>

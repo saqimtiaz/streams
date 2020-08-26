@@ -1,0 +1,12 @@
+created: 20200811155542222
+modified: 20200826145700542
+parent: Roadmap/20200603061628734
+stream-type: default
+title: Roadmap/20200811155542222
+type: text/vnd.tiddlywiki
+
+Add built in CSS that can be toggled to control appearance of node-collapser:
+
+>    a.1) I need the "stream-node-collapser" to be visible as soon as child elements exist, similar to "toc-selective-expandable"
+>    a.2) Waiting for the hover effect doesn't work for me.
+>    a.3) I need the "collapser" to be in a different colour.

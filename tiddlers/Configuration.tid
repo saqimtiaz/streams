@@ -1,13 +1,17 @@
 created: 20200529193203610
-modified: 20200706162120040
+modified: 20200826150334339
 tags: 
 title: Configuration
 type: text/vnd.tiddlywiki
 
+<dl>
 <$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams/]]">
-<li><$link/></li>
+<dt><$link/></dt>
+<dd>
 {{!!description}}
+</dd>
 </$list>
+</dl>
 
 ---
 
