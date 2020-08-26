@@ -12,7 +12,9 @@ SimpleEngine.prototype.focus = function() {
 	if(this.domNode.focus && this.domNode.select) {
 		this.domNode.focus();
 		if(this.widget.getAttribute("select")==="false") {
-			this.domNode.setSelectionRange(this.domNode.value.length,this.domNode.value.length);
+			var caretPosition = this.widget.getAttribute("caretPosition","end");
+			caretPosition = (caretPosition === "end") ? this.domNode.value.length : parseInt(caretPosition);
+			this.domNode.setSelectionRange(caretPosition,caretPosition);
 		} else {
 			this.domNode.select();
 		}
