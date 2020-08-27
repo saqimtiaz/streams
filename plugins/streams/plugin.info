@@ -3,7 +3,7 @@
 	"description": "Streams - a different way to write",
 	"plugin-type": "plugin",	
 	"author": "Saq Imtiaz",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"core-version": ">=5.1.22",
 	"list": "",
 	"source": ""
