@@ -58,22 +58,31 @@ title: $:/plugins/sq/streams/action-macros
 
 \define save-node-actions()
 <$list filter="""[{$:/config/sq/streams/split-at-caret}match[yes]]""" variable="_NULL" emptyMessage=<<add-node-actions>> >
+<$list filter="[<selectionEnd>!is[blank]else[0]!match[0]]" variable="_NULL">
 <$list filter="[<currentTiddler>get[text]length[]subtract<selectionEnd>!match[0]]" variable="_NULL" emptyMessage=<<add-node-actions>>>
-	<$macrocall $name="add-node-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]trim[]]}}} />
+	<$macrocall $name="add-node-actions" startText={{{[<currentTiddler>get[text]split[]rest<selectionEnd>join[]trim[]]}}} streamList={{!!stream-list}} /><!--insertPosition="title"-->
 	<$action-setfield $tiddler="$:/state/sq/streams/caret-position" text="0"/>
-	<$action-setfield $tiddler=<<currentTiddler>> text={{{[<currentTiddler>get[text]split[]first<selectionEnd>join[]]}}}/>
+	<$action-setfield $tiddler=<<currentTiddler>> text={{{[<currentTiddler>get[text]split[]first<selectionEnd>join[]]}}} stream-list=""/>
+</$list>
+</$list>
+<$list filter="[<selectionEnd>!is[blank]else[0]match[0]]" variable="_NULL">
+	<$list filter="[<currentTiddler>!has[text]]" variable="_NULL" emptyMessage=<<add-node-actions "" "title">> >
+		<$list filter="""[{$:/config/sq/streams/exit-on-saving-empty-node}match[yes]]""" variable="_NULL" emptyMessage=<<add-node-actions>> >
+			<<cancel-edit-node-actions>>
+		</$list>
+	</$list>
 </$list>
 </$list>
 \end
 
 
-\define add-node-actions(startText:"")
+\define add-node-actions(startText:"",insertPosition:"after",streamList:"")
 <!-- handle saving a node edit and creating a new subsequent node -->
 <$set name="parent" filter="[<currentTiddler>match<stream-root-title>] ~[{!!parent}] +[first[]]" select="0">
 <$wikify name="new-node" text={{$:/config/sq/streams/new-node-title}}>
-	<$action-createtiddler $basetitle=<<new-node>> text=<<__startText__>> $template={{$:/config/sq/streams/new-node-tiddler-template}} parent=<<parent>> stream-type="default"/>
+	<$action-createtiddler $basetitle=<<new-node>> text=<<__startText__>> $template={{$:/config/sq/streams/new-node-tiddler-template}} parent=<<parent>> stream-type="default" stream-list=<<__streamList__>>/>
 	<$set name="parent-nodes" filter="[<parent>get[stream-list]]" select="0">
-	<$set name="next-node" filter="[enlist<parent-nodes>is[tiddler]after<currentTiddler>]" select="0">
+	<$set name="next-node" filter="[enlist<parent-nodes>is[tiddler]$insertPosition$<currentTiddler>]" select="0">
 	<$action-listops $tiddler=<<parent>> $field="stream-list" $subfilter="+[is[tiddler]] +[insertbefore:next-node<new-node>]"/>
 	<$list filter="[<parent>!has[stream-type]]" variable="_NULL">
 		<$action-setfield $tiddler=<<parent>> stream-type="default"/>
@@ -117,19 +126,23 @@ title: $:/plugins/sq/streams/action-macros
 
 <$list filter="""[<currentTiddler>has[text]]""" variable="_NULL">
 <$list filter="[<selectionEnd>match[0]]" variable="_NULL">
-<$action-ifconfirmed $message="Merge with previous node?" $prompt={{$:/config/sq/streams/prompt-merge-with-previous}}>
+
 <!--<$action-log/>-->
 	<$set name="parent" value={{!!parent}} select="0">
 	<$set name="stream-list" filter="[<parent>get[stream-list]]" select="0">
 	<$list filter="[enlist<stream-list>before<currentTiddler>]" variable="previous-node">
-		<$action-setfield $tiddler="$:/state/sq/streams/caret-position" text={{{[<previous-node>get[text]length[]]}}}/>
-		<$action-setfield $tiddler=<<previous-node>> text={{{[<previous-node>get[text]!is[blank]else[]addsuffix{!!text}]}}}/>
-		<$action-setfield $tiddler=<<row-edit-state>> text=<<previous-node>>/>
-		<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+		<$list filter="[<previous-node>!has[stream-list]]" variable="_NULL">
+		<$action-ifconfirmed $message="Merge with previous node?" $prompt={{$:/config/sq/streams/prompt-merge-with-previous}}>
+			<$action-setfield $tiddler="$:/state/sq/streams/caret-position" text={{{[<previous-node>get[text]length[]]}}}/>
+			<$action-setfield $tiddler=<<previous-node>> text={{{[<previous-node>get[text]!is[blank]else[]addsuffix{!!text}]}}} stream-list={{!!stream-list}}/>
+			<$action-setfield $tiddler=<<row-edit-state>> text=<<previous-node>>/>
+			<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+		</$action-ifconfirmed>	
+		</$list>
 	</$list>
 	</$set>
 	</$set>
-</$action-ifconfirmed>	
+	
 </$list>
 </$list>
 

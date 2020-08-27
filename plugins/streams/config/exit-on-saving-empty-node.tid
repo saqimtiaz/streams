@@ -1,0 +1,8 @@
+created: 20200816133119526
+modified: 20200816133424674
+tags: 
+title: $:/config/sq/streams/exit-on-saving-empty-node
+description: Set to "yes" to exit edit mode on saving an empty node
+type: text/vnd.tiddlywiki
+
+no
