@@ -5,4 +5,4 @@ title: $:/config/sq/streams/prompt-merge-with-previous
 description: Set to "yes" to be prompted before merging a node with the previous node
 type: text/vnd.tiddlywiki
 
-no
+yes
