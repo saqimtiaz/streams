@@ -136,6 +136,7 @@ title: $:/plugins/sq/streams/action-macros
 			<$action-setfield $tiddler="$:/state/sq/streams/caret-position" text={{{[<previous-node>get[text]length[]]}}}/>
 			<$action-setfield $tiddler=<<previous-node>> text={{{[<previous-node>get[text]!is[blank]else[]addsuffix{!!text}]}}} stream-list={{!!stream-list}}/>
 			<$action-setfield $tiddler=<<row-edit-state>> text=<<previous-node>>/>
+			<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>			
 			<$action-deletetiddler $tiddler=<<currentTiddler>>/>
 		</$action-ifconfirmed>	
 		</$list>
