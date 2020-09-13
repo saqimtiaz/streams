@@ -1,8 +1,0 @@
-created: 20200530093438013
-modified: 20200608164620893
-parent: Renaming child bullets
-stream-type: default
-title: Roadmap/20200530093438013
-type: text/vnd.tiddlywiki
-
-With a robust rename solution, the use of uuids could be dropped entirely. This would significantly simplify the filters used in the actions and shorten the code

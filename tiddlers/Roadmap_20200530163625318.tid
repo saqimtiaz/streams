@@ -1,8 +1,0 @@
-created: 20200530163625318
-modified: 20200608164620888
-parent: Renaming child bullets
-stream-type: default
-title: Roadmap/20200530163625318
-type: text/vnd.tiddlywiki
-
-OR use the `list` field instead of `sq-bullets` and get renaming for free
