@@ -117,7 +117,7 @@ title: $:/plugins/sq/streams/action-macros
 \end
 
 
-\define remove-empty-node-actions()
+\define merge-with-previous-node-actions()
 <!-- handle backspace on an empty node -->
 <$list filter="""[<currentTiddler>!has[text]]""" variable="_NULL">
 	<<cancel-edit-node-actions>>

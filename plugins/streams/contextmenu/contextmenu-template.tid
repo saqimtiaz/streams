@@ -8,7 +8,7 @@ type: text/vnd.tiddlywiki
 		<$button class="tc-menu-list-item tc-btn-invisible" actions=<<__actions__>> >
 			<span class="sq-contextmenu-itemwrapper">
 				<span class="sq-contextmenu-itemtext">$title$</span>
-				<span class="sq-contextmenu-itemicon">$subtitle$</span>
+				<span class="sq-contextmenu-itemicon"><$macrocall $name="displayshortcuts" $output="text/plain" shortcuts="$subtitle$" prefix="" separator=" " suffix=""/></span>
 			</span>
 		</$button>
 \end
@@ -18,12 +18,15 @@ type: text/vnd.tiddlywiki
 <$reveal type="popup" state=<<contextmenu-state>>  position="left" tag="div">
 	<div class="tc-drop-down sq-contextmenu">
 		<$macrocall $name="menu-item" title="Open" actions="""<$action-navigate/>"""/>
-		<$macrocall $name="menu-item" title="Rename" subtitle="Alt+R" actions=<<rename-node-actions>>/>
-		<$macrocall $name="menu-item" title="Delete" subtitle="Delete" actions=<<delete-node-actions>>/>
+		<$macrocall $name="menu-item" title="Rename" subtitle="((streams-rename))" actions=<<rename-node-actions>>/>
+		<$macrocall $name="menu-item" title="Delete" subtitle="((streams-delete))" actions=<<delete-node-actions>>/>
 		<$list filter="[tag[$:/tags/streams/contextmenu]]" variable="listItem">
-			<$macrocall $name="menu-item" title={{{[<listItem>get[sq-contextmenu-name]]}}} subtitle={{{[<listItem>get[sq-contextmenu-subtitle]]}}} actions={{{[<listItem>get[text]]}}} />
+			<$macrocall $name="menu-item" 
+				title={{{[<listItem>get[sq-contextmenu-name]]}}} 
+				subtitle={{{[<listItem>get[key]] [<listItem>get[sq-contextmenu-subtitle]] +[first[]]}}} 
+				actions={{{[<listItem>get[text]]}}} />
 		</$list>
 		<<menu-divider>>
-		<$macrocall $name="menu-item" title="Keyboard Shortcuts (?)" actions="""<$action-navigate $to="Keyboard Shortcuts"/>"""/>
+		<$macrocall $name="menu-item" title="Keyboard Shortcuts (?)" actions="""<$action-navigate $to="$:/plugins/sq/streams/info/keyboard-shortcuts"/>"""/>
 	</div>
 </$reveal>

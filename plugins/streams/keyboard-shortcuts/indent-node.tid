@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/indent-node
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-indent))
+
+<<indent-node-actions>>

@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/rename-node
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-rename))
+
+<<rename-node-actions>>

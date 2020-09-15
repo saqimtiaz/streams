@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/cancel-edit-node
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-cancel-edit))
+
+<<cancel-edit-node-actions>>

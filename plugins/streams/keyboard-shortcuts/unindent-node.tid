@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/unindent-node
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-unindent))
+
+<<unindent-node-actions>>

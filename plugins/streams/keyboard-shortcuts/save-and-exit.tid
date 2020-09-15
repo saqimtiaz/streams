@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/save-and-exit
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-save-and-exit))
+
+<<save-edit-node-actions>>

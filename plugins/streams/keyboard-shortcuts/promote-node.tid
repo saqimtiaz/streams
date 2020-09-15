@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/promote-node
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-promote))
+
+<<promote-node-actions>>

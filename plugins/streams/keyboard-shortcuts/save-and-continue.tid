@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/save-and-continue
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-save-and-continue))
+
+<<save-node-actions>>

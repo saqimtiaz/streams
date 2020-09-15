@@ -33,33 +33,9 @@ title: $:/plugins/sq/streams/nodes-list-template
 				<$transclude mode="block"/>
 			</$reveal>
 			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
-				<$keyboard key="ctrl+enter" actions=<<save-edit-node-actions>> >
-				<$keyboard key="tab" actions=<<indent-node-actions>> >
-				<$keyboard key="shift+tab" actions=<<unindent-node-actions>> >
-				<$keyboard key="ctrl+down" actions=<<focus-lower-node-actions>> >
-				<$keyboard key="ctrl+up" actions=<<focus-higher-node-actions>> >
-				<$keyboard key="alt+down" actions=<<demote-node-actions>> >
-				<$keyboard key="alt+up" actions=<<promote-node-actions>> >
-				<$keyboard key="enter" actions=<<save-node-actions>> >
-				<$keyboard key="alt+enter" actions=<<save-multiple-actions>> >
-				<$keyboard key="escape" actions=<<cancel-edit-node-actions>> >
-				<$keyboard key="ctrl+delete" actions=<<delete-node-actions>> >
-				<$keyboard key="alt+r" actions=<<rename-node-actions>> >
-				<$keyboard key="backspace" preventDefault="false" actions=<<remove-empty-node-actions>> >
+				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
 					{{||$:/plugins/sq/streams/framed-editor-template}}
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
-				</$keyboard>
+				</$keyboard-plus>	
 			</$reveal>
 		</$btn-dblclick>
 	</div>

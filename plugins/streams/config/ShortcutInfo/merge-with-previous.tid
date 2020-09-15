@@ -1,0 +1,3 @@
+title: $:/config/ShortcutInfo/streams-merge-with-previous
+
+Merge with previous node, if caret is at start of a node

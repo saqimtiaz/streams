@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/keyboard-shortcuts/demote-node
+tags: $:/tags/streams/keyboard-shortcuts
+key: ((streams-demote))
+
+<<demote-node-actions>>
