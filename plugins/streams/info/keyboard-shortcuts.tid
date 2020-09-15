@@ -1,0 +1,25 @@
+title: $:/plugins/sq/streams/info/keyboard-shortcuts
+
+!! Streams keyboard shortcuts
+
+<table>
+<tbody>
+<$list filter="[all[shadows+tiddlers]prefix[$:/config/ShortcutInfo/streams-]]">
+<tr>
+<td>{{!!text}}</td>
+<td><$macrocall $name="displayshortcuts" $output="text/plain" shortcuts={{{[<currentTiddler>removeprefix[$:/config/ShortcutInfo/]addprefix[((]addsuffix[))]]}}} prefix="" separator=" " suffix=""/></td>
+</tr>
+</$list>
+</tbody>
+</table>
+
+Shortcuts can be customized in the [[Control Panel|$:/core/ui/ControlPanel/KeyboardShortcuts]]
+
+''Drag and drop''
+
+* hold <kbd>control</kbd> key to drag and drop and create a copy of the node in another stream tiddler
+* hold <kbd>shift</kbd> key to drag and drop and create a node that transcludes the contents of this node, in another stream tiddler
+
+''for the moment it is a design decision to disallow copying/transcluding the node inside the same root (story) tiddler''
+
+//Note that it is a known limitation that copying a node or transcluding it does not apply to the children of the node. This is on the [[list of things to implement|Roadmap]].//

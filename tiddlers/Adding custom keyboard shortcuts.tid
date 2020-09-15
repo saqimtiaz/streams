@@ -1,0 +1,18 @@
+created: 20200914210809227
+modified: 20200914211616563
+title: Adding custom keyboard shortcuts
+type: text/vnd.tiddlywiki
+
+You can add custom keyboard shortcuts by adding a tiddler with the tag `$:/tags/streams/keyboard-shortcuts`
+
+Examples of the format and fields required by such a tiddler: 
+
+* [[$:/streams/contextmenu/flatten]]
+* [[$:/plugins/sq/streams/keyboard-shortcuts/focus-higher-node]]
+
+Required fields:
+
+* `text` : actions to be triggered for this keyboard shortcut.
+* `key` :  a keyboard [[shortcut descriptor|https://tiddlywiki.com/#Keyboard%20Shortcut%20Descriptor]] or a [[shortcut suffix|https://tiddlywiki.com/#How%20to%20create%20keyboard%20shortcuts]] to be mapped to the keyboard shortcut.
+
+Note that the same tiddler can be used to [[add a context menu|Extending the Context Menu]] item for a keyboard shortcut by adding the tag `$:/tags/streams/contextmenu`. 

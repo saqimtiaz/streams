@@ -1,5 +1,5 @@
 created: 20200706165011599
-modified: 20200706165255025
+modified: 20200914211453844
 title: Extending the Context Menu
 type: text/vnd.tiddlywiki
 
@@ -12,3 +12,8 @@ Required fields:
 * `sq-contextmenu-name` : the name of the command.
 * `sq-contextmenu-subtitle` : the keyboard shortcut (note that this does not automatically create the shortcut, this text is descriptive only).
 * `text` : actions to be triggered when this command is clicked.
+
+You can also add ''keyboard shortcuts'' for the contextmenu item by adding the tag `$:/tags/streams/keyboard-shortcuts` to the same tiddler and configuring they `key` field.
+Note that if the `key` field is defined, it takes priority over the `sq-contextmenu-subtitle` field, which is no longer required in that scenario.
+
+Also see [[Adding custom keyboard shortcuts]].
