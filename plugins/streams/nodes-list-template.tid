@@ -2,7 +2,7 @@ created: 20171022203553093
 modified: 20171122050808722
 title: $:/plugins/sq/streams/nodes-list-template
 
-\import [[$:/plugins/sq/streams/action-macros]]
+\import [[$:/plugins/sq/streams/action-macros]] [all[shadows+tiddlers]tag[$:/tags/streams/actionmacros]]  [all[shadows+tiddlers]tag[$:/tags/streams/user-actionmacros]]
 \whitespace trim
 
 \define stream-row-template()
