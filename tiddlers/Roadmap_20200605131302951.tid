@@ -1,9 +1,0 @@
-created: 20200605131302951
-modified: 20200608203853090
-parent: Roadmap/20200605131251442
-stream-list: Roadmap/20200605131425044
-stream-type: default
-title: Roadmap/20200605131302951
-type: text/vnd.tiddlywiki
-
-Use keyboard widget(s), one set, for all rows. Read current Tiddler from row-edit-state. Potential issue would be input fields in the view mode getting their keys trapped
