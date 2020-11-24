@@ -30,8 +30,9 @@ exports.prototype.render = function(parent,nextSibling) {
 		tag = this.buttonTag;
 	}
 	var domNode = this.document.createElement(tag);
+	this.domNode = domNode;
 	var classes = this["class"].split(" ") || [];
-	domNode.className = classes.join(" ");	
+	domNode.className = classes.join(" ");
 	domNode.addEventListener("dblclick",function(event) {
 		event.preventDefault();
 		if (window.getSelection) {

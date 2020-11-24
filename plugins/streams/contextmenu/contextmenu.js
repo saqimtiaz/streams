@@ -30,7 +30,8 @@ exports.prototype.render = function(parent,nextSibling) {
 		tag = this.buttonTag;
 	}
 	var domNode = this.document.createElement(tag);
-	var classes = this["class"].split(" ") || [];
+	this.domNode = domNode;
+	var classes = this.getAttribute("class","").split(" ");;
 	var isPoppedUp = (this.popup || this.popupTitle) && this.isPoppedUp();
 	if(this.selectedClass) {
 		if((this.set || this.setTitle) && this.setTo && this.isSelected()) {
@@ -58,6 +59,6 @@ exports.prototype.render = function(parent,nextSibling) {
 	parent.insertBefore(domNode,nextSibling);
 	this.renderChildren(domNode,null);
 	this.domNodes.push(domNode);	
-}	
-	
+}
+
 })();
