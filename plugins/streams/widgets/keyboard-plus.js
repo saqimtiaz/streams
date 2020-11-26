@@ -118,7 +118,47 @@ KeyboardWidget.prototype.refresh = function(changedTiddlers) {
 
 	return this.refreshChildren(changedTiddlers);
 };
+
+
+KeyboardWidget.prototype.invokeActionString = function(actions,triggeringWidget,event,variables) {
+	if(!variables) {
+		variables = {};
+	}
 	
+	var activeElement = document.activeElement;
+	var selection;
+	if(activeElement && activeElement.tagName === "IFRAME") {
+		var idoc = activeElement.contentDocument || activeElement.contentWindow.document;
+		activeElement = idoc.activeElement;
+		selection = idoc.getSelection();
+	} else {
+		selection = window.getSelection();
+	}
+	
+	if(activeElement && selection && ((activeElement.tagName === "INPUT" && activeElement.type === "TEXT") || activeElement.tagName === "TEXTAREA")) {
+		variables["selectionStart"] = activeElement.selectionStart.toString();
+		variables["selectionEnd"] = activeElement.selectionEnd.toString();
+		variables["selection"] = selection.toString();
+	}
+
+	/*
+
+	if(window.CodeMirror && document.activeElement.closest(".CodeMirror")) {
+		var cm = document.activeElement.closest(".CodeMirror").CodeMirror;
+		var cursor = cm.getCursor("start");
+		var startRange = cm.getRange({"line":0,"ch":0},{"line":cursor.line,"ch":cursor.ch});
+		var selectionStart = startRange.length;
+		var selection = cm.getSelection();
+		var selectionEnd = selectionStart + selection.length();
+	}
+
+	*/
+
+	
+	//this.selection_original_invokeActionString(actions,triggeringWidget,event,variables);
+	Object.getPrototypeOf(Object.getPrototypeOf(this)).invokeActionString.call(this,actions,triggeringWidget,event,variables);
+}
+
 exports["keyboard-plus"] = KeyboardWidget;
 
 })();	
