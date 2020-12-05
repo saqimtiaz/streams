@@ -1,0 +1,45 @@
+title: $:/plugins/sq/streams/templates/stream-row-template
+
+\whitespace trim
+<$set name="row-children-visibility-state" value=<<qualify "$:/state/sq/streams/visibility/$(currentTiddler)$">> >
+<$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
+<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] +[join[ ]]}}} >
+	<div class="tc-droppable-placeholder"/>
+	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}}>
+		<$contextmenu popup=<<contextmenu-state>> class="stream-node-control" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
+			<div class="stream-node-collapser">
+				<$button class="tc-btn-invisible">
+					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
+					{{$:/plugins/sq/streams/icons/node-expand-arrow}}
+				</$button>
+			</div>
+			<div class="stream-node-handle-wrapper">
+				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
+					<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-handle"><div class="stream-node-handle-inner"/></$draggable>
+				</$button>
+			</div>	
+		</$contextmenu>
+		<$btn-dblclick tag="div" class="stream-node-block" >
+			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
+				
+					<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>> />
+				
+				<$transclude mode="block"/>
+			</$reveal>
+			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
+				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
+					{{||$:/plugins/sq/streams/framed-editor-template}}
+				</$keyboard-plus>	
+			</$reveal>
+		</$btn-dblclick>
+	</div>
+</$droppable>
+</$set>
+<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
+<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide">
+	<div class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] [<enable-dnd>match[no]then[stream-node-disabled]] +[join[ ]]}}} >
+		{{||$:/plugins/sq/streams/templates/stream-root-template}}
+	</div>
+</$reveal>
+</$set>
+</$set>
