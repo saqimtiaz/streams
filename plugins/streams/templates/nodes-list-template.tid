@@ -5,95 +5,6 @@ title: $:/plugins/sq/streams/nodes-list-template
 \import [[$:/plugins/sq/streams/action-macros]] [all[shadows+tiddlers]tag[$:/tags/streams/actionmacros]]  [all[shadows+tiddlers]tag[$:/tags/streams/user-actionmacros]]
 \whitespace trim
 
-\define stream-row-template()
-\whitespace trim
-<$set name="row-children-visibility-state" value=<<qualify "$:/state/sq/streams/visibility/$(currentTiddler)$">> >
-<$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
-<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] +[join[ ]]}}} >
-	<div class="tc-droppable-placeholder"/>
-	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}}>
-		<$contextmenu popup=<<contextmenu-state>> class="stream-node-control" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
-			<div class="stream-node-collapser">
-				<$button class="tc-btn-invisible">
-					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
-					{{$:/plugins/sq/streams/icons/node-expand-arrow}}
-				</$button>
-			</div>
-			<div class="stream-node-handle-wrapper">
-				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
-					<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-handle"><div class="stream-node-handle-inner"/></$draggable>
-				</$button>
-			</div>	
-		</$contextmenu>
-		<$btn-dblclick tag="div" class="stream-node-block" >
-			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
-				
-					<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>> />
-				
-				<$transclude mode="block"/>
-			</$reveal>
-			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
-				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
-					{{||$:/plugins/sq/streams/framed-editor-template}}
-				</$keyboard-plus>	
-			</$reveal>
-		</$btn-dblclick>
-	</div>
-</$droppable>
-</$set>
-<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
-<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide">
-	<div class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] [<enable-dnd>match[no]then[stream-node-disabled]] +[join[ ]]}}} >
-		<$macrocall $name="stream"/>
-	</div>
-</$reveal>
-</$set>
-</$set>
-\end
-
-
-\define stream()
-\whitespace trim
-<div class="stream-list">
-	<$vars dropTargetTiddler=<<currentTiddler>> >
-		<$list filter="[list[!!stream-list]!is[missing]]">
-		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
-			<<stream-row-template>>
-		</$set>
-		</$list>
-		<$tiddler tiddler="">
-			<!-- to drop after the last child of any list level-->
-			<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd>> class="stream-droppable">
-				<div class="tc-droppable-placeholder">
-				&nbsp;
-				</div><!-- idea only want below div with height when its a child with no more children-->
-				<$list filter="[<currentTiddler>!has[stream-list]]" variable="_NULL"><div class="stream-droppable-spacer"/></$list>
-			</$droppable>
-		</$tiddler>
-		<$list filter="[all[current]match<stream-root-title>]" variable="_NULL">
-			<!-- if we are the root, add a button to add more nodes-->
-			<div class="stream-row">
-				<div class="stream-node-control stream-node-control-addnew">
-					<div class="stream-node-collapser">
-					</div>
-					<div class="stream-node-handle-wrapper">
-						<$button tag="div" class="tc-btn-invisible" tooltip="add node" actions=<<add-node-actions>> >
-							{{$:/plugins/sq/streams/icons/new-node-btn}}
-						</$button>
-					</div>
-				</div>
-				<div class="stream-node-block">
-					<!--consider moving last child dropzone in here, though thats for children too-->
-				</div>
-			</div>				
-			<$set name="currentTiddler" filter={{{[<contextmenu-state>get[current]]}}}>
-				{{||$:/plugins/sq/streams/contextmenu/contextmenu-template}}
-			</$set>
-		</$list>
-	</$vars>
-</div>
-\end
-
 <$vars stream-root-title=<<currentTiddler>>
 	contextmenu-state=<<qualify "$:/state/sq-context-popup/">>
 	row-edit-state=<<qualify "$:/state/sq/streams/current-edit-tiddler">>
@@ -101,7 +12,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">> 
 	>
 	<div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [<currentTiddler>!has[stream-list]then[stream-newlist]] +[join[ ]] }}}>
-		<$macrocall $name="stream"/>
+		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 	</div>
 </$vars>
 
