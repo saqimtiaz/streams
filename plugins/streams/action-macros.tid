@@ -80,7 +80,7 @@ title: $:/plugins/sq/streams/action-macros
 <!-- handle saving a node edit and creating a new subsequent node -->
 <$set name="parent" filter="[<currentTiddler>match<stream-root-title>] ~[{!!parent}] +[first[]]" select="0">
 <$wikify name="new-node" text={{$:/config/sq/streams/new-node-title}}>
-<$wikify name="new-node" text={{{[[<<unusedtitle ]addsuffix<new-node>addsuffix[>>]]}}}>
+<$wikify name="new-node" text={{{[[<<unusedtitle """]addsuffix<new-node>addsuffix[""">>]]}}}>
 	<$action-createtiddler $basetitle=<<new-node>> text=<<__startText__>> $template={{$:/config/sq/streams/new-node-tiddler-template}} parent=<<parent>> stream-type="default" stream-list=<<__streamList__>>/>
 	<$set name="parent-nodes" filter="[<parent>get[stream-list]]" select="0">
 	<$set name="next-node" filter="[enlist<parent-nodes>is[tiddler]$insertPosition$<currentTiddler>]" select="0">
