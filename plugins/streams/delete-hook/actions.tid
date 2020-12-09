@@ -16,8 +16,8 @@ type: text/vnd.tiddlywiki
 		<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="-[<currentTiddler>]" />
 	</$list>
 	<$list variable="count" filter="[enlist{!!stream-list}count[]!match[0]]">
-		<$action-ifconfirmed  $message="Do you wish to delete all tiddlers descended from this tiddler?">
+		<$action-confirm $message="Do you wish to delete all tiddlers descended from this tiddler?">
 			<<delete-children>>
-		</$action-ifconfirmed>
+		</$action-confirm>
 	</$list>
 </$list>
