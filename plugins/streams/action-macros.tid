@@ -256,7 +256,8 @@ title: $:/plugins/sq/streams/action-macros
 
 \define stream-drop-actions()
 <!-- handles drag and drop -->
-<$set name="parent" value=<<dropTargetTiddler>>>
+<$vars startBrackets="[[" endBrackets="]]" parent=<<dropTargetTiddler>> >
+<$vars actionTiddler={{{[<actionTiddler>trim:suffix<endBrackets>trim:prefix<startBrackets>]}}}>
 <!-- if target has no stream-type, assign one -->
 <$list filter="[<dropTargetTiddler>!has[stream-type]]">
 	<$action-setfield $tiddler=<<dropTargetTiddler>> stream-type="default"/>
@@ -296,5 +297,6 @@ title: $:/plugins/sq/streams/action-macros
 <$list filter="[<actionTiddler>get[parent]match<parent>]" variable="_NULL">
 	<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<actionTiddler>]"/>
 </$list>
-</$set>
+</$vars>
+</$vars>
 \end
