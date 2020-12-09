@@ -9,11 +9,13 @@ title: $:/plugins/sq/streams/action-macros
 </$list>
 \end
 
+
 \define save-edit-node-actions()
 <!-- handle saving a node being edited -->
 <!-- XXX draft -->
 <$action-deletetiddler $tiddler=<<row-edit-state>> />
 \end
+
 
 \define indent-node-actions()
 <!-- handle indenting a node -->
