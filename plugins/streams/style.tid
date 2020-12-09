@@ -171,7 +171,7 @@ tags: [[$:/tags/Stylesheet]]
 	opacity: 1;
 } 
 
-.stream-node-control.sq-contextmenu-active .stream-node-handle-wrapper .stream-node-handle-inner {
+.stream-node-control .sq-contextmenu-active .stream-node-handle-wrapper .stream-node-handle-inner {
 	border: 5px solid #5778d8; /*b74e4e*/
 	opacity: 1;
 }
