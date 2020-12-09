@@ -157,6 +157,10 @@ tags: [[$:/tags/Stylesheet]]
 	opacity: 0.3;
 }
 
+.stream-node-control .sq-contextmenu-container {
+	display: flex;
+}
+
 /*
 .stream-row:hover .stream-node-control .stream-node-handle-wrapper .stream-node-handle-inner {
 	opacity: 0.7;

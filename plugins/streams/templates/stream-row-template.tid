@@ -6,7 +6,8 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 <$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] +[join[ ]]}}} >
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}} data-node-title=<<currentTiddler>>>
-		<$contextmenu popup=<<contextmenu-state>> class="stream-node-control" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
+		<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-control">
+		<$contextmenu popup=<<contextmenu-state>> class="" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
 			<div class="stream-node-collapser">
 				<$button class="tc-btn-invisible">
 					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
@@ -15,11 +16,15 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 			</div>
 			<div class="stream-node-handle-wrapper">
 				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
-					<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-handle"><div class="stream-node-handle-inner"/></$draggable>
+					<div class="stream-node-handle">
+						<div class="stream-node-handle-inner"/>
+					</div>
 				</$button>
 			</div>	
 		</$contextmenu>
+		</$draggable>
 		<div class="stream-node-block">
+			<!-- use a list widget instead of two reveal widgets? -->
 			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
 				<$transclude mode="block"/>
 			</$reveal>
