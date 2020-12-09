@@ -5,7 +5,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 <$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
 <$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] +[join[ ]]}}} >
 	<div class="tc-droppable-placeholder"/>
-	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}}>
+	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}} data-node-title=<<currentTiddler>>>
 		<$contextmenu popup=<<contextmenu-state>> class="stream-node-control" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>> selectedClass="sq-contextmenu-active" >
 			<div class="stream-node-collapser">
 				<$button class="tc-btn-invisible">
@@ -19,19 +19,16 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 				</$button>
 			</div>	
 		</$contextmenu>
-		<$btn-dblclick tag="div" class="stream-node-block" >
+		<div class="stream-node-block">
 			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
-				
-					<$action-setfield $tiddler=<<row-edit-state>> text=<<currentTiddler>> />
-				
 				<$transclude mode="block"/>
 			</$reveal>
 			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
 				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
 					{{||$:/plugins/sq/streams/framed-editor-template}}
-				</$keyboard-plus>	
+				</$keyboard-plus>
 			</$reveal>
-		</$btn-dblclick>
+		</div>
 	</div>
 </$droppable>
 </$set>

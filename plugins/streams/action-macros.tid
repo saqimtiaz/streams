@@ -2,6 +2,13 @@ title: $:/plugins/sq/streams/action-macros
 
 \whitespace trim
 
+\define toggle-row-edit-state()
+<$action-unselect/>
+<$list filter="[<row-edit-state>get[text]else[]!match<dom-data-node-title>]" variable="NULL" emptyMessage=<<save-edit-node-actions>>>
+	<$action-setfield $tiddler=<<row-edit-state>> text=<<dom-data-node-title>> />	
+</$list>
+\end
+
 \define save-edit-node-actions()
 <!-- handle saving a node being edited -->
 <!-- XXX draft -->
@@ -98,15 +105,15 @@ title: $:/plugins/sq/streams/action-macros
 
 \define save-multiple-actions()
 <!-- handle multiple nodes entered at once -->
-<$action-ifconfirmed $message="Split into multiple nodes?" $prompt={{$:/config/sq/streams/prompt-split-to-multiple}}>
+<$action-confirm $message="Split into multiple nodes?" $prompt={{$:/config/sq/streams/prompt-split-to-multiple}}>
 <$list filter="[{!!text}splitregexp{$:/config/sq/streams/node-split-regexp}rest[]reverse[]]" variable="fragment">
-	<$action-ifconfirmed $message="Split into multiple nodes?" $prompt="no">
+	<$action-confirm $message="Split into multiple nodes?" $prompt="no">
 		<$macrocall $name="add-node-actions" startText=<<fragment>> />
-	</$action-ifconfirmed>
+	</$action-confirm>
 </$list>
 <$action-setfield $tiddler=<<currentTiddler>> text={{{[{!!text}splitregexp{$:/config/sq/streams/node-split-regexp}first[]]}}}/>
 <<add-node-actions>>
-</$action-ifconfirmed>
+</$action-confirm>
 \end
 
 
@@ -135,13 +142,13 @@ title: $:/plugins/sq/streams/action-macros
 	<$set name="stream-list" filter="[<parent>get[stream-list]]" select="0">
 	<$list filter="[enlist<stream-list>before<currentTiddler>]" variable="previous-node">
 		<$list filter="[<previous-node>!has[stream-list]]" variable="_NULL">
-		<$action-ifconfirmed $message="Merge with previous node?" $prompt={{$:/config/sq/streams/prompt-merge-with-previous}}>
+		<$action-confirm $message="Merge with previous node?" $prompt={{$:/config/sq/streams/prompt-merge-with-previous}}>
 			<$action-setfield $tiddler="$:/state/sq/streams/caret-position" text={{{[<previous-node>get[text]length[]]}}}/>
 			<$action-setfield $tiddler=<<previous-node>> text={{{[<previous-node>get[text]!is[blank]else[]addsuffix{!!text}]}}} stream-list={{!!stream-list}}/>
 			<$action-setfield $tiddler=<<row-edit-state>> text=<<previous-node>>/>
 			<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>			
 			<$action-deletetiddler $tiddler=<<currentTiddler>>/>
-		</$action-ifconfirmed>	
+		</$action-confirm>	
 		</$list>
 	</$list>
 	</$set>
@@ -154,13 +161,13 @@ title: $:/plugins/sq/streams/action-macros
 
 
 \define delete-node-actions()
-<$action-ifconfirmed  $message="Do you wish to delete this tiddler?">
+<$action-confirm  $message="Do you wish to delete this tiddler?">
 	<$transclude tiddler="$:/plugins/sq/streams/delete-hook/actions"/>
 	<$action-deletetiddler $tiddler=<<currentTiddler>> />
 	<$list filter="[<row-edit-state>get[text]match<currentTiddler>]">
 		<<focus-higher-node-actions>>
 	</$list>
-</$action-ifconfirmed>
+</$action-confirm>
 \end
 
 

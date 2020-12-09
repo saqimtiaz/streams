@@ -11,9 +11,11 @@ title: $:/plugins/sq/streams/nodes-list-template
 	drag-title-state=<<qualify "$:/state/sq/streams/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">> 
 	>
+	<$eventcatcher events="dblclick" selector=".stream-row" actions-dblclick=<<toggle-row-edit-state>> >
 	<div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [<currentTiddler>!has[stream-list]then[stream-newlist]] +[join[ ]] }}}>
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 	</div>
+	</$eventcatcher>
 </$vars>
 
 
