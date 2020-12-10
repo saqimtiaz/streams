@@ -21,7 +21,8 @@ title: $:/plugins/sq/streams/action-macros
 \define toggle-row-edit-state()
 <$action-unselect/>
 <$list filter="[<row-edit-state>get[text]else[]!match<dom-data-node-title>]" variable="NULL" emptyMessage=<<save-edit-node-actions>>>
-	<$action-setfield $tiddler=<<row-edit-state>> text=<<dom-data-node-title>> />	
+	<$action-setfield $tiddler=<<row-edit-state>> text=<<dom-data-node-title>> />
+<!--	<$action-setfield $tiddler=<<dom-data-node-title>> throttle.refresh="yes"/>-->
 </$list>
 \end
 
@@ -29,6 +30,7 @@ title: $:/plugins/sq/streams/action-macros
 \define save-edit-node-actions()
 <!-- handle saving a node being edited -->
 <!-- XXX draft -->
+<!--<$action-deletefield $tiddler={{{ [<dom-data-node-title>!is[blank]else<currentTiddler>] }}} $field="throttle.refresh" />-->
 <$action-deletetiddler $tiddler=<<row-edit-state>> />
 \end
 
@@ -142,6 +144,7 @@ title: $:/plugins/sq/streams/action-macros
 	<$action-listops $tiddler={{{[{!!parent}]}}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
 	<$action-deletetiddler $tiddler=<<currentTiddler>> />
 </$list>
+<!--<$action-deletefield $tiddler=<<currentTiddler>> $field="throttle.refresh" />-->
 <$action-deletetiddler $tiddler=<<row-edit-state>> />
 \end
 
