@@ -2,6 +2,19 @@ title: $:/plugins/sq/streams/action-macros
 
 \whitespace trim
 
+\define swiped-right-actions()
+<$vars currentTiddler=<<dom-data-node-title>>>
+<<indent-node-actions>>
+</$vars>
+\end
+
+\define swiped-left-actions()
+<$vars currentTiddler=<<dom-data-node-title>>>
+<<unindent-node-actions>>
+</$vars>
+\end
+
+
 \define oncontext-menu-actions()
 <$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-node-title>>/>
 <$action-popup $coords=<<tv-popup-coords>> $state=<<contextmenu-state>>/>
