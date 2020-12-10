@@ -43,7 +43,7 @@ SwipeWidget.prototype.render = function(parent,nextSibling) {
 /*	domNode.addEventListener('swipe', function (e) {
       console.log('swipe', e.detail);
 	});*/
-	SwipeEvents(domNode,{"swipe-threshold": 100});
+	SwipeEvents(domNode,{"swipe-threshold": this.swipeThreshold});
 	parent.insertBefore(domNode,nextSibling);
 	this.renderChildren(domNode,null);
 	this.domNodes.push(domNode);
@@ -58,6 +58,7 @@ SwipeWidget.prototype.execute = function() {
 //	this.types = this.getAttribute("events","").split(" ");
 //	this.elementTag = this.getAttribute("tag");
 	// Make child widgets
+	this.swipeThreshold = parseInt(this.getAttribute("swipethreshold","100"));
 	this.makeChildWidgets();
 };
 
