@@ -10,6 +10,7 @@ tags: [[$:/tags/Stylesheet]]
 .stream-row {
     display: flex;
     flex: 0 0 auto;
+	user-select: none;
 }
 
 .stream-row-children {
@@ -190,6 +191,7 @@ tags: [[$:/tags/Stylesheet]]
     cursor: text;
     padding-top: 4px;
     padding-bottom: 4px;
+	user-select: text;
 	/*white-space: pre-wrap;*/
 }
 
