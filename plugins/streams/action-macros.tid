@@ -8,6 +8,16 @@ title: $:/plugins/sq/streams/action-macros
 \end
 
 
+\define node-ctrl-btn-actions()
+<$list filter="[<dom-data-btn-role>match[stream-node-visibility]]" variable="NULL">
+<$action-setfield $tiddler=<<dom-data-rowchildren-visibility-state>> text={{{ [<dom-data-rowchildren-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
+</$list>
+<$list filter="[<dom-data-btn-role>match[stream-node-decorator]]" variable="NULL">
+<$action-navigate $to=<<dom-data-node-title>>/>
+</$list>
+\end
+
+
 \define toggle-row-edit-state()
 <$action-unselect/>
 <$list filter="[<row-edit-state>get[text]else[]!match<dom-data-node-title>]" variable="NULL" emptyMessage=<<save-edit-node-actions>>>
@@ -110,6 +120,7 @@ title: $:/plugins/sq/streams/action-macros
 </$wikify>
 </$set>
 \end
+
 
 \define save-multiple-actions()
 <!-- handle multiple nodes entered at once -->

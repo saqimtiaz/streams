@@ -9,17 +9,16 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-control">
 		<div class="sq-contextmenu-container" data-node-title=<<currentTiddler>>>
 			<div class="stream-node-collapser">
-				<$button class="tc-btn-invisible">
-					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
+				<button type="button" class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-visibility" data-rowchildren-visibility-state=<<row-children-visibility-state>>>
 					{{$:/plugins/sq/streams/icons/node-expand-arrow}}
-				</$button>
+				</button>
 			</div>
 			<div class="stream-node-handle-wrapper">
-				<$button tag="div" to=<<currentTiddler>> class="tc-btn-invisible" >
+				<div class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-decorator" data-node-title=<<currentTiddler>>>
 					<div class="stream-node-handle">
 						<div class="stream-node-handle-inner"/>
 					</div>
-				</$button>
+				</div>
 			</div>
 		</div>
 		</$draggable>
