@@ -7,7 +7,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}} data-node-title=<<currentTiddler>>>
 		<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-control">
-		<$contextmenu popup=<<contextmenu-state>> class="" tag="div" set={{{[<contextmenu-state>addsuffix[!!current]]}}} setTo=<<currentTiddler>>>
+		<div class="sq-contextmenu-container" data-node-title=<<currentTiddler>>>
 			<div class="stream-node-collapser">
 				<$button class="tc-btn-invisible">
 					<$action-setfield $tiddler=<<row-children-visibility-state>> text={{{ [<row-children-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
@@ -20,8 +20,8 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 						<div class="stream-node-handle-inner"/>
 					</div>
 				</$button>
-			</div>	
-		</$contextmenu>
+			</div>
+		</div>
 		</$draggable>
 		<div class="stream-node-block">
 			<!-- use a list widget instead of two reveal widgets? -->

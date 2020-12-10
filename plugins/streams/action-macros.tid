@@ -2,6 +2,12 @@ title: $:/plugins/sq/streams/action-macros
 
 \whitespace trim
 
+\define oncontext-menu-actions()
+<$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-node-title>>/>
+<$action-popup $coords=<<tv-popup-coords>> $state=<<contextmenu-state>>/>
+\end
+
+
 \define toggle-row-edit-state()
 <$action-unselect/>
 <$list filter="[<row-edit-state>get[text]else[]!match<dom-data-node-title>]" variable="NULL" emptyMessage=<<save-edit-node-actions>>>
