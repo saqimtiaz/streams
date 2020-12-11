@@ -23,15 +23,11 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		</div>
 		</$draggable>
 		<div class="stream-node-block">
-			<!-- use a list widget instead of two reveal widgets? -->
-			<$reveal tag="div" type="nomatch" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
-				<$transclude mode="block"/>
-			</$reveal>
-			<$reveal tag="div" type="match" stateTitle=<<row-edit-state>> default="view" text=<<currentTiddler>> >
+			<$list filter="[<row-edit-state>get[text]!is[blank]else[]match<currentTiddler>]" variable="NULL" emptyMessage="""<$transclude mode="block"/>""">
 				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
 					{{||$:/plugins/sq/streams/framed-editor-template}}
-				</$keyboard-plus>
-			</$reveal>
+				</$keyboard-plus>			
+			</$list>
 		</div>
 	</div>
 </$droppable>
