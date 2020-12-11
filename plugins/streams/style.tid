@@ -31,12 +31,10 @@ tags: [[$:/tags/Stylesheet]]
 	background-color: <<color tiddler-editor-border>>;
 }
 
-/** hide child nodes when dragging
-.stream-root.stream-dragactive .stream-node-disabled .stream-droppable.tc-droppable {
-	display: none;
+.stream-root.stream-dragactive .stream-node-disabled.stream-row-children-empty .stream-droppable.tc-droppable {
+	/**display: none;**/
+	visibility: none;
 }
-**/
-
 
 .stream-row-selected,
 .stream-droppable.tc-droppable.stream-row-selected + div {
