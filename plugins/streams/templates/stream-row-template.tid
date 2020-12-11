@@ -35,9 +35,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		</div>
 	</div>
 </$droppable>
-<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide">
-	<div class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] [<enable-dnd>match[no]then[stream-node-disabled]] +[join[ ]]}}} >
+<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide" class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] [<enable-dnd>match[no]then[stream-node-disabled]] +[join[ ]]}}}>
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
-	</div>
 </$reveal>
 </$set>
