@@ -2,8 +2,12 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 
 \whitespace trim
 <$set name="row-children-visibility-state" value=<<qualify "$:/state/sq/streams/visibility/$(currentTiddler)$">> >
-<$set name="enable-dnd-row" filter="[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]">
-<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd-row>> class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] +[join[ ]]}}} >
+<$droppable 
+	actions=<<stream-drop-actions>>
+	tag="div"
+	enable={{{[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]}}}
+	class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] +[join[ ]]}}} 
+	>
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}} data-node-title=<<currentTiddler>>>
 		<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-control">
@@ -31,12 +35,9 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		</div>
 	</div>
 </$droppable>
-</$set>
-<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
 <$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide">
 	<div class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] [<enable-dnd>match[no]then[stream-node-disabled]] +[join[ ]]}}} >
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 	</div>
 </$reveal>
-</$set>
 </$set>
