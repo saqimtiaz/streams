@@ -1,21 +1,19 @@
 title: $:/plugins/sq/streams/templates/stream-root-template
 
 \whitespace trim
-<div class="stream-list">
-	<$vars dropTargetTiddler=<<currentTiddler>> >
-		<$list filter="[list[!!stream-list]!is[missing]]">
-		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
-			{{||$:/plugins/sq/streams/templates/stream-row-template}}
-		</$set>
-		</$list>
-		<$tiddler tiddler="">
-			<!-- to drop after the last child of any list level-->
-			<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd>> class="stream-droppable">
-				<div class="tc-droppable-placeholder">
-				&nbsp;
-				</div><!-- idea only want below div with height when its a child with no more children-->
-				<$list filter="[<currentTiddler>!has[stream-list]]" variable="_NULL"><div class="stream-droppable-spacer"/></$list>
-			</$droppable>
-		</$tiddler>
-	</$vars>
-</div>
+<$vars dropTargetTiddler=<<currentTiddler>> >
+	<$list filter="[list[!!stream-list]!is[missing]]">
+	<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
+		{{||$:/plugins/sq/streams/templates/stream-row-template}}
+	</$set>
+	</$list>
+	<$tiddler tiddler="">
+		<!-- to drop after the last child of any list level-->
+		<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd>> class="stream-droppable">
+			<div class="tc-droppable-placeholder">
+			&nbsp;
+			</div><!-- idea only want below div with height when its a child with no more children-->
+			<$list filter="[<currentTiddler>!has[stream-list]]" variable="_NULL"><div class="stream-droppable-spacer"/></$list>
+		</$droppable>
+	</$tiddler>
+</$vars>
