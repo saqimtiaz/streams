@@ -27,22 +27,26 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .stream-node-disabled,
-.stream-droppable.tc-droppable.stream-node-disabled + div{
+.stream-node-disabled + div.stream-row-children{
 	background-color: <<color tiddler-editor-border>>;
 }
 
-.stream-droppable.tc-droppable.stream-node-disabled.stream-row-nochildren + .stream-row-children  {
+.stream-node-disabled.stream-row-nochildren + div.stream-row-children  {
 	/**display: none;**/
 	visibility: hidden;
 }
 
-.stream-droppable.tc-droppable.stream-node-disabled + div + .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+/*
+.stream-node-disabled + div + .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
 	display: none;
 }
+*/
 
-.stream-droppable.tc-droppable.stream-node-disabled + div + .stream-droppable.tc-droppable.tc-dragover {
+/*
+.stream-node-disabled + div + .stream-droppable.tc-droppable.tc-dragover {
 	cursor: not-allowed;
 }
+*/
 
 .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
 	margin-left: 29px;
