@@ -22,7 +22,7 @@ tags: [[$:/tags/Stylesheet]]
 	margin-left: 30px;
 }
 
-.stream-row-children.stream-row-children-empty {
+.stream-row-nochildren + .stream-row-children {
 	border-left: none;
 }
 
@@ -31,7 +31,7 @@ tags: [[$:/tags/Stylesheet]]
 	background-color: <<color tiddler-editor-border>>;
 }
 
-.stream-droppable.tc-droppable.stream-node-disabled + .stream-row-children-empty  {
+.stream-droppable.tc-droppable.stream-node-disabled.stream-row-nochildren + .stream-row-children  {
 	/**display: none;**/
 	visibility: hidden;
 }

@@ -6,10 +6,10 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 	actions=<<stream-drop-actions>>
 	tag="div"
 	enable={{{[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]}}}
-	class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] +[join[ ]]}}} 
+	class={{{ stream-droppable [<enable-dnd>match[no]then[stream-node-disabled]] [<contextmenu-state>get[current]match<currentTiddler>then[stream-row-selected]else[]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}} 
 	>
 	<div class="tc-droppable-placeholder"/>
-	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}} data-node-title=<<currentTiddler>>>
+	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] +[join[ ]]}}} data-node-title=<<currentTiddler>>>
 		<$draggable tag="div" tiddler=<<currentTiddler>> startactions=<<node-drag-start-actions>> endactions=<<node-drag-end-actions>> class="stream-node-control">
 		<div class="sq-contextmenu-container" data-node-title=<<currentTiddler>>>
 			<div class="stream-node-collapser">
@@ -35,11 +35,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		</div>
 	</div>
 </$droppable>
-<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide" class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] +[join[ ]]}}}>
+<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide" class="stream-row-children">
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 </$reveal>
 </$set>
-<!--- move class calculation for stream-row-nochildren higher to droppable
-	then can I avoid needing to calc and assign the stream-row-children-empty class in the reveal further down?
-	
-	->
