@@ -6,7 +6,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 \whitespace trim
 
 <$vars stream-root-title=<<currentTiddler>>
-	contextmenu-state=<<qualify "$:/state/sq-context-popup/">>
+	contextmenu-state="$:/state/sq-context-popup"
 	row-edit-state=<<qualify "$:/state/sq/streams/current-edit-tiddler">>
 	drag-title-state=<<qualify "$:/state/sq/streams/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">> 

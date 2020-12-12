@@ -56,8 +56,8 @@ tags: [[$:/tags/Stylesheet]]
 	height: 0.3em;
 }
 
-.stream-row-selected,
-.stream-droppable.tc-droppable.stream-row-selected + div {
+[data-node-title="{{$:/state/sq-context-popup!!current}}"],
+[data-node-title="{{$:/state/sq-context-popup!!current}}"] + div{
 	background: <<color notification-background>>;
 	color: <<color message-foreground>>;
 }
@@ -178,7 +178,7 @@ tags: [[$:/tags/Stylesheet]]
 } 
 
 
-.stream-droppable.stream-row-selected.tc-droppable .stream-node-handle-wrapper .stream-node-handle-inner  {
+[data-node-title="{{$:/state/sq-context-popup!!current}}"] .stream-node-handle-wrapper .stream-node-handle-inner  {
     border: 5px solid #5778d8;
     opacity: 1;
 }
