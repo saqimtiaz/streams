@@ -31,15 +31,9 @@ tags: [[$:/tags/Stylesheet]]
 	background-color: <<color tiddler-editor-border>>;
 }
 
-.stream-root.stream-dragactive .stream-node-disabled.stream-row-children-empty .stream-droppable.tc-droppable {
+.stream-droppable.tc-droppable.stream-node-disabled + .stream-row-children-empty  {
 	/**display: none;**/
-	visibility: none;
-}
-
-.stream-row-selected,
-.stream-droppable.tc-droppable.stream-row-selected + div {
-	background: <<color notification-background>>;
-	color: <<color message-foreground>>;
+	visibility: hidden;
 }
 
 .stream-droppable.tc-droppable.stream-node-disabled + div + .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
@@ -60,6 +54,12 @@ tags: [[$:/tags/Stylesheet]]
 
 .stream-droppable-spacer {
 	height: 0.3em;
+}
+
+.stream-row-selected,
+.stream-droppable.tc-droppable.stream-row-selected + div {
+	background: <<color notification-background>>;
+	color: <<color message-foreground>>;
 }
 
 .stream-node-control {

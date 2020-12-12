@@ -35,7 +35,11 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		</div>
 	</div>
 </$droppable>
-<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide" class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] [<enable-dnd>match[no]then[stream-node-disabled]] +[join[ ]]}}}>
+<$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide" class={{{ stream-row-children [<currentTiddler>!has[stream-list]then[stream-row-children-empty]] +[join[ ]]}}}>
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 </$reveal>
 </$set>
+<!--- move class calculation for stream-row-nochildren higher to droppable
+	then can I avoid needing to calc and assign the stream-row-children-empty class in the reveal further down?
+	
+	->
