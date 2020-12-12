@@ -1,0 +1,4 @@
+title: $:/config/sq/streams/dnd-modifier-transclude-node
+description: Modifier key for drag and drop to create a transclusion of a node. Possible values are "meta", "ctrl", "alt" or "shift".
+
+shift

@@ -1,0 +1,4 @@
+title: $:/config/sq/streams/dnd-modifier-copy-node
+description: Modifier key for drag and drop to create a copy of a node. Possible values are "meta", "ctrl", "alt" or "shift".
+
+ctrl

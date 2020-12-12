@@ -304,11 +304,11 @@ title: $:/plugins/sq/streams/action-macros
 	<$wikify name="new-node" text={{$:/config/sq/streams/new-node-title}}>
 		<!-- ctrl modifier key on drop event -->
 		<!-- create a new node with text of dropped node -->
-		<$list filter="[<modifier>match[ctrl]]" variable="_NULL">
+		<$list filter="[<modifier>match{$:/config/sq/streams/dnd-modifier-copy-node}]" variable="_NULL">
 			<$action-createtiddler $basetitle=<<new-node>> text={{{ [<actionTiddler>get[text]] }}} parent=<<parent>> stream-type="default"/>
 		</$list>
 		<!-- shift modifier key on drop event -->
-		<$list filter="[<modifier>match[shift]]" variable="_NULL">
+		<$list filter="[<modifier>match{$:/config/sq/streams/dnd-modifier-transclude-node}]" variable="_NULL">
 			<!-- create new node on target, in correct position, text is a transclusion-->
 			<$action-createtiddler $basetitle=<<new-node>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} parent=<<parent>> stream-type="default"/>
 		</$list>
