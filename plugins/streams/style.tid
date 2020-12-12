@@ -38,16 +38,16 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 /* hide last droppable in a list when the last row is disabled */
-.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder /*,
+.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable */{
 	display: none;
 }
 
 /*
-.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable.tc-dragover {
-	cursor: not-allowed;
+.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable > .tc-droppable-placeholder {
+	height: 5px;
 }
 */
-
 
 .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
 	margin-left: 29px;
