@@ -4,7 +4,7 @@ title: $:/plugins/sq/streams/styles
 tags: [[$:/tags/Stylesheet]]
 
 .stream-root {
-	margin-left: -1em;
+	margin-left: -2em;
 }
 
 .stream-row {
