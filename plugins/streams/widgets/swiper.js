@@ -37,13 +37,13 @@ SwipeWidget.prototype.render = function(parent,nextSibling) {
 	this.execute();
 	// Create element
 	var tag = this.parseTreeNode.isBlock ? "div" : "span";
+	if(this.swipeTag && $tw.config.htmlUnsafeElements.indexOf(this.swipeTag) === -1) {
+		tag = this.swipeTag;
+	}	
 	var domNode = this.document.createElement(tag);
-	this.domNode = domNode;
-	//var listener = SwipeListener(domNode,{minHorizontal:100});
-/*	domNode.addEventListener('swipe', function (e) {
-      console.log('swipe', e.detail);
-	});*/
-	SwipeEvents(domNode,{"swipe-threshold": this.swipeThreshold});
+	if(this.swipeEnable) {
+		SwipeEvents(domNode,{"swipe-threshold": this.swipeThreshold});
+	}
 	parent.insertBefore(domNode,nextSibling);
 	this.renderChildren(domNode,null);
 	this.domNodes.push(domNode);
@@ -54,34 +54,23 @@ Compute the internal state of the widget
 */
 SwipeWidget.prototype.execute = function() {
 	var self = this;
-	// Get attributes that require a refresh on change
-//	this.types = this.getAttribute("events","").split(" ");
-//	this.elementTag = this.getAttribute("tag");
-	// Make child widgets
 	this.swipeThreshold = parseInt(this.getAttribute("swipethreshold","100"));
+	this.swipeEnable = this.getAttribute("enable","yes") === "yes";
+	this.swipeTag = this.getAttribute("tag");
 	this.makeChildWidgets();
-};
-
-SwipeWidget.prototype.assignDomNodeClasses = function() {
-	var classes = this.getAttribute("class","").split(" ");
-	classes.push("tc-eventcatcher");
-	this.domNode.className = classes.join(" ");	
 };
 
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
 SwipeWidget.prototype.refresh = function(changedTiddlers) {
-/*
 	var changedAttributes = this.computeAttributes();
-	if(changedAttributes["events"] || changedAttributes["tag"]) {
+	if($tw.utils.count(changedAttributes) > 0) {
 		this.refreshSelf();
 		return true;
-	} else if(changedAttributes["class"]) {
-		this.assignDomNodeClasses();
+	} else {
+		return this.refreshChildren(changedTiddlers);
 	}
-*/	
-	return this.refreshChildren(changedTiddlers);
 };
 
 exports.swiper = SwipeWidget;
