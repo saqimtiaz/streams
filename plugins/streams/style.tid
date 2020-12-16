@@ -42,6 +42,7 @@ tags: [[$:/tags/Stylesheet]]
 /* hide last droppable in a list when the last row is disabled */
 .stream-node-disabled + div.stream-row-children + div.stream-droppable.tc-droppable.stream-droppable-terminal{
 	display: none;
+	/*visibility: hidden;*/
 }
 
 .stream-node-disabled + div.stream-row-children + .stream-node-disabled + div.stream-row-children + div.stream-droppable.tc-droppable.stream-droppable-terminal{
@@ -68,6 +69,12 @@ tags: [[$:/tags/Stylesheet]]
 	border: 2px solid <<color dropzone-background>>;
 	background-color: <<color dropzone-background>>;
 }
+
+/*
+.stream-droppable-terminal.tc-drag-over .stream-droppable-spacer {
+	height: 0;
+}
+*/
 
 .stream-droppable-spacer {
 	height: 0.3em;

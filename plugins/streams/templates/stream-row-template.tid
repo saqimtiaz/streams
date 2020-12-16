@@ -22,19 +22,18 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 			tiddler=<<currentTiddler>>
 			startactions=<<node-drag-start-actions>>
 			endactions=<<node-drag-end-actions>>
-			class="stream-node-control"
+			class="stream-node-control sq-contextmenu-container"
+			data-node-title=<<currentTiddler>>
 		>
-			<div class="sq-contextmenu-container" data-node-title=<<currentTiddler>>>
-				<div class="stream-node-collapser">
-					<button type="button" class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-visibility" data-rowchildren-visibility-state=<<row-children-visibility-state>>>
-						{{$:/plugins/sq/streams/icons/node-expand-arrow}}
-					</button>
-				</div>
-				<div class="stream-node-handle-wrapper">
-					<div class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-decorator" data-node-title=<<currentTiddler>>>
-						<div class="stream-node-handle">
-							<div class="stream-node-handle-inner"/>
-						</div>
+			<div class="stream-node-collapser">
+				<button type="button" class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-visibility" data-rowchildren-visibility-state=<<row-children-visibility-state>>>
+					{{$:/plugins/sq/streams/icons/node-expand-arrow}}
+				</button>
+			</div>
+			<div class="stream-node-handle-wrapper">
+				<div class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-decorator" data-node-title=<<currentTiddler>>>
+					<div class="stream-node-handle">
+						<div class="stream-node-handle-inner"/>
 					</div>
 				</div>
 			</div>
