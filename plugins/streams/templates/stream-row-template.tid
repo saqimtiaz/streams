@@ -1,7 +1,10 @@
 title: $:/plugins/sq/streams/templates/stream-row-template
 
 \whitespace trim
-<$qualify name="row-children-visibility-state" title={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}}>
+<$qualify
+	name="row-children-visibility-state"
+	title={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}}
+>
 <$droppable 
 	actions=<<stream-drop-actions>>
 	tag="div"
