@@ -10,13 +10,13 @@ title: $:/plugins/sq/streams/nodes-list-template
 	row-edit-state=<<qualify "$:/state/sq/streams/current-edit-tiddler">>
 	drag-title-state=<<qualify "$:/state/sq/streams/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">> 
-	>
+>
 	<$eventcatcher
 		events="click"
 		selector=".stream-node-ctrl-btn"
 		actions-click=<<node-ctrl-btn-actions>>
 		tag="div"
-		>
+	>
 	<$eventcatcher
 		events="dblclick swiped-right swiped-left"
 		tag="div"
@@ -24,18 +24,18 @@ title: $:/plugins/sq/streams/nodes-list-template
 		actions-dblclick=<<toggle-row-edit-state>>
 		actions-swiped-right=<<swiped-right-actions>>
 		actions-swiped-left=<<swiped-left-actions>>
-		>
+	>
 	<$eventcatcher
 		tag="div"
 		events="contextmenu"
 		selector=".sq-contextmenu-container"
 		actions-contextmenu=<<oncontext-menu-actions>>
-		>
+	>
 	<$swiper
 		tag="div"
 		enable={{$:/config/sq/streams/swipe-enabled}}
 		swipethreshold={{$:/config/sq/streams/swipe-threshold}}
-		>
+	>
 	<div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [<currentTiddler>!has[stream-list]then[stream-newlist]] +[join[ ]] }}}>
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 		<$list filter="[all[current]match<stream-root-title>]" variable="_NULL">

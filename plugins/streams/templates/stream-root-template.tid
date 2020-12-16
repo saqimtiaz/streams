@@ -3,13 +3,19 @@ title: $:/plugins/sq/streams/templates/stream-root-template
 \whitespace trim
 <$vars dropTargetTiddler=<<currentTiddler>> >
 	<$list filter="[list[!!stream-list]!is[missing]]">
-	<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
-		{{||$:/plugins/sq/streams/templates/stream-row-template}}
-	</$set>
+		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
+			{{||$:/plugins/sq/streams/templates/stream-row-template}}
+		</$set>
 	</$list>
 	<$tiddler tiddler="">
 		<!-- to drop after the last child of any list level-->
-		<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd>> class="stream-droppable stream-droppable-terminal" disabledClass="stream-node-disabled">
+		<$droppable
+			actions=<<stream-drop-actions>>
+			tag="div"
+			enable=<<enable-dnd>>
+			class="stream-droppable stream-droppable-terminal"
+			disabledClass="stream-node-disabled"
+		>
 			<div class="tc-droppable-placeholder">
 			&nbsp;
 			</div><!-- idea only want below div with height when its a child with no more children-->
