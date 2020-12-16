@@ -2,12 +2,13 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 
 \whitespace trim
 <$set name="row-children-visibility-state" value=<<qualify "$:/state/sq/streams/visibility/$(currentTiddler)$">> >
-<div data-node-title=<<currentTiddler>> class={{{  [<enable-dnd>match[no]then[stream-node-disabled]]  [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}}>
 <$droppable 
 	actions=<<stream-drop-actions>>
 	tag="div"
-	class="stream-droppable"
-	enable={{{[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]}}} 
+	class={{{ stream-droppable [list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]] +[join[ ]]}}}
+	enable={{{[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]}}}
+	disabledClass="stream-node-disabled"
+	data-node-title=<<currentTiddler>>
 	>
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] +[join[ ]]}}} data-node-title=<<currentTiddler>>>
@@ -36,7 +37,6 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		</div>
 	</div>
 </$droppable>
-</div>
 <$reveal tag="div" type="nomatch" stateTitle=<<row-children-visibility-state>> text="hide" class="stream-row-children">
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 </$reveal>

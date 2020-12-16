@@ -26,30 +26,42 @@ tags: [[$:/tags/Stylesheet]]
 	border-left: none;
 }
 
+
 .stream-node-disabled,
 .stream-node-disabled + div.stream-row-children{
 	background-color: <<color tiddler-editor-border>>;
 }
 
-
-.stream-node-disabled.stream-row-nochildren + div.stream-row-children  {
-	/**display: none;**/
-	visibility: hidden;
+.stream-node-disabled + div.stream-row-children + div.stream-node-disabled,
+.stream-node-disabled + div.stream-row-children + div.stream-node-disabled + div.stream-row-children,
+.stream-node-disabled.stream-row-nochildren + div.stream-row-children,
+.stream-node-disabled.stream-row-nochildren + div.stream-row-children > div.stream-node-disabled {
+	background-color: transparent;
 }
 
 /* hide last droppable in a list when the last row is disabled */
-.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder /*,
-.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable */{
+.stream-node-disabled + div.stream-row-children + div.stream-droppable.tc-droppable.stream-droppable-terminal{
 	display: none;
 }
 
+.stream-node-disabled + div.stream-row-children + .stream-node-disabled + div.stream-row-children + div.stream-droppable.tc-droppable.stream-droppable-terminal{
+	display: block;
+}
+
+
 /*
-.stream-node-disabled + div.stream-row-children + .stream-droppable.tc-droppable > .tc-droppable-placeholder {
-	height: 5px;
+.stream-node-disabled.stream-row-nochildren + div.stream-row-children  {
+	visibility: hidden;
+}
+
+.stream-node-disabled.stream-row-nochildren + div.stream-row-children + div + div {
+	visibility: visible;
 }
 */
 
-.stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder {
+
+.stream-droppable.tc-droppable.tc-dragover > .tc-droppable-placeholder,
+.stream-droppable.tc-droppable.tc-dragover > div > .tc-droppable-placeholder {
 	margin-left: 29px;
 	line-height: 5px;
 	height: 5px;

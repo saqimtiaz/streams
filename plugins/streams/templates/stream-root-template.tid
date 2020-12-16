@@ -9,7 +9,7 @@ title: $:/plugins/sq/streams/templates/stream-root-template
 	</$list>
 	<$tiddler tiddler="">
 		<!-- to drop after the last child of any list level-->
-		<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd>> class="stream-droppable stream-droppable-terminal">
+		<$droppable actions=<<stream-drop-actions>> tag="div" enable=<<enable-dnd>> class="stream-droppable stream-droppable-terminal" disabledClass="stream-node-disabled">
 			<div class="tc-droppable-placeholder">
 			&nbsp;
 			</div><!-- idea only want below div with height when its a child with no more children-->
