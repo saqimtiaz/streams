@@ -4,7 +4,13 @@ title: $:/plugins/sq/streams/styles
 tags: [[$:/tags/Stylesheet]]
 
 .stream-root {
-	margin-left: -1em;
+	margin-left: -2.5em;
+}
+
+@media only screen and (max-width: 600px) {
+	.stream-root {
+		margin-left: -1em;
+	}
 }
 
 .stream-row {
@@ -94,7 +100,7 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .stream-node-control .stream-node-collapser,
-.stream-node-control .stream-node-handle-wrapper {
+.stream-node-control .stream-node-handle {
     display: flex;
     height: 13px;
     width: 13px;
@@ -104,7 +110,7 @@ tags: [[$:/tags/Stylesheet]]
     align-items: center;
 }
 
-.stream-node-control.stream-node-control-addnew .stream-node-handle-wrapper {
+.stream-node-control.stream-node-control-addnew .stream-node-handle {
 	width: 20px;
 	height: 20px;
 	margin-top: 0;
@@ -157,8 +163,8 @@ tags: [[$:/tags/Stylesheet]]
 	opacity: 0.4;
 }
 
-.stream-node-collapser button.tc-btn-invisible,
-.stream-node-collapser button.tc-btn-invisible:focus {
+.stream-node-collapser.tc-btn-invisible,
+.stream-node-collapser.tc-btn-invisible:focus {
 	outline: none;
 }
 
@@ -171,6 +177,7 @@ tags: [[$:/tags/Stylesheet]]
 	transform: rotateZ(0deg);
 }
 
+/*
 .stream-node-control .stream-node-handle-wrapper .stream-node-handle {
 	width: 13px;
 	height: 13px;
@@ -178,8 +185,9 @@ tags: [[$:/tags/Stylesheet]]
 	align-items : center;
 	justify-content: center;
 }
+*/
 
-.stream-node-control .stream-node-handle-wrapper .stream-node-handle-inner {
+.stream-node-control .stream-node-handle .stream-node-handle-inner {
     border-radius: 50%;
     width: 6px;
     height: 6px;
@@ -197,12 +205,12 @@ tags: [[$:/tags/Stylesheet]]
 }
 */
 
-.stream-row:hover .stream-node-control .stream-node-handle-wrapper:hover .stream-node-handle-inner {
+.stream-row:hover .stream-node-control .stream-node-handle:hover .stream-node-handle-inner {
 	opacity: 1;
 } 
 
 
-[data-node-title="{{$:/state/sq-context-popup!!current}}"] .stream-node-handle-wrapper .stream-node-handle-inner  {
+[data-node-title="{{$:/state/sq-context-popup!!current}}"] .stream-node-handle .stream-node-handle-inner  {
     border: 5px solid #5778d8;
     opacity: 1;
 }

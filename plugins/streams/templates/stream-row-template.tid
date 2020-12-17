@@ -25,17 +25,11 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 			class="stream-node-control sq-contextmenu-container"
 			data-node-title=<<currentTiddler>>
 		>
-			<div class="stream-node-collapser">
-				<button type="button" class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-visibility" data-rowchildren-visibility-state=<<row-children-visibility-state>>>
-					{{$:/plugins/sq/streams/icons/node-expand-arrow}}
-				</button>
-			</div>
-			<div class="stream-node-handle-wrapper">
-				<div class="tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-decorator" data-node-title=<<currentTiddler>>>
-					<div class="stream-node-handle">
-						<div class="stream-node-handle-inner"/>
-					</div>
-				</div>
+			<button type="button" class="tc-btn-invisible stream-node-ctrl-btn stream-node-collapser" data-btn-role="stream-node-visibility" data-rowchildren-visibility-state=<<row-children-visibility-state>>>
+				{{$:/plugins/sq/streams/icons/node-expand-arrow}}
+			</button>
+			<div class="stream-node-handle tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-decorator" data-node-title=<<currentTiddler>>>
+					<div class="stream-node-handle-inner"/>
 			</div>
 		</$draggable>
 		<div class="stream-node-block">
