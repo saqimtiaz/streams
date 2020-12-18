@@ -15,6 +15,10 @@
 	margin-top: 30px;
 }
 
+.sq-contextmenu-alignright {
+	transform: translate3d(-100%,0,0);
+}
+
 .sq-contextmenu .tc-menu-list-item {
 	padding: 0 18px;
 	line-height: 24px;

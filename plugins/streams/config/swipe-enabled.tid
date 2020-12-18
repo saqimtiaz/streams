@@ -1,4 +1,4 @@
 title: $:/config/sq/streams/swipe-enabled
-description: Set to "yes" enable swipe to indent/unindent on touch devices.
+description: Set to "yes" enable swipe on touch devices.
 
 yes
