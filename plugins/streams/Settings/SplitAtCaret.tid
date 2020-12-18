@@ -1,0 +1,5 @@
+configtiddler: $:/config/sq/streams/split-at-caret
+tags: $:/tags/streams/Settings
+title: $:/plugins/sq/streams/Settings/SplitAtCaret
+
+{{||$:/plugins/sq/streams/ui/templates/settings/input-switch}}

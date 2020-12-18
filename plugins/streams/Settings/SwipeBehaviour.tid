@@ -1,0 +1,16 @@
+configtiddler: $:/config/sq/streams/swipe-behaviour
+option-names: [[Show ContextMenu]] [[Indent / Un-indent]]
+option-values: contextmenu indent
+tags: $:/tags/streams/Settings
+title: $:/plugins/sq/streams/Settings/SwipeBehaviour
+
+<$vars currentTiddler={{!!configtiddler}}>
+<label class="squi-form-label"><$link>{{!!caption}}</$link></label>
+</$vars>
+<$vars cnt={{{[enlist{!!option-names}count[]]}}}>
+<$select tiddler={{!!configtiddler}} class="squi-form-select">
+<$list filter="[range<cnt>]" variable="index">
+<option value={{{[enlist{!!option-values}nth<index>]}}}><$text text={{{[enlist{!!option-names}nth<index>]}}}/></option>
+</$list>
+</$select>
+</$vars>

@@ -1,8 +1,5 @@
-created: 20200528183035516
-modified: 20200528184917861
-tags: 
 title: $:/config/sq/streams/stream-enable-filter
-type: text/vnd.tiddlywiki
 description: Filter that determines which tiddlers get the add node button at the bottom
+caption: Filter to enable Streams
 
 [!is[shadow]]

@@ -1,0 +1,5 @@
+configtiddler: $:/config/sq/streams/node-split-regexp
+tags: $:/tags/streams/Settings
+title: $:/plugins/sq/streams/Settings/NodeSplitRegexp
+
+{{||$:/plugins/sq/streams/ui/templates/settings/input}}

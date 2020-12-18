@@ -1,4 +1,5 @@
 title: $:/config/sq/streams/swipe-threshold
 description: Distance in pixels that triggers a swipe, defaults to 100
+caption: Swipe threshold in pixels
 
 100

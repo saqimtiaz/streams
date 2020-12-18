@@ -1,8 +1,5 @@
-created: 20200816133119526
-modified: 20200816133424674
-tags: 
 title: $:/config/sq/streams/prompt-merge-with-previous
 description: Set to "yes" to be prompted before merging a node with the previous node
-type: text/vnd.tiddlywiki
+caption: Prompt before merging with previous
 
 yes

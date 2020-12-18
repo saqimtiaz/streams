@@ -1,4 +1,5 @@
 title: $:/config/sq/streams/enable-breadcrumbs
-description: set to yes to enable breadcrumbs in nodes
+description: Set to yes to enable breadcrumbs in nodes
+caption: Show breadcrumbs
 
 yes

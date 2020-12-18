@@ -1,8 +1,5 @@
-created: 20200816133119526
-modified: 20200816133424674
-tags: 
-title: $:/config/sq/streams/prompt-split-to-multiple
+ title: $:/config/sq/streams/prompt-split-to-multiple
 description: Set to "yes" to be prompted before splitting a node to multiple nodes
-type: text/vnd.tiddlywiki
+caption: Prompt before creating multiple nodes
 
 yes

@@ -1,8 +1,5 @@
-created: 20200816133119526
-modified: 20200816133424674
-tags: 
-title: $:/config/sq/streams/split-at-caret
+ title: $:/config/sq/streams/split-at-caret
 description: Set to "yes" to split text at caret position on saving a node
-type: text/vnd.tiddlywiki
+caption: Split text at caret position
 
 yes

@@ -1,0 +1,5 @@
+configtiddler: $:/config/sq/streams/new-node-tiddler-template
+tags: $:/tags/streams/Settings
+title: $:/plugins/sq/streams/Settings/NewNodeTiddlerTemplate
+
+{{||$:/plugins/sq/streams/ui/templates/settings/input}}

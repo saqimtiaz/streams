@@ -1,5 +1,3 @@
-created: 20200529191923702
-modified: 20200529192753844
-tags: 
 title: $:/config/sq/streams/new-node-tiddler-template
-type: text/vnd.tiddlywiki
+description: Configuration setting as to which tiddler to use as a template for new nodes
+caption: Config for tiddler to use as new node template

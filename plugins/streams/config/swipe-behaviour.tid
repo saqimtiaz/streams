@@ -1,4 +1,5 @@
 title: $:/config/sq/streams/swipe-behaviour
 description: Set to "contextmenu" or "indent"
+caption: Swipe behaviour
 
 contextmenu

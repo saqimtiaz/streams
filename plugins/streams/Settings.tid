@@ -1,0 +1,9 @@
+title: $:/plugins/sq/streams/Settings
+
+<div class="sq-list-group sq-list-group-box-shadow sq-list-stream-settings">
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/streams/Settings]]">
+<div class="sq-list-group-item">
+<$transclude/>
+</div>
+</$list>
+</div>

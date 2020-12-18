@@ -1,4 +1,5 @@
 title: $:/config/sq/streams/swipe-enabled
 description: Set to "yes" enable swipe on touch devices.
+caption: Enable swipe
 
 yes

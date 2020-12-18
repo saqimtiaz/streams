@@ -1,8 +1,5 @@
-created: 20200528183035516
-modified: 20200528184917861
-tags: 
 title: $:/config/sq/streams/node-split-regexp
-type: text/vnd.tiddlywiki
 description: Regular expression that is used to split longform text into multiple tiddlers
+caption: Regular expression used to split text
 
 \n\n
