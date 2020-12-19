@@ -220,7 +220,7 @@ tags: [[$:/tags/Stylesheet]]
 
 .stream-node-block {
     overflow-wrap: break-word;
-	max-width: 550px;
+	max-width: {{$:/config/sq/streams/node-max-width}}px;
     min-height: calc(1.5em + 8px);
     box-sizing: border-box;
     margin-top: -1px;
@@ -260,7 +260,7 @@ span.sq-breadcrumbs-fragment {
     overflow: hidden;
     display: inline-block;
     text-overflow: ellipsis;
-    max-width: 500px;
+    max-width: calc({{$:/config/sq/streams/node-max-width}}px - 50px);
 }
 
 span.sq-breadcrumbs-fragment a.tc-tiddlylink {
