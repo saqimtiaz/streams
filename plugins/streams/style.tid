@@ -86,11 +86,13 @@ tags: [[$:/tags/Stylesheet]]
 	height: 0.3em;
 }
 
-[data-node-title="{{$:/state/sq-context-popup!!current}}"],
-[data-node-title="{{$:/state/sq-context-popup!!current}}"] + div{
+<$vars currentTiddler={{{[prefix[$:/state/sq-context-popup]]}}}>
+[data-node-title="{{!!current}}"],
+[data-node-title="{{!!current}}"] + div{
 	background: <<color notification-background>>;
 	color: <<color message-foreground>>;
 }
+</$vars>
 
 .stream-node-control {
 	display: flex;
