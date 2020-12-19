@@ -1,16 +1,10 @@
 title: $:/plugins/sq/streams/Settings/config
 caption: Configuration
 
-<div class="sq-list-group sq-list-group-box-shadow sq-list-stream-settings">
-<$list filter="[all[shadows+tiddlers]tag[$:/tags/streams/Settings]]">
-<div class="sq-list-group-item">
-<$transclude/>
-</div>
-</$list>
-</div>
+<$edit-text tiddler="$:/state/sq/streams/settings/search" class="sq-search-input" default="" tag="input" type="search" placeholder="search..."/>
 
 <div class="sq-list-group sq-list-group-box-shadow sq-list-stream-settings">
-<$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams]] :filter[has[settings-template]]">
+<$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams]] :filter[has[settings-template]] +[search:title,caption,description{$:/state/sq/streams/settings/search}]">
 <div class="sq-list-group-item">
 <$transclude tiddler={{!!settings-template}}/>
 </div>
