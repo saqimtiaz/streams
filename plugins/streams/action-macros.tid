@@ -16,9 +16,11 @@ title: $:/plugins/sq/streams/action-macros
 \end
 
 \define swiped-left-actions()
+<$list filter="[{$:/config/sq/streams/swipe-behaviour}match[indent]]" variable="_NULL">
 <$vars currentTiddler=<<dom-data-node-title>>>
 <<unindent-node-actions>>
 </$vars>
+</$list>
 \end
 
 
