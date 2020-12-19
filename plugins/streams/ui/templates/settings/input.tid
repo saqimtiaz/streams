@@ -1,6 +1,4 @@
 title: $:/plugins/sq/streams/ui/templates/settings/input
 
-<$vars currentTiddler={{!!configtiddler}}>
 <label class="squi-form-label"><$link>{{!!caption}}</$link></label>
 <$edit-text tag="input" class="squi-form-input"/>
-</$vars>
