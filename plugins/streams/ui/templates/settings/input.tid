@@ -1,4 +1,4 @@
 title: $:/plugins/sq/streams/ui/templates/settings/input
 
-<label class="squi-form-label"><$link>{{!!caption}}</$link></label>
+<label class="squi-form-label"><$link tooltip={{!!description}}>{{!!caption}}</$link></label>
 <$edit-text tag="input" class="squi-form-input"/>

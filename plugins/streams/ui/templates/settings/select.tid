@@ -1,6 +1,6 @@
 title: $:/plugins/sq/streams/ui/templates/settings/select
 
-<label class="squi-form-label"><$link>{{!!caption}}</$link></label>
+<label class="squi-form-label"><$link tooltip={{!!description}}>{{!!caption}}</$link></label>
 <$vars cnt={{{[enlist{!!option-names}count[]]}}}>
 <$select class="squi-form-select">
 <$list filter="[range<cnt>]" variable="index">

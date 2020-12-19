@@ -1,5 +1,5 @@
 title: $:/config/sq/streams/swipe-behaviour
-description: Set to "contextmenu" or "indent"
+description: Choose whether swipe should show a contextmenu, or be used to indent/unindent nodes.
 caption: Swipe behaviour
 settings-template: $:/plugins/sq/streams/ui/templates/settings/select
 option-names: [[Show ContextMenu]] [[Indent / Un-indent]]

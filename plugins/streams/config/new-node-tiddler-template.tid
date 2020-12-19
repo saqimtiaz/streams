@@ -1,4 +1,4 @@
 title: $:/config/sq/streams/new-node-tiddler-template
-description: Configuration setting as to which tiddler to use as a template for new nodes
+description: T iddler to use as a template for new nodes
 caption: Tiddler to use as new node template
 settings-template: $:/plugins/sq/streams/ui/templates/settings/input
