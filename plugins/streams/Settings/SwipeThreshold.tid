@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/swipe-threshold
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/SwipeThreshold
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input}}

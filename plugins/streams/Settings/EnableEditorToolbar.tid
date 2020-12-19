@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/enable-edit-toolbar
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/EnableEditorToolbar
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input-switch}}

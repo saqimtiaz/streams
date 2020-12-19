@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/prompt-split-to-multiple
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/PromptSplitToMultiple
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input-switch}}

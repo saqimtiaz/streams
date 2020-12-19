@@ -7,3 +7,11 @@ title: $:/plugins/sq/streams/Settings
 </div>
 </$list>
 </div>
+
+<div class="sq-list-group sq-list-group-box-shadow sq-list-stream-settings">
+<$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams]] :filter[has[settings-template]]">
+<div class="sq-list-group-item">
+<$transclude tiddler={{!!settings-template}}/>
+</div>
+</$list>
+</div>

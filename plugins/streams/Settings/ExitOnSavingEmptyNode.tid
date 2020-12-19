@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/exit-on-saving-empty-node
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/ExitOnSavingEmptyNode
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input-switch}}

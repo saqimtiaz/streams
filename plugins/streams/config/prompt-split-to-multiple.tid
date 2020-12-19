@@ -1,5 +1,6 @@
  title: $:/config/sq/streams/prompt-split-to-multiple
 description: Set to "yes" to be prompted before splitting a node to multiple nodes
 caption: Prompt before creating multiple nodes
+settings-template: $:/plugins/sq/streams/ui/templates/settings/input-switch
 
 yes

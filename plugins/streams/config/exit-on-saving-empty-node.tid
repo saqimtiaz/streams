@@ -1,5 +1,6 @@
 title: $:/config/sq/streams/exit-on-saving-empty-node
 description: Set to "yes" to exit edit mode on saving an empty node
 caption: Exit edit mode on saving a node
+settings-template: $:/plugins/sq/streams/ui/templates/settings/input-switch
 
 no

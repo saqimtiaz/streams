@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/new-node-title
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/NewNodeTitle
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input}}

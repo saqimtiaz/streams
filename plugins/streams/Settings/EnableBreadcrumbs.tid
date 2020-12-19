@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/enable-breadcrumbs
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/EnableBreadcrumbs
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input-switch}}

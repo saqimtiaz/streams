@@ -1,5 +1,6 @@
 title: $:/config/sq/streams/node-split-regexp
 description: Regular expression that is used to split longform text into multiple tiddlers
 caption: Regular expression used to split text
+settings-template: $:/plugins/sq/streams/ui/templates/settings/input
 
 \n\n

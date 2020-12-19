@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/stream-enable-filter
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/StreamEnableFilter
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input}}

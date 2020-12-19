@@ -1,5 +1,0 @@
-configtiddler: $:/config/sq/streams/swipe-enabled
-tags: $:/tags/streams/Settings
-title: $:/plugins/sq/streams/Settings/EnableSwipe
-
-{{||$:/plugins/sq/streams/ui/templates/settings/input-switch}}
