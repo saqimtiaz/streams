@@ -1,0 +1,12 @@
+title: $:/plugins/sq/streams/Settings/shortcuts
+caption: Shortcuts
+
+\import $:/core/ui/ControlPanel/KeyboardShortcuts
+
+<table>
+<tbody>
+<$list filter="[all[shadows+tiddlers]prefix[$:/config/ShortcutInfo/streams-]removeprefix[$:/config/ShortcutInfo/]]" variable="shortcutName">
+<<shortcut-item>>
+</$list>
+</tbody>
+</table>
