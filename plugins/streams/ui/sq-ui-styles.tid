@@ -76,11 +76,6 @@ div.squi-form-label {
 	
 }
 
-/** row wrapper
-
-display: flex;
-align-items: center;
-**/
 /*** checkbox switches end ***/
 
 /** form select elements **/
@@ -96,7 +91,7 @@ align-items: center;
 	max-width: 100%;
 	outline: none;
 	padding: 6px 21px 6px 8px;
-	width: 200px;
+/*	width: 200px;*/
 }
 
 input.squi-form-input {

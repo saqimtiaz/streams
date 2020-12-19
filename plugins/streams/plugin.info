@@ -3,8 +3,8 @@
 	"description": "Streams - a different way to write",
 	"plugin-type": "plugin",	
 	"author": "Saq Imtiaz",
-	"version": "0.1.20",
-	"core-version": ">=5.1.22",
+	"version": "0.2.00 beta",
+	"core-version": ">=5.1.23",
 	"list": "Settings",
 	"source": "https://saqimtiaz.github.io/streams/"
 }

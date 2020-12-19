@@ -1,4 +1,8 @@
 title: $:/config/sq/streams/dnd-modifier-copy-node
 description: Modifier key for drag and drop to create a copy of a node. Possible values are "meta", "ctrl", "alt" or "shift".
+settings-template: $:/plugins/sq/streams/ui/templates/settings/select
+option-names: ctrl alt shift meta
+option-values: ctrl alt shift meta
+caption: Modifier key to copy a node when dragging.
 
 ctrl
