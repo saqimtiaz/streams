@@ -211,11 +211,12 @@ tags: [[$:/tags/Stylesheet]]
 	opacity: 1;
 } 
 
-
-[data-node-title="{{$:/state/sq-context-popup!!current}}"] .stream-node-handle .stream-node-handle-inner  {
+<$vars currentTiddler={{{[prefix[$:/state/sq-context-popup]]}}}>
+[data-node-title="{{!!current}}"] .stream-node-handle .stream-node-handle-inner  {
     border: 5px solid #5778d8;
     opacity: 1;
 }
+</$vars>
 
 
 .stream-node-block {
