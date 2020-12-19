@@ -3,4 +3,4 @@ description: Distance in pixels that triggers a swipe, defaults to 100
 caption: Swipe threshold in pixels
 settings-template: $:/plugins/sq/streams/ui/templates/settings/input
 
-100
+70
