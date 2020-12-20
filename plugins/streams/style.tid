@@ -256,6 +256,16 @@ tags: [[$:/tags/Stylesheet]]
 	margin-bottom:0;
 }
 
+.stream-node-block > h1:first-child,
+.stream-node-block > h2:first-child,
+.stream-node-block > h3:first-child,
+.stream-node-block > h4:first-child,
+.stream-node-block > h5:first-child,
+.stream-node-block > h6:first-child {
+	margin-top:0;
+	font-weight: bold;
+}
+
 span.sq-breadcrumbs-fragment {
     white-space: nowrap;
     overflow: hidden;
