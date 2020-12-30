@@ -248,22 +248,24 @@ tags: [[$:/tags/Stylesheet]]
 	margin-bottom: 0.6em;
 }
 
-.stream-node-block p:first-child {
-	margin-top:0;
-}
-
-.stream-node-block p:last-child {
-	margin-bottom:0;
-}
-
 .stream-node-block > h1:first-child,
 .stream-node-block > h2:first-child,
 .stream-node-block > h3:first-child,
 .stream-node-block > h4:first-child,
 .stream-node-block > h5:first-child,
-.stream-node-block > h6:first-child {
+.stream-node-block > h6:first-child,
+.stream-node-block p:first-child {
 	margin-top:0;
-	font-weight: bold;
+}
+
+.stream-node-block > h1:last-child,
+.stream-node-block > h2:last-child,
+.stream-node-block > h3:last-child,
+.stream-node-block > h4:last-child,
+.stream-node-block > h5:last-child,
+.stream-node-block > h6:last-child,
+.stream-node-block p:last-child {
+	margin-bottom:0;
 }
 
 span.sq-breadcrumbs-fragment {
