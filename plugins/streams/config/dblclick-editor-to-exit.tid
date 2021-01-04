@@ -1,0 +1,6 @@
+title: $:/config/sq/streams/dblclick-editor-to-exit
+description: Enable double clicking inside the editor to exit
+caption: Double click in editor to exit editing
+settings-template: $:/plugins/sq/streams/ui/templates/settings/input-switch
+
+yes
