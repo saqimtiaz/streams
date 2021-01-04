@@ -4,9 +4,11 @@ caption: Configuration
 <$edit-text tiddler="$:/state/sq/streams/settings/search" class="sq-search-input" default="" tag="input" type="search" placeholder="search..."/>
 
 <div class="sq-list-group sq-list-group-box-shadow sq-list-stream-settings">
-<$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams]] :filter[has[settings-template]] +[search:title,caption,description{$:/state/sq/streams/settings/search}]">
+<$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams]has[settings-template]]  +[search:title,caption,description{$:/state/sq/streams/settings/search}]">
+<$list filter={{{[{!!condition}!is[blank]] :else[{!!title}]}}} variable="list-condition">
 <div class="sq-list-group-item">
 <$transclude tiddler={{!!settings-template}}/>
 </div>
+</$list>
 </$list>
 </div>

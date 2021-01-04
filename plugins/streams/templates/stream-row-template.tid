@@ -35,7 +35,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		<div class="stream-node-block">
 			<$list filter="[<row-edit-state>get[text]!is[blank]else[]match<currentTiddler>]" variable="NULL" emptyMessage="""<$transclude mode="block"/>""">
 				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
-					{{||$:/plugins/sq/streams/framed-editor-template}}
+					{{||$:/plugins/sq/streams/editor-template}}
 				</$keyboard-plus>			
 			</$list>
 		</div>

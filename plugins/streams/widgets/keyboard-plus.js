@@ -40,24 +40,35 @@ KeyboardWidget.prototype.render = function(parent,nextSibling) {
 	
 	// Add a keyboard event handler
 	domNode.addEventListener("keydown",function (event) {
-	
-		var key, action, preventDefault;
-		for(var i=0; i<self.shortcutTiddlers.length; i++) {
-			if(self.shortcutParsedList[i] !== undefined && $tw.keyboardManager.checkKeyDescriptors(event,self.shortcutParsedList[i])) {
-				key = self.shortcutParsedList[i];
-				action = self.shortcutActionList[i];
-				preventDefault = self.shortcutPreventDefaultList[i];
-			}
+			// CM triggers two events
+			// second event has:
+			//		defaultPrevented : true
+			//		detail: 0
+			// 		eventPhase 3 (instead of 2)
+			// 		isComposing : false
+			if(!event.defaultPrevented) {
+				var key, action, preventDefault;
+				for(var i=0; i<self.shortcutTiddlers.length; i++) {
+					if(self.shortcutParsedList[i] !== undefined && $tw.keyboardManager.checkKeyDescriptors(event,self.shortcutParsedList[i])) {
+						key = self.shortcutParsedList[i];
+						action = self.shortcutActionList[i];
+						preventDefault = self.shortcutPreventDefaultList[i];
+						break;
+					}
+				}
+				if(key !== undefined) {
+					if(preventDefault) {
+						event.preventDefault();
+					}
+					Object.defineProperty(event,"sqHandled",{value:true});
+					//event.sqHandled = true;
+					event.stopPropagation();
+					//event.stopImmediatePropagation();
+					self.invokeActionString(action,self,event);
+					return true;
+				}
+				return false;
 		}
-		if(key !== undefined) {
-			if(preventDefault) {
-				event.preventDefault();
-			}
-			event.stopPropagation();
-			self.invokeActionString(action,self,event);
-			return true;
-		}
-		return false;	
 	},false);
 	
 	// Insert element
@@ -134,14 +145,6 @@ KeyboardWidget.prototype.invokeActionString = function(actions,triggeringWidget,
 	} else {
 		selection = window.getSelection();
 	}
-	
-	if(activeElement && selection && ((activeElement.tagName === "INPUT" && activeElement.type === "TEXT") || activeElement.tagName === "TEXTAREA")) {
-		variables["selectionStart"] = activeElement.selectionStart.toString();
-		variables["selectionEnd"] = activeElement.selectionEnd.toString();
-		variables["selection"] = selection.toString();
-	}
-
-	/*
 
 	if(window.CodeMirror && document.activeElement.closest(".CodeMirror")) {
 		var cm = document.activeElement.closest(".CodeMirror").CodeMirror;
@@ -149,12 +152,17 @@ KeyboardWidget.prototype.invokeActionString = function(actions,triggeringWidget,
 		var startRange = cm.getRange({"line":0,"ch":0},{"line":cursor.line,"ch":cursor.ch});
 		var selectionStart = startRange.length;
 		var selection = cm.getSelection();
-		var selectionEnd = selectionStart + selection.length();
+		var selectionEnd = selectionStart + selection.length;
+		
+		variables["selectionStart"] = startRange.length.toString();
+		variables["selectionEnd"] = (selectionStart + selection.length).toString();
+		variables["selection"] = cm.getSelection().toString();
+	} else if(activeElement && selection && ((activeElement.tagName === "INPUT" && activeElement.type === "TEXT") || activeElement.tagName === "TEXTAREA")) {
+		variables["selectionStart"] = activeElement.selectionStart.toString();
+		variables["selectionEnd"] = activeElement.selectionEnd.toString();
+		variables["selection"] = selection.toString();
 	}
 
-	*/
-
-	
 	//this.selection_original_invokeActionString(actions,triggeringWidget,event,variables);
 	Object.getPrototypeOf(Object.getPrototypeOf(this)).invokeActionString.call(this,actions,triggeringWidget,event,variables);
 }
