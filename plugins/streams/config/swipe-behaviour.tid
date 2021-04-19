@@ -4,5 +4,6 @@ caption: Swipe behaviour
 settings-template: $:/plugins/sq/streams/ui/templates/settings/select
 option-names: [[Show ContextMenu]] [[Indent / Un-indent]]
 option-values: contextmenu indent
+condition: [[$:/config/sq/streams/swipe-behaviour-animated]!is[missing]]
 
 contextmenu
