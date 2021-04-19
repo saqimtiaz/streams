@@ -5,7 +5,7 @@ title: $:/plugins/sq/streams/action-macros
 \define swiped-right-actions()
 <$list filter="[{$:/config/sq/streams/swipe-behaviour}match[contextmenu]]" variable="_NULL">
 <$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-node-title>>/>
-<$action-setfield $tiddler=<<contextmenu-state>> $field="position" $value="right"/>
+<$action-setfield $tiddler=<<contextmenu-state>> $field="position" $value={{$:/config/sq/streams/swipe-contextmenu-position}}/>
 <$action-popup $coords=<<tv-popup-coords>> $state=<<contextmenu-state>>/>
 </$list>
 <$list filter="[{$:/config/sq/streams/swipe-behaviour}match[indent]]" variable="_NULL">
@@ -26,7 +26,7 @@ title: $:/plugins/sq/streams/action-macros
 
 \define oncontext-menu-actions()
 <$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-node-title>>/>
-<$action-setfield $tiddler=<<contextmenu-state>> $field="position" $value="left"/>
+<$action-setfield $tiddler=<<contextmenu-state>> $field="position" $value={{$:/config/sq/streams/swipe-contextmenu-position}}/>
 <$action-popup $coords=<<tv-popup-coords>> $state=<<contextmenu-state>>/>
 \end
 

@@ -1,0 +1,9 @@
+title: $:/config/sq/streams/swipe-contextmenu-position
+description: Position of context menu shown on swiping.
+caption: Position of context menu shown on swiping.
+settings-template: $:/plugins/sq/streams/ui/templates/settings/select
+option-names: [[Right]] [[Left]]
+option-values: right left
+condition: [[$:/config/sq/streams/swipe-enabled]get[text]match[yes]]
+
+right
