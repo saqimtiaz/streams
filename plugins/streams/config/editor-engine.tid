@@ -4,6 +4,6 @@ caption: Editor to use for Streams
 settings-template: $:/plugins/sq/streams/ui/templates/settings/select
 option-names: [[Default]] [[CodeMirror]]
 option-values: text codemirror
-condition: [[$:/plugins/tiddlywiki/codemirror]!is[missing]]
+condition: [[$:/plugins/tiddlywiki/codemirror]!is[missing]] :filter[lookup:no[$:/config/Plugins/Disabled/]match[no]]
 
 text
