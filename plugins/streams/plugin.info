@@ -1,7 +1,8 @@
 {
 	"title": "$:/plugins/sq/streams",
 	"description": "Streams - a different way to write",
-	"plugin-type": "plugin",	
+	"plugin-type": "plugin",
+    "plugin-priority": "1",
 	"author": "Saq Imtiaz",
 	"version": "0.2.00 beta",
 	"core-version": ">=5.1.23",
