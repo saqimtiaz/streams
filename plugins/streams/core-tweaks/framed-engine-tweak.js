@@ -19,12 +19,15 @@ FramedEngine.prototype.focus = function() {
 			this.domNode.select();
 		}
 	}
+	/*
 	if(!this.setupDblClick) {
 		this.domNode.addEventListener("dblclick",this.propagateDblClick.bind(this));
 		this.setupDblClick = true;
 	}
+	*/
 }
 
+/*
 FramedEngine.prototype.propagateDblClick = function(event) {
 	if(this.widget.wiki.getTiddlerText("$:/config/sq/streams/dblclick-editor-to-exit") === "yes") {
 		var newEvent = this.widget.document.createEventObject ? this.widget.document.createEventObject() : this.widget.document.createEvent("Events");
@@ -41,3 +44,4 @@ FramedEngine.prototype.propagateDblClick = function(event) {
 	}
 	return false;
 }
+*/
