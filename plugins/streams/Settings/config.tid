@@ -1,10 +1,14 @@
 title: $:/plugins/sq/streams/Settings/config
 caption: Configuration
 
+\define sortBySettingsGroupFilter()
+[get[settings-group]!is[blank]else[!general]] [get[settings-group-header]!is[blank]else[99]] +[join[]]
+\end
+
 <$edit-text tiddler="$:/state/sq/streams/settings/search" class="sq-search-input" default="" tag="input" type="search" placeholder="search..."/>
 
 <div class="sq-list-group sq-list-group-box-shadow sq-list-stream-settings">
-<$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams]has[settings-template]]  +[search:title,caption,description{$:/state/sq/streams/settings/search}]">
+<$list filter="[all[shadows+tiddlers]prefix[$:/config/sq/streams]has[settings-template]]  +[search:title,caption,description{$:/state/sq/streams/settings/search}] +[sortsub<sortBySettingsGroupFilter>]">
 <$list filter={{{[{!!condition}!is[blank]] :else[{!!title}]}}} variable="list-condition">
 <div class="sq-list-group-item">
 <$transclude tiddler={{!!settings-template}}/>

@@ -2,5 +2,7 @@ title: $:/config/sq/streams/swipe-enabled
 description: Enable swipe to show context menu on touch devices.
 caption: Enable swipe to show context menu on nodes.
 settings-template: $:/plugins/sq/streams/ui/templates/settings/input-switch
+settings-group: swipe
+settings-group-header: 0
 
 yes
