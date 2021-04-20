@@ -26,7 +26,7 @@ label.squi-form-switch span {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #ccc;
+	background-color: <<color tiddler-controls-foreground>>;
 	-webkit-transition: .2s;
 	transition: .2s;
 }
@@ -39,10 +39,10 @@ label.squi-form-switch span:before {
 	left: -1px;
 	top: -4px;
 	bottom: 4px;
-	background-color: white;
+	background-color: <<color background>>;
 	-webkit-transition: .2s;
 	transition: .2s;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.4);
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.7);
 }
 
 label.squi-form-switch input:checked + span {
@@ -95,7 +95,7 @@ div.squi-form-label {
 }
 
 input.squi-form-input {
-	border: 1px solid #ccc;
+	border: 1px solid <<color tiddler-controls-foreground>>;
 	border-radius: 3px;
 	background-color: rgb(241,243,244);
 	padding: 6px;
@@ -126,7 +126,7 @@ input.squi-form-input:focus {
 	position: relative;
 	display: block;
 	padding: 0.75rem 1.25rem;
-	background-color: #fff;
+	background-color:  <<color background>>;
 	border: 1px solid rgba(0,0,0,.125);
 	width: 100%;
 	color: #495057;
@@ -166,7 +166,7 @@ input.sq-search-input {
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
-    background-color: #fff;
+    background-color:  <<color background>>;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
@@ -176,7 +176,7 @@ input.sq-search-input {
 
 input.sq-search-input:focus {
 color: #495057;
-    background-color: #fff;
+    background-color:  <<color background>>;
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
