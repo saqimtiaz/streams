@@ -25,7 +25,7 @@ exports["get-stream-nodes"] = function(source,operator,options) {
 				results.push(nodeTitle);
 				var streamList = $tw.utils.parseStringArray(node.fields["stream-list"]);
 				$tw.utils.each(streamList,function(streamListNodeTitle) {
-					var streamListNode = options.widget.wiki.getTiddler(streamListNodeTitle);
+					var streamListNode = options.wiki.getTiddler(streamListNodeTitle);
 					if(streamListNode) {
 						processNode(streamListNode,streamListNodeTitle);
 					}
