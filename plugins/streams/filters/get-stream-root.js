@@ -27,28 +27,24 @@ exports["get-stream-root"] = function(source,operator,options) {
 	source(function(tiddler,title) {
 		if(tiddler && tiddler.fields["parent"] && tiddler.fields["stream-type"]) {
 			var parentTiddler = tiddler;
-			while(parentTiddler && parentTiddler.fields.parent) {
-				if(includeAll) {
-					if(tiddler.fields.title.startsWith(parentTiddler.fields["title"]) || !matchTitles ) {
-						//$tw.utils.pushTop(results,parentTiddler.fields.title);
+			while(parentTiddler) {
+					if(tiddler.fields.title.startsWith(parentTiddler.fields["title"].split("/")[0]) || !matchTitles ) {
 						results.unshift(parentTiddler.fields.title);
 					} else {
-						//results.push(title);
-						results.unshift(title);
+						break;
 					}
-				}
-				parentTiddler = options.wiki.getTiddler(parentTiddler.fields.parent);
-			}
-			if(!includeAll) {
-				if(parentTiddler && parentTiddler.fields && ( tiddler.fields.title.startsWith(parentTiddler.fields["title"]) || !matchTitles ) ) {
-					$tw.utils.pushTop(results,parentTiddler.fields.title);
+				if(parentTiddler.fields.parent) {	
+					parentTiddler = options.wiki.getTiddler(parentTiddler.fields.parent);
 				} else {
-					results.push(title);
-				}				
+					break;
+				}
 			}
 		} else {
 			results.push(title);
 		}
+		if(!includeAll) {
+			results.splice(1);
+		}		
 	});
 	return results;
 };
