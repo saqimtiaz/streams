@@ -1,0 +1,8 @@
+created: 20210105102303393
+modified: 20210429194223598
+parent: Streams 0.2 improvements/20210105102252487
+stream-type: default
+title: Streams 0.2 improvements/20210105102303392
+type: text/vnd.tiddlywiki
+
+If the ~CodeMirror plugin is installed, there is a configuration option in the Streams settings to choose the editor to use for Streams nodes.

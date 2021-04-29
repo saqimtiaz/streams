@@ -1,0 +1,9 @@
+created: 20201219204621647
+modified: 20210429194223501
+parent: Streams 0.2 improvements/20201219204608582
+stream-list: [[Streams 0.2 improvements/20201219204643352]] [[Streams 0.2 improvements/20201219204712914]] [[Streams 0.2 improvements/20210108180853983]]
+stream-type: default
+title: Streams 0.2 improvements/20201219204621646
+type: text/vnd.tiddlywiki
+
+There are significant performance improvements. Very large streams now render over 300% faster. 

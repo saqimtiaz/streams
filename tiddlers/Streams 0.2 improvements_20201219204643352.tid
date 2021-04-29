@@ -1,0 +1,8 @@
+created: 20201219204643353
+modified: 20210429194223506
+parent: Streams 0.2 improvements/20201219204621646
+stream-type: default
+title: Streams 0.2 improvements/20201219204643352
+type: text/vnd.tiddlywiki
+
+This has involved drastically simplifying the HTML structure of nodes, as well as optimizing the code used for drag and drop and the context menu.

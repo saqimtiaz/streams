@@ -1,0 +1,8 @@
+created: 20201219205248213
+modified: 20210429194223521
+parent: Streams 0.2 improvements/20201219205205878
+stream-type: default
+title: Streams 0.2 improvements/20201219205248212
+type: text/vnd.tiddlywiki
+
+The context menu has been extended with //indent// and //unindent// options.

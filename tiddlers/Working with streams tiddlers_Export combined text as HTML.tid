@@ -1,0 +1,20 @@
+created: 20210423092540163
+modified: 20210423093114566
+parent: Working with streams tiddlers
+stream-list: 
+stream-type: default
+title: Working with streams tiddlers/Export combined text as HTML
+type: text/vnd.tiddlywiki
+
+Similarly to export the combined text of the nodes as HTML you can use the `<$wikify>` widget:
+
+```
+<$button> export as HTML
+<$wikify name="text" text="""<$list filter="[<myTiddler>get-stream-nodes[]]">
+<$transclude mode=block/>
+</$list>""" output="html">
+<$action-setfield $tiddler="report" text=<<text>>/>
+</$wikify>
+</$button>
+```
+

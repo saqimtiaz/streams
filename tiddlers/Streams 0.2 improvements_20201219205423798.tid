@@ -1,0 +1,8 @@
+created: 20201219205423799
+modified: 20210429194223526
+parent: Streams 0.2 improvements/20201219204608582
+stream-type: default
+title: Streams 0.2 improvements/20201219205423798
+type: text/vnd.tiddlywiki
+
+A lot of tweaks to the core code and custom widgets previously included in Streams have been deprecated as they are now a part of the ~TiddlyWiki core, making the plugin smaller and lighter to use despite the addition of new features.

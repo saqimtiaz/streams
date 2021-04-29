@@ -1,0 +1,19 @@
+created: 20210423092258208
+modified: 20210423093107659
+parent: Working with streams tiddlers
+stream-type: default
+title: Working with streams tiddlers/Export combined text
+type: text/vnd.tiddlywiki
+
+This is an example of a button that can export the content of the nodes of a tiddler whose title is in the variable `myTiddler` and save the combined text to a single tiddler:
+
+```
+<$button> save to a single tiddler
+<$vars lb="
+
+">
+<$action-setfield $tiddler="report" text={{{ [<myTiddler>get-stream-nodes[]]  :reduce[get[text]addprefix<lb>addprefix<accumulator>] }}}/>
+</$vars>
+</$button>
+```
+Note that this disregards the node hierarchy.

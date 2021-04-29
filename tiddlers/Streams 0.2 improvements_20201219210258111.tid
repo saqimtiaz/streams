@@ -1,0 +1,8 @@
+created: 20201219210258112
+modified: 20210429194223584
+parent: Streams 0.2 improvements/20201219210245812
+stream-type: default
+title: Streams 0.2 improvements/20201219210258111
+type: text/vnd.tiddlywiki
+
+The max-width of a node is now customizable.

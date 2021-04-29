@@ -1,0 +1,9 @@
+created: 20210420111129895
+modified: 20210429194223614
+parent: Streams 0.2 improvements/20210420111119711
+stream-list: [[Streams 0.2 improvements/20210420111146512]] [[Streams 0.2 improvements/20210420111615144]]
+stream-type: default
+title: Streams 0.2 improvements/20210420111129894
+type: text/vnd.tiddlywiki
+
+To make it easier to work with streams tiddlers, two filters have been introduced.

@@ -1,0 +1,12 @@
+created: 20210420111615144
+modified: 20210429194223622
+parent: Streams 0.2 improvements/20210420111129894
+stream-type: default
+title: Streams 0.2 improvements/20210420111615144
+type: text/vnd.tiddlywiki
+
+''get-stream-nodes'' which can be used to get the list of all descendant nodes of a tiddler (including the tiddler itself).
+
+You can try the following filter in this wiki:
+
+`[[Streams 0.2 improvements]get-stream-nodes[]]`

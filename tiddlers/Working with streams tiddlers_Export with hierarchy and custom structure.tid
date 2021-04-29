@@ -1,8 +1,8 @@
 created: 20200706171822795
-modified: 20200706172400313
+modified: 20210423093145660
 parent: Working with streams tiddlers
 stream-type: default
-title: Working with streams tiddlers/Export
+title: Working with streams tiddlers/Export with hierarchy and custom structure
 type: text/vnd.tiddlywiki
 
 Here is an example of a macro that can be used to export a stream using a custom HTML structure:

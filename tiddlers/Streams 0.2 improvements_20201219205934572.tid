@@ -1,0 +1,8 @@
+created: 20201219205934573
+modified: 20210429194223560
+parent: Streams 0.2 improvements/20201219205713505
+stream-type: default
+title: Streams 0.2 improvements/20201219205934572
+type: text/vnd.tiddlywiki
+
+Swipe triggers a context menu on the node, from which you can indent/unindent, open, delete etc.

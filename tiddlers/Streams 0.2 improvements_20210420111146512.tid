@@ -1,0 +1,18 @@
+created: 20210420111146513
+modified: 20210429194223618
+parent: Streams 0.2 improvements/20210420111129894
+stream-type: default
+title: Streams 0.2 improvements/20210420111146512
+type: text/vnd.tiddlywiki
+
+''get-stream-root'' which can be used to get the root tiddler for a node. 
+
+You can optionally get all intermediate tiddlers as well, as well as limit following the relationships only to the parent tiddlers whose title is a prefix of the child title.
+
+You can try the following filters in this wiki:
+
+`[[Streams 0.2 improvements/20210108180644441]get-stream-root[]]`
+
+`[[Streams 0.2 improvements/20210108180644441]get-stream-root:includeall[]]`
+
+`[[Streams 0.2 improvements/20210108180644441]get-stream-root:includeall,matchtitles[]]`
