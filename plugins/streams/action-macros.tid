@@ -61,9 +61,11 @@ title: $:/plugins/sq/streams/action-macros
 \define indent-node-actions()
 <!-- handle indenting a node -->
 <$vars previous-node={{{ [{!!parent}get[stream-list]enlist-input[]is[tiddler]before<currentTiddler>] }}}>
+<$list filter="[<previous-node>minlength[1]]" variable="_NULL">
 	<$action-listops $tiddler=<<previous-node>> $field="stream-list" $subfilter="+[is[tiddler]] [<currentTiddler>]"/>
 	<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
 	<$action-setfield $tiddler=<<currentTiddler>> parent=<<previous-node>> />
+</$list>
 </$vars>
 \end
 
