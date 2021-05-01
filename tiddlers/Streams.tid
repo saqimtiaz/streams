@@ -1,5 +1,5 @@
 created: 20200526161435997
-modified: 20210429195607498
+modified: 20210501132545447
 stream-list: 
 stream-type: default
 tags: 
@@ -17,15 +17,9 @@ Streams is a keyboard friendly way to write and easily divide your text into sep
 A stream consists of multiple tiddlers, that we refer to as nodes. By default, a node is styled as a bullet. Note that each node is an entire tiddler, so the content can be whatever you like, and is not limited to short pieces of text. You can also indent and un-indent nodes, creating hierarchies in your content, as well as drag and drop nodes to re-organize your content.
 
 * [[Demos]]
-* [[Keyboard Shortcuts|$:/plugins/sq/streams/info/keyboard-shortcuts]]
 * [[Installation]]
-* [[Data Structure]]
 * [[Configuration|$:/plugins/sq/streams/Settings]]
-* [[Working with streams tiddlers]]
-* [[Roadmap]]
-* [[Extending the Context Menu]]
-* [[Adding custom keyboard shortcuts]]
-* Examples for [[Customizing node titles]] 
+* [[FAQs]]
 
 ---
 

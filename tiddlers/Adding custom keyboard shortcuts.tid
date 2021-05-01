@@ -1,7 +1,11 @@
 created: 20200914210809227
-modified: 20200914211616563
+modified: 20210501131811829
+parent: FAQs
+stream-type: default
 title: Adding custom keyboard shortcuts
 type: text/vnd.tiddlywiki
+
+!! How can I add my own keyboard shortcut?
 
 You can add custom keyboard shortcuts by adding a tiddler with the tag `$:/tags/streams/keyboard-shortcuts`
 

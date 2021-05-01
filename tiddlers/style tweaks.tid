@@ -1,0 +1,9 @@
+created: 20201219205020540
+modified: 20201230051057833
+tags: $:/tags/Stylesheet
+title: style tweaks
+type: text/vnd.tiddlywiki
+
+.stream-node-block > h2:first-child {
+font-weight: bold;
+}

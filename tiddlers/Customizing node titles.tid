@@ -1,8 +1,12 @@
 created: 20200529161121459
-modified: 20200721161728811
+modified: 20210501131907636
+parent: FAQs
+stream-type: default
 tags: 
 title: Customizing node titles
 type: text/vnd.tiddlywiki
+
+!! How can I customize the title of new nodes?
 
 `$:/config/sq/streams/new-node-title` is wikified to get the title of a new node
 

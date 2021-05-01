@@ -1,0 +1,76 @@
+created: 20210501132107268
+modified: 20210501143030226
+parent: FAQs
+stream-list: 
+stream-type: default
+title: FAQs/How can I customize Streams and change the behaviour of one of the macros?
+type: text/vnd.tiddlywiki
+
+!! How can I customize Streams and change the behaviour of one of the macros?
+
+It is possible to add to, and even override, Streams' default macros
+
+See: `$:/plugins/sq/streams/action-macros` for the defaults
+
+This is done by adding the tag: `$:/tags/streams/user-actionmacros` to a tiddler containing your macro(s) with the same names as the macros you want to override from `$:/plugins/sq/streams/action-macros`.
+
+For example if a user wanted to make new pages from links by default:
+
+They would copy from `$:/plugins/sq/streams/action-macros` the code to save a node when we stop editing with <kbd>ctrl-enter</kbd>
+
+```
+\define save-edit-node-actions()
+<!-- handle saving a node being edited -->
+<!-- XXX draft -->
+<!--<$action-deletefield $tiddler={{{ [<dom-data-node-title>!is[blank]else<currentTiddler>] }}} $field="throttle.refresh" />-->
+<$action-deletetiddler $tiddler=<<row-edit-state>> />
+\end
+```
+
+Paste that into a new tiddler called `my-action-macros`
+
+Give it the `tag $:/tags/streams/user-actionmacros`
+
+Now we can add our bit of code within the `\define … \end` to append further actions. Or delete parts if there are actions we don't wish to happen.
+
+Let's add:
+
+```
+
+<!-- to create a new page from any square bracketed link automatically when saving node -->
+<$list filter="[all[current]links[]is[missing]]">
+<$action-createtiddler $basetitle=<<currentTiddler>> />
+</$list>
+
+So the users new page: my-action-macros would have this as its text:
+
+\define save-edit-node-actions()
+<!-- handle saving a node being edited -->
+<!-- XXX draft -->
+<!--<$action-deletefield $tiddler={{{ [<dom-data-node-title>!is[blank]else<currentTiddler>] }}} $field="throttle.refresh" />-->
+<$action-deletetiddler $tiddler=<<row-edit-state>> />
+<!-- to create a new page from any square bracketed link automatically when saving node -->
+<$list filter="[all[current]links[]is[missing]]">
+<$action-createtiddler $basetitle=<<currentTiddler>> />
+</$list>
+\end
+
+```
+
+This would require the user to update their code each time Streams is updated. A better alternative would be to call the original macro in `my-action-macros`.
+
+Now the text is:
+
+```
+\define save-edit-node-actions()
+\import [[$:/plugins/sq/streams/action-macros]]
+<<save-edit-node-actions>>
+<!-- to create a new page from any square bracketed link automatically when saving node -->
+<$list filter="[all[current]links[]is[missing]]">
+<$action-createtiddler $basetitle=<<currentTiddler>> />
+</$list>
+\end
+```
+Multiple action-macros can be added to a single tiddler.
+
+(thanks to @trisaster for this writeup)

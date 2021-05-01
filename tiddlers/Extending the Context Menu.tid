@@ -1,7 +1,12 @@
 created: 20200706165011599
-modified: 20200914211453844
+modified: 20210501131755909
+parent: FAQs
+stream-list: FAQs/20210501131747270
+stream-type: default
 title: Extending the Context Menu
 type: text/vnd.tiddlywiki
+
+!! How can I extend the Context Menu?
 
 The context menu can be extended with additional commands by adding tiddlers with the tag: `$:/tags/streams/contextmenu`
 

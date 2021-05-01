@@ -1,0 +1,15 @@
+created: 20210501143348769
+modified: 20210501143510299
+parent: FAQs
+stream-type: default
+title: FAQs/How can I show only the stream root tiddlers in the timeline?
+type: text/vnd.tiddlywiki
+
+!! How can I show only the stream root tiddlers in the timeline?
+
+Edit the shadow tiddler `$:/core/ui/SideBar/Recent` and change the contents to:
+
+
+```
+ <$macrocall $name="timeline" format={{$:/language/RecentChanges/DateFormat}} subfilter="get-stream-root[]"/>
+```

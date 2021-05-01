@@ -1,0 +1,8 @@
+created: 20210501144229836
+modified: 20210501144256380
+parent: Working with streams tiddlers
+stream-type: default
+title: Working with streams tiddlers/20210501144229835
+type: text/vnd.tiddlywiki
+
+To make it easier to work with Streams tiddlers and their nodes, two filters have been introduced. See [[Streams 0.2 improvements/Filters]]
