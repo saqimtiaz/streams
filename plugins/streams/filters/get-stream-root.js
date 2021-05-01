@@ -25,11 +25,12 @@ exports["get-stream-root"] = function(source,operator,options) {
 		matchTitles = (suffixes[0] || []).indexOf("matchtitles") !== -1;
 
 	source(function(tiddler,title) {
+		var ancestors = [];
 		if(tiddler && tiddler.fields["parent"] && tiddler.fields["stream-type"]) {
 			var parentTiddler = tiddler;
 			while(parentTiddler) {
 					if(tiddler.fields.title.startsWith(parentTiddler.fields["title"].split("/")[0]) || !matchTitles ) {
-						results.unshift(parentTiddler.fields.title);
+						ancestors.unshift(parentTiddler.fields.title);
 					} else {
 						break;
 					}
@@ -40,11 +41,12 @@ exports["get-stream-root"] = function(source,operator,options) {
 				}
 			}
 		} else {
-			results.push(title);
+			ancestors.unshift(title);
 		}
 		if(!includeAll) {
-			results.splice(1);
-		}		
+			ancestors.splice(1);
+		}
+		$tw.utils.pushTop(results,ancestors);
 	});
 	return results;
 };
