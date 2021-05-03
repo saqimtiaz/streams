@@ -1,0 +1,40 @@
+created: 20210503060735765
+modified: 20210503061011921
+parent: FAQs
+stream-type: default
+title: FAQs/How can I get autocompletion to work with Streams?
+type: text/vnd.tiddlywiki
+
+!! How can I get autocompletion to work with Streams?
+
+You need the plugin Edit-CompText version 0.9.3 or newer: http://snowgoon88.github.io/TW5-extendedit/
+
+If you only want to see the stream root tiddlers in the autocomplete list:
+Add `!has[parent]` to the config tiddler (`$:/plugins/snowgoon88/edit-comptext/config`) which helps not to pick up the nodes, and just the parents.
+
+
+```
+{
+  "configuration": {
+    "caseSensitive": false,
+    "maxMatch": 8,
+    "minPatLength": 2,
+    "triggerKeyCombination": "^ "
+  },
+  "template": [
+    {
+      "pattern": "[[",
+      "filter": "[all[tiddlers]!is[system]!has[parent]]",
+      "start": "[[",
+      "end": "]]"
+    },
+    {
+      "pattern": "||",
+      "filter": "[all[tiddlers]!is[system]!has[parent]]",
+      "start": "[[|",
+      "end": "]]",
+      "startOffset": 2
+    }
+  ]
+}
+```
