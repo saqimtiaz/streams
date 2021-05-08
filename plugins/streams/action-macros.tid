@@ -302,14 +302,16 @@ title: $:/plugins/sq/streams/action-macros
 		<!-- create a new node with text of dropped node -->
 		<$list filter="[<modifier>match{$:/config/sq/streams/dnd-modifier-copy-node}]" variable="_NULL">
 			<$action-createtiddler $basetitle=<<new-node>> text={{{ [<actionTiddler>get[text]] }}} parent=<<parent>> stream-type="default"/>
+			<!-- insert into correct position on new parent -->
+			<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<new-node>]"/>
 		</$list>
 		<!-- shift modifier key on drop event -->
 		<$list filter="[<modifier>match{$:/config/sq/streams/dnd-modifier-transclude-node}]" variable="_NULL">
 			<!-- create new node on target, in correct position, text is a transclusion-->
 			<$action-createtiddler $basetitle=<<new-node>> text={{{ [<actionTiddler>addprefix[{{]addsuffix[}}]] }}} parent=<<parent>> stream-type="default"/>
+			<!-- insert into correct position on new parent -->
+			<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<new-node>]"/>
 		</$list>
-		<!-- insert into correct position on new parent -->			
-		<$action-listops $tiddler=<<dropTargetTiddler>> $field="stream-list" $subfilter="+[insertbefore:currentTiddler<new-node>]"/>
 	</$wikify>
 	<!-- no modifier key on drop event -->
 	<!-- insert in correct position on new parent, and remove from old parent -->
