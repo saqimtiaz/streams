@@ -11448,7 +11448,7 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
     }
 }</pre>
 </div>
-<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="0.2.13" revision="0" bag="default">
+<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="0.2.14" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/sq/streams/Settings/config&quot;: {
@@ -11972,7 +11972,7 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
             &quot;modified&quot;: &quot;20200602053704598&quot;,
             &quot;tags&quot;: &quot;&quot;,
             &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;&lt;$streams-edit tag=\&quot;textarea\&quot; autoHeight=\&quot;yes\&quot; minHeight=\&quot;1em\&quot; focus=\&quot;yes\&quot; select=\&quot;false\&quot; class=\&quot;streams-editor tc-edit-texteditor tc-edit-texteditor-body\&quot; caretPosition={{{[{$:/state/sq/streams/caret-position}!is[blank]else[end]]}}}&gt;&lt;$set name=\&quot;targetTiddler\&quot;value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/EditorToolbar]!has[draft.of]]\&quot;&gt;&lt;$reveal type=\&quot;nomatch\&quot; state=&lt;&lt;config-visibility-title&gt;&gt; text=\&quot;hide\&quot; class=\&quot;tc-text-editor-toolbar-item-wrapper\&quot;&gt;&lt;$transclude tiddler=\&quot;$:/core/ui/EditTemplate/body/toolbar/button\&quot;\nmode=\&quot;inline\&quot;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;&lt;/$set&gt;&lt;/$streams-edit&gt;&quot;
+            &quot;text&quot;: &quot;\\define config-visibility-title()\n$:/config/EditorToolbarButtons/Visibility/$(currentTiddler)$\n\\end\n&lt;$streams-edit tag=\&quot;textarea\&quot; autoHeight=\&quot;yes\&quot; minHeight=\&quot;1em\&quot; focus=\&quot;yes\&quot; select=\&quot;false\&quot; class=\&quot;streams-editor tc-edit-texteditor tc-edit-texteditor-body\&quot; caretPosition={{{[{$:/state/sq/streams/caret-position}!is[blank]else[end]]}}}&gt;&lt;$set name=\&quot;targetTiddler\&quot;value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/EditorToolbar]!has[draft.of]]\&quot;&gt;&lt;$reveal type=\&quot;nomatch\&quot; state=&lt;&lt;config-visibility-title&gt;&gt; text=\&quot;hide\&quot; class=\&quot;tc-text-editor-toolbar-item-wrapper\&quot;&gt;&lt;$transclude tiddler=\&quot;$:/core/ui/EditTemplate/body/toolbar/button\&quot;\nmode=\&quot;inline\&quot;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;&lt;/$set&gt;&lt;/$streams-edit&gt;&quot;
         },
         &quot;$:/plugins/sq/streams/nodes-list-template&quot;: {
             &quot;title&quot;: &quot;$:/plugins/sq/streams/nodes-list-template&quot;,
