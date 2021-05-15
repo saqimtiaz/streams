@@ -33,7 +33,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 			</div>
 		</$draggable>
 		<div class="stream-node-block">
-			<$list filter="[<row-edit-state>get[text]!is[blank]else[]match<currentTiddler>]" variable="NULL" emptyMessage="""<$transclude mode="block"/>""">
+			<$list filter="[<row-edit-state>get[text]!is[blank]else[]match<currentTiddler>]" variable="NULL" emptyMessage="""{{||$:/plugins/sq/streams/templates/stream-row-body}}""">
 				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
 					{{||$:/plugins/sq/streams/editor-template}}
 				</$keyboard-plus>			

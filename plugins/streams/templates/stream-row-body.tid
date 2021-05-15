@@ -1,0 +1,3 @@
+title: $:/plugins/sq/streams/templates/stream-row-body
+
+<$transclude mode="block"/>
