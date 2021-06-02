@@ -14,7 +14,7 @@ type: text/vnd.tiddlywiki
 		</$set>
 	</$list>	
 	<$list filter="[<currentTiddler>!match<storyTiddler>]">
-		<$wikify name="display-title" text={{{ [<currentTiddler>get[text]!is[blank]] ~[{!!title}] }}}>
+		<$wikify name="display-title" text={{{ [<currentTiddler>!is[binary]get[text]!is[blank]] ~[{!!title}] }}}>
 			<span class="sq-breadcrumbs-fragment">
 			<$link to=<<currentTiddler>>>
 				<$text text={{{ [<display-title>split[]first[50]join[]] }}}/>
