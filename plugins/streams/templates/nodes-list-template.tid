@@ -45,7 +45,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 					<div class="stream-node-collapser">
 					</div>
 					<div class="stream-node-handle">
-						<$button tag="div" class="tc-btn-invisible" tooltip="add node" actions=<<add-node-actions>> >
+						<$button tag="div" class="tc-btn-invisible" tooltip="add node" actions=<<add-new-node-actions>> >
 							{{$:/plugins/sq/streams/icons/new-node-btn}}
 						</$button>
 					</div>

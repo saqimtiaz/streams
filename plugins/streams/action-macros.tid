@@ -44,8 +44,10 @@ title: $:/plugins/sq/streams/action-macros
 \define toggle-row-edit-state()
 <$action-unselect/>
 <$list filter="[<row-edit-state>get[text]else[]!match<dom-data-node-title>]" variable="NULL">
+<$list filter="[[$:/status/IsReadOnly]get[text]!is[blank]else[no]!match[yes]]" variable="NULL">
 	<$action-setfield $tiddler=<<row-edit-state>> text=<<dom-data-node-title>> />
 <!--	<$action-setfield $tiddler=<<dom-data-node-title>> throttle.refresh="yes"/>-->
+</$list>
 </$list>
 \end
 
@@ -114,6 +116,13 @@ title: $:/plugins/sq/streams/action-macros
 		</$list>
 	</$list>
 </$list>
+</$list>
+\end
+
+\define add-new-node-actions()
+<!-- used by new node button at the bottom of a stream -->
+<$list filter="[[$:/status/IsReadOnly]get[text]!is[blank]else[no]!match[yes]]" variable="NULL">
+<<add-node-actions>>
 </$list>
 \end
 
