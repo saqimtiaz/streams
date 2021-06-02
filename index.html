@@ -11448,7 +11448,7 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
     }
 }</pre>
 </div>
-<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="0.2.15" revision="0" bag="default">
+<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="0.2.16" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/sq/streams/Settings/config&quot;: {
@@ -11964,7 +11964,7 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
             &quot;modified&quot;: &quot;20200530055142652&quot;,
             &quot;tags&quot;: &quot;$:/tags/ViewTemplate&quot;,
             &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;\\whitespace trim\n\\define stream-show-breadcrumbs()\n&lt;$list filter=\&quot;[&lt;currentTiddler&gt;has[stream-type]]\&quot;&gt;\n\t&lt;$list filter=\&quot;[&lt;currentTiddler&gt;has[parent]]\&quot;&gt;\n\t\t&lt;$set name=\&quot;currentTiddler\&quot; filter=\&quot;[{!!parent}]\&quot; select=\&quot;0\&quot;&gt;\n\t\t\t&lt;&lt;stream-show-breadcrumbs&gt;&gt;\n\t\t&lt;/$set&gt;\n\t&lt;/$list&gt;\t\n\t&lt;$list filter=\&quot;[&lt;currentTiddler&gt;!match&lt;storyTiddler&gt;]\&quot;&gt;\n\t\t&lt;$wikify name=\&quot;display-title\&quot; text={{{ [&lt;currentTiddler&gt;get[text]!is[blank]] ~[{!!title}] }}}&gt;\n\t\t\t&lt;span class=\&quot;sq-breadcrumbs-fragment\&quot;&gt;\n\t\t\t&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;\n\t\t\t\t&lt;$text text={{{ [&lt;display-title&gt;split[]first[50]join[]] }}}/&gt;\n\t\t\t&lt;/$link&gt;&gt;\n\t\t\t&lt;/span&gt;\n\t\t&lt;/$wikify&gt;\n\t&lt;/$list&gt;\n&lt;/$list&gt;\n\\end\n&lt;$list filter=\&quot;[{$:/config/sq/streams/enable-breadcrumbs}match[yes]]\&quot; variable=\&quot;_NULL\&quot;&gt;\n&lt;&lt;stream-show-breadcrumbs&gt;&gt;\n&lt;/$list&gt;\n\n&quot;
+            &quot;text&quot;: &quot;\\whitespace trim\n\\define stream-show-breadcrumbs()\n&lt;$list filter=\&quot;[&lt;currentTiddler&gt;has[stream-type]]\&quot;&gt;\n\t&lt;$list filter=\&quot;[&lt;currentTiddler&gt;has[parent]]\&quot;&gt;\n\t\t&lt;$set name=\&quot;currentTiddler\&quot; filter=\&quot;[{!!parent}]\&quot; select=\&quot;0\&quot;&gt;\n\t\t\t&lt;&lt;stream-show-breadcrumbs&gt;&gt;\n\t\t&lt;/$set&gt;\n\t&lt;/$list&gt;\t\n\t&lt;$list filter=\&quot;[&lt;currentTiddler&gt;!match&lt;storyTiddler&gt;]\&quot;&gt;\n\t\t&lt;$wikify name=\&quot;display-title\&quot; text={{{ [&lt;currentTiddler&gt;!is[binary]get[text]!is[blank]] ~[{!!title}] }}}&gt;\n\t\t\t&lt;span class=\&quot;sq-breadcrumbs-fragment\&quot;&gt;\n\t\t\t&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;\n\t\t\t\t&lt;$text text={{{ [&lt;display-title&gt;split[]first[50]join[]] }}}/&gt;\n\t\t\t&lt;/$link&gt;&gt;\n\t\t\t&lt;/span&gt;\n\t\t&lt;/$wikify&gt;\n\t&lt;/$list&gt;\n&lt;/$list&gt;\n\\end\n&lt;$list filter=\&quot;[{$:/config/sq/streams/enable-breadcrumbs}match[yes]]\&quot; variable=\&quot;_NULL\&quot;&gt;\n&lt;&lt;stream-show-breadcrumbs&gt;&gt;\n&lt;/$list&gt;\n\n&quot;
         },
         &quot;$:/plugins/sq/streams/editor-template&quot;: {
             &quot;title&quot;: &quot;$:/plugins/sq/streams/editor-template&quot;,
