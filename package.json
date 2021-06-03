@@ -7,7 +7,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "tiddlywiki . --build index"
+    "build": "tiddlywiki . --build index",
+    "prerelease": "tiddlywiki . --build prerelease"
   },
   "author": "Saq Imtiaz",
   "license": "BSD3",
