@@ -1,4 +1,4 @@
-name: Deploy Pre-release Streams Tiddlywiki To Github Pages
+name: Deploy Beta of Streams Tiddlywiki To Github Pages
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       - name: Install Dependency
         run: npm install
       - name: Build
-        run: npm run prerelease
+        run: npm run beta
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
