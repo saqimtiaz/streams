@@ -21,6 +21,7 @@
             "$:/plugins/tiddlywiki/tiddlyweb/save/offline",
             "beta.html",
             "text/plain"
+        ],
         "externalimages": [
             "--savetiddlers",
             "[is[image]]",
