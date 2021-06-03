@@ -1,0 +1,11 @@
+created: 20210603193058845
+modified: 20210603193400655
+parent: FAQs
+stream-list: 
+stream-type: default
+title: FAQs/How can I style nodes differently depending on their tags?
+type: text/vnd.tiddlywiki
+
+!! How can I style nodes differently depending on their tags?
+
+The DOM node for each node has an attribute `data-node-tags` that can be used to apply [[custom styles by data-tags|https://tiddlywiki.com/#Custom%20styles%20by%20data-tags]].

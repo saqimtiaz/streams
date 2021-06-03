@@ -1,6 +1,6 @@
 created: 20210501131505116
-modified: 20210503061043279
-stream-list: [[Extending the Context Menu]] [[Adding custom keyboard shortcuts]] [[Customizing node titles]] [[FAQs/How can I show only the stream root tiddlers in the timeline?]] [[FAQs/How do I work with Streams tiddlers and nodes?]] [[FAQs/How can I get autocompletion to work with Streams?]] [[FAQs/How can I customize Streams and change the behaviour of one of the macros?]]
+modified: 20210603193135353
+stream-list: [[Extending the Context Menu]] [[Adding custom keyboard shortcuts]] [[Customizing node titles]] [[FAQs/How can I show only the stream root tiddlers in the timeline?]] [[FAQs/How do I work with Streams tiddlers and nodes?]] [[FAQs/How can I get autocompletion to work with Streams?]] [[FAQs/How can I customize Streams and change the behaviour of one of the macros?]] [[FAQs/How can I style nodes differently depending on their tags?]]
 stream-type: default
 tags: 
 title: FAQs
