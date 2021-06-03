@@ -16,6 +16,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] +[join[ ]]}}}
 		data-node-title=<<currentTiddler>>
+		data-node-tags={{!!tags}}
 	>
 		<$draggable
 			tag="div"
