@@ -251,6 +251,8 @@ Error message and password prompt
 
 <li>FAQs/How can I show only the stream root tiddlers in the timeline?</li>
 
+<li>FAQs/How can I style nodes differently depending on their tags?</li>
+
 <li>FAQs/How do I work with Streams tiddlers and nodes?</li>
 
 <li>Installation</li>
@@ -12377,7 +12379,7 @@ Note that if the `key` field is defined, it takes priority over the `sq-contextm
 
 Also see [[Adding custom keyboard shortcuts]].</pre>
 </div>
-<div created="20210501131505116" modified="20210503061043279" stream-list="[[Extending the Context Menu]] [[Adding custom keyboard shortcuts]] [[Customizing node titles]] [[FAQs/How can I show only the stream root tiddlers in the timeline?]] [[FAQs/How do I work with Streams tiddlers and nodes?]] [[FAQs/How can I get autocompletion to work with Streams?]] [[FAQs/How can I customize Streams and change the behaviour of one of the macros?]]" stream-type="default" tags="" title="FAQs" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20210501131505116" modified="20210603193135353" stream-list="[[Extending the Context Menu]] [[Adding custom keyboard shortcuts]] [[Customizing node titles]] [[FAQs/How can I show only the stream root tiddlers in the timeline?]] [[FAQs/How do I work with Streams tiddlers and nodes?]] [[FAQs/How can I get autocompletion to work with Streams?]] [[FAQs/How can I customize Streams and change the behaviour of one of the macros?]] [[FAQs/How can I style nodes differently depending on their tags?]]" stream-type="default" tags="" title="FAQs" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>//Contributions to this FAQ are highly welcome//</pre>
 </div>
 <div created="20210501132107268" modified="20210501143030226" parent="FAQs" stream-list="" stream-type="default" title="FAQs/How can I customize Streams and change the behaviour of one of the macros?" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -12496,6 +12498,11 @@ Edit the shadow tiddler `$:/core/ui/SideBar/Recent` and change the contents to:
  &lt;$macrocall $name=&quot;timeline&quot; format={{$:/language/RecentChanges/DateFormat}} subfilter=&quot;get-stream-root[]&quot;/&gt;
 ```
 </pre>
+</div>
+<div created="20210603193058845" modified="20210603193400655" parent="FAQs" stream-list="" stream-type="default" title="FAQs/How can I style nodes differently depending on their tags?" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! How can I style nodes differently depending on their tags?
+
+The DOM node for each node has an attribute `data-node-tags` that can be used to apply [[custom styles by data-tags|https://tiddlywiki.com/#Custom%20styles%20by%20data-tags]].</pre>
 </div>
 <div created="20210501131944986" modified="20210501143017751" parent="FAQs" stream-type="default" title="FAQs/How do I work with Streams tiddlers and nodes?" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! How do I work with the Streams tiddlers and their nodes?
