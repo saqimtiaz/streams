@@ -3,8 +3,8 @@
   "version": "0.2.18",
   "description": "tw5 plugin",
   "dependencies": {
-    "tiddlywiki": "^5.1.22",
-    "tiddlywiki-prerelease": "jermolene/TiddlyWiki5"
+    "tiddlywiki-prerelease": "jermolene/TiddlyWiki5",
+    "tiddlywiki": "^5.1.22"
   },
   "devDependencies": {},
   "scripts": {
