@@ -1,14 +1,17 @@
 {
   "name": "Streams",
-  "version": "0.1.15",
+  "version": "0.2.18",
   "description": "tw5 plugin",
   "dependencies": {
-    "tiddlywiki": "^5.1.22"
+    "tiddlywiki": "^5.1.22",
+    "tiddlywiki-prerelease": "jermolene/TiddlyWiki5"
   },
   "devDependencies": {},
   "scripts": {
     "build": "tiddlywiki . --build index",
-    "beta": "tiddlywiki . --build beta"
+    "prerelease": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build index",
+    "beta": "tiddlywiki . --build beta",
+	"prerelease-beta": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build beta"
   },
   "author": "Saq Imtiaz",
   "license": "BSD3",
