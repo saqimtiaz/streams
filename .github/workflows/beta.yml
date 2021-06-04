@@ -20,6 +20,7 @@ jobs:
       - name: Build
         run: |
             echo -e -n "title: $:/build\n\nStreams commit: $(git rev-parse HEAD) on TiddlyWiki <<version>> built at $(date +'%F %T %Z')\n\n" > ./tiddlers/build.tid
+            echo -e -n "title: $:/SiteTitle\n\nStreams beta $(git rev-parse HEAD)\n" > ./tiddlers/SiteTitle.tid
             npm run beta
             npm run prerelease-beta
 
