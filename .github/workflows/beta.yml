@@ -19,7 +19,7 @@ jobs:
         run: npm install
       - name: Build
         run: |
-            echo -e -n "title: $:/build\nStreams commit: $(git rev-parse HEAD) on TiddlyWiki <<version>>\n\n" > ./tiddlers/build.tid
+            echo -e -n "title: $:/build\n\nStreams commit: $(git rev-parse HEAD) on TiddlyWiki <<version>> built at $(date +'%F %T %Z')\n\n" > ./tiddlers/build.tid
             npm run beta
             npm run prerelease-beta
 
