@@ -8,9 +8,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "node ./node_modules/tiddlywiki/tiddlywiki.js tiddlywiki . --build index",
+    "build": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build index",
     "prerelease": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build index",
-    "beta": "node ./node_modules/tiddlywiki/tiddlywiki.js tiddlywiki . --build beta",
+    "beta": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build beta",
 	"prerelease-beta": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build beta"
   },
   "author": "Saq Imtiaz",
