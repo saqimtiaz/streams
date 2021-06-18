@@ -4,7 +4,7 @@
   "description": "tw5 plugin",
   "dependencies": {
     "tiddlywiki-prerelease": "jermolene/TiddlyWiki5",
-    "tiddlywiki": "^5.1.22"
+    "tiddlywiki": "^5.1.23"
   },
   "devDependencies": {},
   "scripts": {
