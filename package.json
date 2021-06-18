@@ -3,15 +3,19 @@
   "version": "0.2.18",
   "description": "tw5 plugin",
   "dependencies": {
-    "tiddlywiki-prerelease": "jermolene/TiddlyWiki5",
-    "tiddlywiki": "^5.1.23"
+    "tiddlywiki": "^5.1.23",
+    "tiddlywiki-prerelease": "jermolene/TiddlyWiki5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
     "build": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build index",
     "prerelease": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build index",
     "beta": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build beta",
-	"prerelease-beta": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build beta"
+    "prerelease-beta": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build beta",
+    "dev": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki/tiddlywiki.js . --listen port=7111",
+    "dev-prerelease": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --listen port=7111"
   },
   "author": "Saq Imtiaz",
   "license": "BSD3",
