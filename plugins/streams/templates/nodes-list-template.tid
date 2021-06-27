@@ -49,6 +49,11 @@ title: $:/plugins/sq/streams/nodes-list-template
 							{{$:/plugins/sq/streams/icons/new-node-btn}}
 						</$button>
 					</div>
+					<$list filter="[tag[$:/tags/streams/root-buttons]]" variable="btnTiddler">
+						<div class="stream-node-handle">
+							<$transclude tiddler=<<btnTiddler>>/>
+						</div>
+					</$list>
 				</div>
 				<div class="stream-node-block">
 					<!--consider moving last child dropzone in here, though thats for children too-->

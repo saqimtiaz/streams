@@ -1,0 +1,20 @@
+created: 20210627095850984
+modified: 20210627100815660
+parent: FAQs
+stream-type: default
+title: Adding custom buttons at the bottom of a Stream
+type: text/vnd.tiddlywiki
+
+!! How can I add my own buttons at the bottom of a stream?
+
+Create a tiddler tag `$:/tags/streams/root-buttons` with the code for your button.
+
+For reference, this is the code for the default button to add a new node:
+
+```
+<div class="stream-node-handle">
+	<$button tag="div" class="tc-btn-invisible" tooltip="add node" actions=<<add-new-node-actions>> >
+		{{$:/plugins/sq/streams/icons/new-node-btn}}
+	</$button>
+</div>
+```
