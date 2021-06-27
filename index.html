@@ -229,6 +229,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>Adding custom buttons at the bottom of a Stream</li>
+
 <li>Adding custom keyboard shortcuts</li>
 
 <li>Configuration</li>
@@ -11450,7 +11452,7 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
     }
 }</pre>
 </div>
-<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="0.2.18" revision="0" bag="default">
+<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="0.2.19" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/sq/streams/Settings/config&quot;: {
@@ -11980,7 +11982,7 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
             &quot;title&quot;: &quot;$:/plugins/sq/streams/nodes-list-template&quot;,
             &quot;created&quot;: &quot;20171022203553093&quot;,
             &quot;modified&quot;: &quot;20171122050808722&quot;,
-            &quot;text&quot;: &quot;\\import [[$:/plugins/sq/streams/action-macros]] [all[shadows+tiddlers]tag[$:/tags/streams/actionmacros]]  [all[shadows+tiddlers]tag[$:/tags/streams/user-actionmacros]]\n\\whitespace trim\n\n&lt;$vars stream-root-title=&lt;&lt;currentTiddler&gt;&gt;\n\tcontextmenu-state=&lt;&lt;qualify \&quot;$:/state/sq-context-popup\&quot;&gt;&gt;\n\trow-edit-state=&lt;&lt;qualify \&quot;$:/state/sq/streams/current-edit-tiddler\&quot;&gt;&gt;\n\tdrag-title-state=&lt;&lt;qualify \&quot;$:/state/sq/streams/current-drag-title\&quot;&gt;&gt;\n\tdrag-title-nextsibling-state=&lt;&lt;qualify \&quot;$:/state/sq/streams/current-drag-nextsibling\&quot;&gt;&gt; \n&gt;\n\t&lt;$eventcatcher\n\t\tevents=\&quot;click\&quot;\n\t\tselector=\&quot;.stream-node-ctrl-btn\&quot;\n\t\tactions-click=&lt;&lt;node-ctrl-btn-actions&gt;&gt;\n\t\ttag=\&quot;div\&quot;\n\t&gt;\n\t&lt;$eventcatcher\n\t\tevents=\&quot;dblclick swiped-right swiped-left\&quot;\n\t\ttag=\&quot;div\&quot;\n\t\tselector=\&quot;.stream-row\&quot;\n\t\tactions-dblclick=&lt;&lt;toggle-row-edit-state&gt;&gt;\n\t\tactions-swiped-right=&lt;&lt;swiped-right-actions&gt;&gt;\n\t\tactions-swiped-left=&lt;&lt;swiped-left-actions&gt;&gt;\n\t&gt;\n\t&lt;$eventcatcher\n\t\ttag=\&quot;div\&quot;\n\t\tevents=\&quot;contextmenu\&quot;\n\t\tselector=\&quot;.sq-contextmenu-container\&quot;\n\t\tactions-contextmenu=&lt;&lt;oncontext-menu-actions&gt;&gt;\n\t&gt;\n\t&lt;$swiper\n\t\ttag=\&quot;div\&quot;\n\t\tenable={{$:/config/sq/streams/swipe-enabled}}\n\t\tswipethreshold={{$:/config/sq/streams/swipe-threshold}}\n\t&gt;\n\t&lt;div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [&lt;currentTiddler&gt;!has[stream-list]then[stream-newlist]] +[join[ ]] }}}&gt;\n\t\t{{||$:/plugins/sq/streams/templates/stream-root-template}}\n\t\t&lt;$list filter=\&quot;[all[current]match&lt;stream-root-title&gt;]\&quot; variable=\&quot;_NULL\&quot;&gt;\n\t\t\t&lt;!-- if we are the root, add a button to add more nodes--&gt;\n\t\t\t&lt;div class=\&quot;stream-row\&quot;&gt;\n\t\t\t\t&lt;div class=\&quot;stream-node-control stream-node-control-addnew\&quot;&gt;\n\t\t\t\t\t&lt;div class=\&quot;stream-node-collapser\&quot;&gt;\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t&lt;div class=\&quot;stream-node-handle\&quot;&gt;\n\t\t\t\t\t\t&lt;$button tag=\&quot;div\&quot; class=\&quot;tc-btn-invisible\&quot; tooltip=\&quot;add node\&quot; actions=&lt;&lt;add-new-node-actions&gt;&gt; &gt;\n\t\t\t\t\t\t\t{{$:/plugins/sq/streams/icons/new-node-btn}}\n\t\t\t\t\t\t&lt;/$button&gt;\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=\&quot;stream-node-block\&quot;&gt;\n\t\t\t\t\t&lt;!--consider moving last child dropzone in here, though thats for children too--&gt;\n\t\t\t\t&lt;/div&gt;\n\t\t\t&lt;/div&gt;\t\t\t\t\n\t\t\t&lt;$set name=\&quot;currentTiddler\&quot; filter={{{[&lt;contextmenu-state&gt;get[current]]}}}&gt;\n\t\t\t\t{{||$:/plugins/sq/streams/contextmenu/contextmenu-template}}\n\t\t\t&lt;/$set&gt;\n\t\t&lt;/$list&gt;\t\n\t&lt;/div&gt;\n\t&lt;/$swiper&gt;\n\t&lt;/$eventcatcher&gt;\n\t&lt;/$eventcatcher&gt;\n\t&lt;/$eventcatcher&gt;\n&lt;/$vars&gt;&quot;
+            &quot;text&quot;: &quot;\\import [[$:/plugins/sq/streams/action-macros]] [all[shadows+tiddlers]tag[$:/tags/streams/actionmacros]]  [all[shadows+tiddlers]tag[$:/tags/streams/user-actionmacros]]\n\\whitespace trim\n\n&lt;$vars stream-root-title=&lt;&lt;currentTiddler&gt;&gt;\n\tcontextmenu-state=&lt;&lt;qualify \&quot;$:/state/sq-context-popup\&quot;&gt;&gt;\n\trow-edit-state=&lt;&lt;qualify \&quot;$:/state/sq/streams/current-edit-tiddler\&quot;&gt;&gt;\n\tdrag-title-state=&lt;&lt;qualify \&quot;$:/state/sq/streams/current-drag-title\&quot;&gt;&gt;\n\tdrag-title-nextsibling-state=&lt;&lt;qualify \&quot;$:/state/sq/streams/current-drag-nextsibling\&quot;&gt;&gt; \n&gt;\n\t&lt;$eventcatcher\n\t\tevents=\&quot;click\&quot;\n\t\tselector=\&quot;.stream-node-ctrl-btn\&quot;\n\t\tactions-click=&lt;&lt;node-ctrl-btn-actions&gt;&gt;\n\t\ttag=\&quot;div\&quot;\n\t&gt;\n\t&lt;$eventcatcher\n\t\tevents=\&quot;dblclick swiped-right swiped-left\&quot;\n\t\ttag=\&quot;div\&quot;\n\t\tselector=\&quot;.stream-row\&quot;\n\t\tactions-dblclick=&lt;&lt;toggle-row-edit-state&gt;&gt;\n\t\tactions-swiped-right=&lt;&lt;swiped-right-actions&gt;&gt;\n\t\tactions-swiped-left=&lt;&lt;swiped-left-actions&gt;&gt;\n\t&gt;\n\t&lt;$eventcatcher\n\t\ttag=\&quot;div\&quot;\n\t\tevents=\&quot;contextmenu\&quot;\n\t\tselector=\&quot;.sq-contextmenu-container\&quot;\n\t\tactions-contextmenu=&lt;&lt;oncontext-menu-actions&gt;&gt;\n\t&gt;\n\t&lt;$swiper\n\t\ttag=\&quot;div\&quot;\n\t\tenable={{$:/config/sq/streams/swipe-enabled}}\n\t\tswipethreshold={{$:/config/sq/streams/swipe-threshold}}\n\t&gt;\n\t&lt;div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [&lt;currentTiddler&gt;!has[stream-list]then[stream-newlist]] +[join[ ]] }}}&gt;\n\t\t{{||$:/plugins/sq/streams/templates/stream-root-template}}\n\t\t&lt;$list filter=\&quot;[all[current]match&lt;stream-root-title&gt;]\&quot; variable=\&quot;_NULL\&quot;&gt;\n\t\t\t&lt;!-- if we are the root, add a button to add more nodes--&gt;\n\t\t\t&lt;div class=\&quot;stream-row\&quot;&gt;\n\t\t\t\t&lt;div class=\&quot;stream-node-control stream-node-control-addnew\&quot;&gt;\n\t\t\t\t\t&lt;div class=\&quot;stream-node-collapser\&quot;&gt;\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t&lt;div class=\&quot;stream-node-handle\&quot;&gt;\n\t\t\t\t\t\t&lt;$button tag=\&quot;div\&quot; class=\&quot;tc-btn-invisible\&quot; tooltip=\&quot;add node\&quot; actions=&lt;&lt;add-new-node-actions&gt;&gt; &gt;\n\t\t\t\t\t\t\t{{$:/plugins/sq/streams/icons/new-node-btn}}\n\t\t\t\t\t\t&lt;/$button&gt;\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t&lt;$list filter=\&quot;[tag[$:/tags/streams/root-buttons]]\&quot; variable=\&quot;btnTiddler\&quot;&gt;\n\t\t\t\t\t\t&lt;div class=\&quot;stream-node-handle\&quot;&gt;\n\t\t\t\t\t\t\t&lt;$transclude tiddler=&lt;&lt;btnTiddler&gt;&gt;/&gt;\n\t\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t&lt;/$list&gt;\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=\&quot;stream-node-block\&quot;&gt;\n\t\t\t\t\t&lt;!--consider moving last child dropzone in here, though thats for children too--&gt;\n\t\t\t\t&lt;/div&gt;\n\t\t\t&lt;/div&gt;\t\t\t\t\n\t\t\t&lt;$set name=\&quot;currentTiddler\&quot; filter={{{[&lt;contextmenu-state&gt;get[current]]}}}&gt;\n\t\t\t\t{{||$:/plugins/sq/streams/contextmenu/contextmenu-template}}\n\t\t\t&lt;/$set&gt;\n\t\t&lt;/$list&gt;\t\n\t&lt;/div&gt;\n\t&lt;/$swiper&gt;\n\t&lt;/$eventcatcher&gt;\n\t&lt;/$eventcatcher&gt;\n\t&lt;/$eventcatcher&gt;\n&lt;/$vars&gt;&quot;
         },
         &quot;$:/plugins/sq/streams/templates/stream-root-template&quot;: {
             &quot;title&quot;: &quot;$:/plugins/sq/streams/templates/stream-root-template&quot;,
@@ -12260,6 +12262,21 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
 <div created="20200524083540979" modified="20200524083542019" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>fluid-fixed</pre>
 </div>
+<div created="20210627095850984" modified="20210627100815660" parent="FAQs" stream-type="default" title="Adding custom buttons at the bottom of a Stream" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! How can I add my own buttons at the bottom of a stream?
+
+Create a tiddler tag `$:/tags/streams/root-buttons` with the code for your button.
+
+For reference, this is the code for the default button to add a new node:
+
+```
+&lt;div class=&quot;stream-node-handle&quot;&gt;
+	&lt;$button tag=&quot;div&quot; class=&quot;tc-btn-invisible&quot; tooltip=&quot;add node&quot; actions=&lt;&lt;add-new-node-actions&gt;&gt; &gt;
+		{{$:/plugins/sq/streams/icons/new-node-btn}}
+	&lt;/$button&gt;
+&lt;/div&gt;
+```</pre>
+</div>
 <div created="20200914210809227" modified="20210501131811829" parent="FAQs" stream-type="default" title="Adding custom keyboard shortcuts" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! How can I add my own keyboard shortcut?
 
@@ -12379,7 +12396,7 @@ Note that if the `key` field is defined, it takes priority over the `sq-contextm
 
 Also see [[Adding custom keyboard shortcuts]].</pre>
 </div>
-<div created="20210501131505116" modified="20210603193135353" stream-list="[[Extending the Context Menu]] [[Adding custom keyboard shortcuts]] [[Customizing node titles]] [[FAQs/How can I show only the stream root tiddlers in the timeline?]] [[FAQs/How do I work with Streams tiddlers and nodes?]] [[FAQs/How can I get autocompletion to work with Streams?]] [[FAQs/How can I customize Streams and change the behaviour of one of the macros?]] [[FAQs/How can I style nodes differently depending on their tags?]]" stream-type="default" tags="" title="FAQs" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20210501131505116" modified="20210627100815608" stream-list="[[Extending the Context Menu]] [[Adding custom keyboard shortcuts]] [[Adding custom buttons at the bottom of a Stream]] [[Customizing node titles]] [[FAQs/How can I show only the stream root tiddlers in the timeline?]] [[FAQs/How do I work with Streams tiddlers and nodes?]] [[FAQs/How can I get autocompletion to work with Streams?]] [[FAQs/How can I customize Streams and change the behaviour of one of the macros?]] [[FAQs/How can I style nodes differently depending on their tags?]]" stream-type="default" tags="" title="FAQs" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>//Contributions to this FAQ are highly welcome//</pre>
 </div>
 <div created="20210501132107268" modified="20210501143030226" parent="FAQs" stream-list="" stream-type="default" title="FAQs/How can I customize Streams and change the behaviour of one of the macros?" type="text/vnd.tiddlywiki" revision="0" bag="default">
