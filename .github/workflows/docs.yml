@@ -1,4 +1,4 @@
-name: Build Beta of Streams
+name: Update Streams docs
 
 concurrency:
   group: Streams-norelease
@@ -7,16 +7,31 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'tiddlers/**'
     tags-ignore:
-      - v*
+      - v[012].[0-9]+.[0-9]+
   workflow_dispatch:
-
+  
 jobs:
   deploy:
     if:  ${{ !contains(toJSON(github.event.commits.*.message), 'RELEASE') }}
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout HEAD
+        uses: actions/checkout@v2
+        
+      - name: Checkout @latest
+        uses: actions/checkout@v2
+        with:
+          ref: latest
+          path: latest
+        
+      - name: Copy @latest Streams plugin
+        run: |
+          rm -fr ./plugins/streams
+          mv -f ./latest/plugins/streams ./plugins/
+        
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '14'
@@ -25,10 +40,8 @@ jobs:
         run: npm install
       - name: Build
         run: |
-            echo -e -n "title: $:/build\n\nStreams commit: $(git rev-parse HEAD) on TiddlyWiki <<version>> built at $(date +'%F %T %Z')\n\n" > ./tiddlers/build.tid
-            echo -e -n "title: $:/SiteTitle\n\n[[Streams beta|$:/build]]\n" > ./tiddlers/SiteTitle.tid
-            npm run build-beta
-            npm run build-prerelease-beta
+            npm run build
+            npm run build-prerelease
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

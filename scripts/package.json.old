@@ -1,0 +1,70 @@
+{
+  "name": "streams",
+  "version": "1.18.4",
+  "description": "tw5 plugin",
+  "tiddlywiki-plugin": "plugins/streams",
+  "config": {
+    "plugin-path": "plugins/streams",
+    "releasetype": "patch",
+    "release-files": [
+      "package.json",
+      "plugins/streams/plugin.info",
+      "CHANGELOG.md",
+      "plugins/streams/changelog.txt",
+      "tiddlers/CHANGELOG.txt"
+    ]
+  },
+  "dependencies": {
+    "tiddlywiki": "^5.1.23",
+    "tiddlywiki-prerelease": "jermolene/TiddlyWiki5"
+  },
+  "devDependencies": {
+    "marked": "^2.1.3",
+    "nodemon": "^2.0.7",
+    "standard-version": "^9.3.0"
+  },
+  "scripts": {
+    "editor": "atom --new-window",
+    "browser": "chrome --new-window",
+    "build": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build index",
+    "build-prerelease": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build index",
+    "build-beta": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build beta",
+    "build-prerelease-beta": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build beta",
+    "dev": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki/tiddlywiki.js . --listen port=7111",
+    "dev-prerelease": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --listen port=7111",
+    "_relnote:create": "npm run editor CHANGELOG.md && diff -u CHANGELOG-PREV.md CHANGELOG.md | grep \"+\"| cut -c 2- | sed -e '1,3d' > CHANGELOG-NEW.md && marked -o plugins/streams/changelog.txt -i CHANGELOG-NEW.md && marked -o tiddlers/CHANGELOG.txt -i CHANGELOG-NEW.md && git add plugins/streams/changelog.txt tiddlers/CHANGELOG.txt",
+    "_release:changelog:review": "atom CHANGELOG.md",
+    "_release:changelog:render": "./scripts/create_release_note.sh",
+    "_release:changelog:generate": "standard-version --skip.commit --skip.tag",
+    "release": "npm run _release:changelog:generate && npm run _release:changelog:review && npm run _release:changelog:render",
+    "publish": "git commit -m \"chore(RELEASE): $npm_package_version\" && git tag -a v$npm_package_version -m \"chore(RELEASE) $npm_package_version\" && git push origin main --follow-tags",
+    "releasejs": "git diff HEAD --quiet && ( npm run _release:changelog:generate && npm run relnotejs && npm run publishjs ) || tput setaf 1; echo 'ERROR: Git repository is dirty'",
+    "ifreleasejs": "if [[ -n $(git diff HEAD --quiet) ]]; then npm run releasejs; else echo 'Git repository is dirty'; fi",
+    "publishjs": "./scripts/publish.js",
+    "relnotejs": "./scripts/create-release-note.js",
+    "release:clean": "rm CHANGELOG-PREV.md && rm CHANGELOG-NEW.md",
+    "review-plugin": "npm run build && npm run browser \"$PWD/output/index.html\""
+  },
+  "standard-version": {
+    "scripts": {
+      "prechangelog": "cp CHANGELOG.md CHANGELOG-PREV.md",
+      "postchangelog": "npm run editor CHANGELOG.md"
+    },
+    "releaseCommitMessageFormat": "chore(RELEASE): {{currentTag}}",
+    "bumpFiles": [
+      {
+        "filename": "package.json"
+      },
+      {
+        "filename": "plugins/streams/plugin.info",
+        "type": "json"
+      }
+    ]
+  },
+  "author": "Saq Imtiaz",
+  "license": "BSD3",
+  "bugs": {
+    "url": "https://github.com/saqimtiaz/streams/issues"
+  },
+  "homepage": "https://github.com/saqimtiaz/streams"
+}

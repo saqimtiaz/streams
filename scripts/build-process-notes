@@ -1,0 +1,27 @@
+// document non-javascript option for how this works
+/*  
+in JS.
+  npm run release
+    standard-version --skip.commit --skip.tag && relnotejs && npm run changelog:review && npm run publishjs && npm run clean
+          prechangelog: cp CHANGELOG.md CHANGELOG-PREV.md
+          postchangelog: npm run editor CHANGELOG.md
+      "relnotejs" : "./scripts/create-release-note.js"
+      "publishjs" : "./scripts/publish.js",
+      "_release:changelog:review": "atom CHANGELOG.md",
+
+no JS:
+  npm run release: 
+    npm run _release:changelog:generate && npm run _release:changelog:review && npm run _release:changelog:render
+      "_release:changelog:generate": "standard-version --skip.commit --skip.tag",
+      "_release:changelog:review": "atom CHANGELOG.md",
+      "_release:changelog:render": "./scripts/create_release_note.sh",
+  npm run publish
+    git commit -m \"chore(RELEASE): $npm_package_version\" && git tag -a v$npm_package_version -m \"chore(RELEASE) $npm_package_version\" && git push origin main --follow-tags
+
+not used but worked (but not via standard-version)
+      "_relnote:create": "npm run editor CHANGELOG.md && diff -u CHANGELOG-PREV.md CHANGELOG.md | grep \"+\"| cut -c 2- | sed -e '1,3d' > CHANGELOG-NEW.md && marked -o plugins/streams/changelog.txt -i CHANGELOG-NEW.md && marked -o tiddlers/CHANGELOG.txt -i CHANGELOG-NEW.md && git add plugins/streams/changelog.txt tiddlers/CHANGELOG.txt",
+
+
+
+
+*/
