@@ -2,10 +2,10 @@
 	"title": "$:/plugins/sq/streams",
 	"description": "Streams - a different way to write",
 	"plugin-type": "plugin",
-    "plugin-priority": "1",
+	"plugin-priority": "1",
 	"author": "Saq Imtiaz",
-	"version": "0.2.19",
-	"core-version": ">=5.1.23", 
+	"version": "1.2.20",
+	"core-version": ">=5.1.23",
 	"list": "Settings",
 	"source": "https://saqimtiaz.github.io/streams/"
 }
