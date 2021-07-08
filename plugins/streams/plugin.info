@@ -6,6 +6,6 @@
 	"author": "Saq Imtiaz",
 	"version": "1.2.20",
 	"core-version": ">=5.1.23",
-	"list": "Settings",
+	"list": "Settings CHANGELOG",
 	"source": "https://saqimtiaz.github.io/streams/"
 }
