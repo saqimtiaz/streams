@@ -1,5 +1,5 @@
-<h3 id="1220-2021-07-08">1.2.20 (2021-07-08)</h3>
+<h3 id="1221-2021-07-08"><a href="https://github.com/saqimtiaz/streams/compare/v1.2.20...v1.2.21">1.2.21</a> (2021-07-08)</h3>
 <h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
-<li>switched to using conventional commits and generating a changelog for each release (<a href="https://github.com/saqimtiaz/streams/commit/8164a79e8898df06dc131f60cd97b893171db5ab">8164a79</a>)</li>
+<li>add CHANGELOG tab to plugin tiddler (<a href="https://github.com/saqimtiaz/streams/commit/efad3cbad7737edfc9e8742a4f19dc1c2eda11b7">efad3cb</a>)</li>
 </ul>

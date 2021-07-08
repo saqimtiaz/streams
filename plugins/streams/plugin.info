@@ -4,7 +4,7 @@
 	"plugin-type": "plugin",
 	"plugin-priority": "1",
 	"author": "Saq Imtiaz",
-	"version": "1.2.20",
+	"version": "1.2.21",
 	"core-version": ">=5.1.23",
 	"list": "Settings CHANGELOG",
 	"source": "https://saqimtiaz.github.io/streams/"
