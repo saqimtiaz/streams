@@ -236,6 +236,8 @@ Error message and password prompt
 
 <li>Adding custom keyboard shortcuts</li>
 
+<li>CHANGELOG</li>
+
 <li>Configuration</li>
 
 <li>Considerations and Known Issues</li>
@@ -429,7 +431,7 @@ Error message and password prompt
 
 <div id="storeArea" style="display:none;">
 <div title="$:/build" revision="0" bag="default">
-<pre>Streams commit: b7f304eb60f73349aeadbf0b76f9ff3d9f9da838 on TiddlyWiki &lt;&lt;version&gt;&gt; built at 2021-06-27 10:12:55 UTC
+<pre>Streams commit: f92c3befcff4891acdbd5b5edecf3be4bca36ffc on TiddlyWiki &lt;&lt;version&gt;&gt; built at 2021-07-21 11:13:53 UTC
 
 </pre>
 </div>
@@ -11460,9 +11462,13 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
     }
 }</pre>
 </div>
-<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="0.2.19" revision="0" bag="default">
+<div author="Saq Imtiaz" core-version="&gt;=5.1.23" dependents="" description="Streams - a different way to write" list="Settings CHANGELOG" plugin-priority="1" plugin-type="plugin" source="https://saqimtiaz.github.io/streams/" title="$:/plugins/sq/streams" type="application/json" version="1.2.21" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
+        &quot;$:/plugins/sq/streams/CHANGELOG&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/sq/streams/CHANGELOG&quot;,
+            &quot;text&quot;: &quot;Release notes for the current release:\n\n{{$:/plugins/sq/streams/releasenotes}}\n\n[[Full changelog|https://saqimtiaz.github.io/streams/#CHANGELOG]] for Streams\n&quot;
+        },
         &quot;$:/plugins/sq/streams/Settings/config&quot;: {
             &quot;title&quot;: &quot;$:/plugins/sq/streams/Settings/config&quot;,
             &quot;caption&quot;: &quot;Configuration&quot;,
@@ -11476,8 +11482,8 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
         &quot;$:/plugins/sq/streams/Settings&quot;: {
             &quot;title&quot;: &quot;$:/plugins/sq/streams/Settings&quot;,
             &quot;tags&quot;: &quot;$:/tags/ControlPanel&quot;,
-            &quot;caption&quot;: &quot;Streams&quot;,
-            &quot;text&quot;: &quot;&lt;&lt;tabs \&quot;$:/plugins/sq/streams/Settings/config $:/plugins/sq/streams/Settings/shortcuts\&quot; \&quot;$:/plugins/sq/streams/Settings/config\&quot; \&quot;$:/state/streams/settings/tabs\&quot;&gt;&gt;&quot;
+            &quot;caption&quot;: &quot;Streams settings&quot;,
+            &quot;text&quot;: &quot;&lt;&lt;tabs \&quot;$:/plugins/sq/streams/Settings/config $:/plugins/sq/streams/Settings/shortcuts\&quot; \&quot;$:/plugins/sq/streams/Settings/config\&quot; \&quot;$:/state/streams/settings/tabs\&quot;&gt;&gt;\n&quot;
         },
         &quot;$:/plugins/sq/streams/action-macros&quot;: {
             &quot;title&quot;: &quot;$:/plugins/sq/streams/action-macros&quot;,
@@ -11948,6 +11954,11 @@ exports[&quot;action-createtiddler&quot;] = CreateTiddlerWidget;
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;startup&quot;
         },
+        &quot;$:/plugins/sq/streams/releasenotes&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/sq/streams/releasenotes&quot;,
+            &quot;text&quot;: &quot;&lt;h3 id=\&quot;1221-2021-07-08\&quot;&gt;&lt;a href=\&quot;https://github.com/saqimtiaz/streams/compare/v1.2.20...v1.2.21\&quot;&gt;1.2.21&lt;/a&gt; (2021-07-08)&lt;/h3&gt;\n&lt;h3 id=\&quot;bug-fixes\&quot;&gt;Bug Fixes&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;add CHANGELOG tab to plugin tiddler (&lt;a href=\&quot;https://github.com/saqimtiaz/streams/commit/efad3cbad7737edfc9e8742a4f19dc1c2eda11b7\&quot;&gt;efad3cb&lt;/a&gt;)&lt;/li&gt;\n&lt;/ul&gt;\n&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;
+        },
         &quot;$:/config/flibbles/relink/fields/parent&quot;: {
             &quot;title&quot;: &quot;$:/config/flibbles/relink/fields/parent&quot;,
             &quot;created&quot;: &quot;20200530105147302&quot;,
@@ -12302,6 +12313,19 @@ Required fields:
 * `key` :  a keyboard [[shortcut descriptor|https://tiddlywiki.com/#Keyboard%20Shortcut%20Descriptor]] or a [[shortcut suffix|https://tiddlywiki.com/#How%20to%20create%20keyboard%20shortcuts]] to be mapped to the keyboard shortcut.
 
 Note that the same tiddler can be used to [[add a context menu|Extending the Context Menu]] item for a keyboard shortcut by adding the tag `$:/tags/streams/contextmenu`. </pre>
+</div>
+<div title="CHANGELOG" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;h3 id=&quot;1221-2021-07-08&quot;&gt;&lt;a href=&quot;https://github.com/saqimtiaz/streams/compare/v1.2.20...v1.2.21&quot;&gt;1.2.21&lt;/a&gt; (2021-07-08)&lt;/h3&gt;
+&lt;h3 id=&quot;bug-fixes&quot;&gt;Bug Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;add CHANGELOG tab to plugin tiddler (&lt;a href=&quot;https://github.com/saqimtiaz/streams/commit/efad3cbad7737edfc9e8742a4f19dc1c2eda11b7&quot;&gt;efad3cb&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1220-2021-07-08&quot;&gt;1.2.20 (2021-07-08)&lt;/h3&gt;
+&lt;h3 id=&quot;bug-fixes-1&quot;&gt;Bug Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;switched to using conventional commits and generating a changelog for each release (&lt;a href=&quot;https://github.com/saqimtiaz/streams/commit/8164a79e8898df06dc131f60cd97b893171db5ab&quot;&gt;8164a79&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 </div>
 <div created="20200529193203610" modified="20200914230331388" tags="" title="Configuration" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!Settings
