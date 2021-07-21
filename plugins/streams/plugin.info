@@ -1,6 +1,7 @@
 {
 	"title": "$:/plugins/sq/streams",
-	"description": "Streams - a different way to write",
+	"name": "Streams",
+	"description": "Rapid data entry with a keyboard driven workflow. Divide content into smaller tiddlers as you write.",
 	"plugin-type": "plugin",
 	"plugin-priority": "1",
 	"author": "Saq Imtiaz",
