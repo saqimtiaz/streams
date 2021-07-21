@@ -49,7 +49,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 							{{$:/plugins/sq/streams/icons/new-node-btn}}
 						</$button>
 					</div>
-					<$list filter="[tag[$:/tags/streams/root-buttons]]" variable="btnTiddler">
+					<$list filter="[all[shadows+tiddlers]tag[$:/tags/streams/root-buttons]]" variable="btnTiddler">
 						<div class="stream-node-handle">
 							<$transclude tiddler=<<btnTiddler>>/>
 						</div>
