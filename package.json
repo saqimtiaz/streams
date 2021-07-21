@@ -1,6 +1,6 @@
 {
   "name": "streams",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "description": "tw5 plugin",
   "tiddlywiki-plugin": "plugins/streams",
   "config": {

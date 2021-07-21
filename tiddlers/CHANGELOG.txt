@@ -1,10 +1,15 @@
-<h3 id="1221-2021-07-08"><a href="https://github.com/saqimtiaz/streams/compare/v1.2.20...v1.2.21">1.2.21</a> (2021-07-08)</h3>
+<h3 id="1222-2021-07-21"><a href="https://github.com/saqimtiaz/streams/compare/v1.2.21...v1.2.22">1.2.22</a> (2021-07-21)</h3>
 <h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>hooks:</strong> allow buttons added to the bottom of a stream root by plugins using the tag $:/tags/streams/root-buttons to be displayed (<a href="https://github.com/saqimtiaz/streams/commit/ffce905fbf396983235354e26b3531b2b69a84c3">ffce905</a>), closes <a href="https://github.com/saqimtiaz/streams/issues/30">#30</a></li>
+</ul>
+<h3 id="1221-2021-07-08"><a href="https://github.com/saqimtiaz/streams/compare/v1.2.20...v1.2.21">1.2.21</a> (2021-07-08)</h3>
+<h3 id="bug-fixes-1">Bug Fixes</h3>
 <ul>
 <li>add CHANGELOG tab to plugin tiddler (<a href="https://github.com/saqimtiaz/streams/commit/efad3cbad7737edfc9e8742a4f19dc1c2eda11b7">efad3cb</a>)</li>
 </ul>
 <h3 id="1220-2021-07-08">1.2.20 (2021-07-08)</h3>
-<h3 id="bug-fixes-1">Bug Fixes</h3>
+<h3 id="bug-fixes-2">Bug Fixes</h3>
 <ul>
 <li>switched to using conventional commits and generating a changelog for each release (<a href="https://github.com/saqimtiaz/streams/commit/8164a79e8898df06dc131f60cd97b893171db5ab">8164a79</a>)</li>
 </ul>
