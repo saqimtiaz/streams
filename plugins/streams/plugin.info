@@ -8,5 +8,6 @@
 	"version": "1.2.22",
 	"core-version": ">=5.1.23",
 	"list": "Settings CHANGELOG",
-	"source": "https://saqimtiaz.github.io/streams/"
+	"source": "https://saqimtiaz.github.io/streams/",
+	"dependents": "$:/plugins/flibbles/relink"
 }
