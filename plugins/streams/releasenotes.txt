@@ -1,5 +1,7 @@
-<h3 id="1222-2021-07-21"><a href="https://github.com/saqimtiaz/streams/compare/v1.2.21...v1.2.22">1.2.22</a> (2021-07-21)</h3>
+<h3 id="1223-2021-10-03"><a href="https://github.com/saqimtiaz/streams/compare/v1.2.22...v1.2.23">1.2.23</a> (2021-10-03)</h3>
 <h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
-<li><strong>hooks:</strong> allow buttons added to the bottom of a stream root by plugins using the tag $:/tags/streams/root-buttons to be displayed (<a href="https://github.com/saqimtiaz/streams/commit/ffce905fbf396983235354e26b3531b2b69a84c3">ffce905</a>), closes <a href="https://github.com/saqimtiaz/streams/issues/30">#30</a></li>
+<li>Fixed issue with duplicate nodes after splitting a node, fixes <a href="https://github.com/saqimtiaz/streams/issues/36">#36</a> (<a href="https://github.com/saqimtiaz/streams/commit/b6cf545feb6b73b0e5cb87254faaba2c620d10cc">b6cf545</a>)</li>
+<li>Specify Relink as a plugin dependency so that it install automatically fromm the SQPL plugin library (<a href="https://github.com/saqimtiaz/streams/commit/5d0f5df115ff022b95fb6c172fda65ba64b68d17">5d0f5df</a>)</li>
 </ul>
+
