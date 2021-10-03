@@ -139,6 +139,9 @@ title: $:/plugins/sq/streams/action-macros
 	<$list filter="[<parent>!has[stream-type]]" variable="_NULL">
 		<$action-setfield $tiddler=<<parent>> stream-type="default"/>
 	</$list>
+	<$list filter="[enlist<__streamList__>]">
+		<$action-setfield $tiddler=<<currentTiddler>> parent=<<new-node>>/>
+	</$list>
 	</$set>
 	</$set>
 	<$action-setfield $tiddler=<<row-edit-state>> text=<<new-node>>/>
