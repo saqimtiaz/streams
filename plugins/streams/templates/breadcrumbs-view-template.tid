@@ -24,7 +24,9 @@ type: text/vnd.tiddlywiki
 	</$list>
 </$list>
 \end
+<$list filter="""[<folded-state>get[text]!is[blank]else[show]!match[hide]]""" variable="_NULL">
 <$list filter="[{$:/config/sq/streams/enable-breadcrumbs}match[yes]]" variable="_NULL">
 <<stream-show-breadcrumbs>>
+</$list>
 </$list>
 
