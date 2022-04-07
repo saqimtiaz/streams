@@ -1,4 +1,11 @@
 
+### [1.2.24](https://github.com/saqimtiaz/streams/compare/v1.2.23...v1.2.24) (2022-04-07)
+
+
+### Bug Fixes
+
+* hide breadcrumbs when tiddler is folded ([814bc9e](https://github.com/saqimtiaz/streams/commit/814bc9e604a55ec91d9d7b2600905469a2cfa10b))
+
 ### [1.2.23](https://github.com/saqimtiaz/streams/compare/v1.2.22...v1.2.23) (2021-10-03)
 
 
