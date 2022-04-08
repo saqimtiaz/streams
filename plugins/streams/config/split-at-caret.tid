@@ -1,4 +1,4 @@
- title: $:/config/sq/streams/split-at-caret
+title: $:/config/sq/streams/split-at-caret
 description: Enable to split text at caret position on saving a node
 caption: Split text at caret position
 settings-template: $:/plugins/sq/streams/ui/templates/settings/input-switch

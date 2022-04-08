@@ -15,7 +15,7 @@ type: text/vnd.tiddlywiki
 
 \define menu-divider() <div class="sq-contextmenu-divider"/>
 
-<$reveal type="popup" state=<<contextmenu-state>> position={{{[<contextmenu-state>get[position]]}}} tag="div">
+<$reveal type="popup" state=<<contextmenu-state>> position={{{[<contextmenu-state>get[position]]}}} tag="div" class={{{ [[$:/config/sq/streams/sticky-contextmenu]get[text]match[yes]then[tc-popup-keep]] }}}>
 	<div class={{{tc-drop-down sq-contextmenu [<contextmenu-state>get[position]match[right]then[sq-contextmenu-alignright]else[]] +[join[ ]]}}}>
 		<$macrocall $name="menu-item" title="Open" actions="""<$action-navigate/>"""/>
 		<$macrocall $name="menu-item" title="Rename" subtitle="((streams-rename))" actions=<<rename-node-actions>>/>
