@@ -5,11 +5,12 @@ title: $:/plugins/sq/streams/nodes-list-template
 \import [[$:/plugins/sq/streams/action-macros]] [all[shadows+tiddlers]tag[$:/tags/streams/actionmacros]]  [all[shadows+tiddlers]tag[$:/tags/streams/user-actionmacros]]
 \whitespace trim
 
-<$vars stream-root-title=<<currentTiddler>>
+<$let stream-root-title=<<currentTiddler>>
 	contextmenu-state=<<qualify "$:/state/sq-context-popup">>
 	row-edit-state=<<qualify "$:/state/sq/streams/current-edit-tiddler">>
 	drag-title-state=<<qualify "$:/state/sq/streams/current-drag-title">>
-	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">> 
+	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">>
+	streams-collapseall-state={{{ [[$:/state/sq/streams/visibility/all/]addsuffix<currentTiddler>] }}}
 >
 	<$eventcatcher
 		events="click"
@@ -68,4 +69,5 @@ title: $:/plugins/sq/streams/nodes-list-template
 	</$eventcatcher>
 	</$eventcatcher>
 	</$eventcatcher>
-</$vars>
+</$let>
+

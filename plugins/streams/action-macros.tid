@@ -2,6 +2,15 @@ title: $:/plugins/sq/streams/action-macros
 
 \whitespace trim
 
+\define collapse-all-actions()
+<$action-setfield $tiddler=<<streams-collapseall-state>> text="hide"/>
+\end
+
+\define expand-all-actions()
+<$action-deletetiddler $tiddler=<<streams-collapseall-state>>/>
+ <$action-deletetiddler $filter="[prefix[$:/state/sq/streams/visibility/]] :filter[removeprefix[$:/state/sq/streams/visibility/]prefix<stream-root-title>]"/>
+\end
+
 \define swiped-right-actions()
 <$list filter="[{$:/config/sq/streams/swipe-behaviour}match[contextmenu]]" variable="_NULL">
 <$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-node-title>>/>
@@ -25,7 +34,7 @@ title: $:/plugins/sq/streams/action-macros
 
 
 \define oncontext-menu-actions()
-<$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-node-title>>/>
+<$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-contextmenu-title>>/>
 <$action-setfield $tiddler=<<contextmenu-state>> $field="position" $value="left"/>
 <$action-popup $coords=<<tv-popup-coords>> $state=<<contextmenu-state>>/>
 \end
@@ -279,6 +288,7 @@ title: $:/plugins/sq/streams/action-macros
 
 
 \define node-drag-start-actions()
+<$action-log/>
 <!-- parameter to draggable widget -->
 <$action-setfield $tiddler=<<drag-title-state>> text=<<currentTiddler>>/>
 <$action-setfield $tiddler="$:/state/sq/nodes/global-drag-state" text="yes"/>
@@ -290,6 +300,7 @@ title: $:/plugins/sq/streams/action-macros
 
 
 \define node-drag-end-actions()
+<$action-log/>
 <!-- parameter to draggable widget -->
 <$action-deletetiddler $filter="""[<drag-title-state>][<drag-title-nextsibling-state>][[$:/state/sq/nodes/global-drag-state]]""" />
 \end

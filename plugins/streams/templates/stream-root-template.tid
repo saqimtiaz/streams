@@ -16,9 +16,7 @@ title: $:/plugins/sq/streams/templates/stream-root-template
 			class="stream-droppable stream-droppable-terminal"
 			disabledClass="stream-node-disabled"
 		>
-			<div class="tc-droppable-placeholder">
-			&nbsp;
-			</div><!-- idea only want below div with height when its a child with no more children-->
+<!-- idea only want below div with height when its a child with no more children-->
 			<$list filter="[<currentTiddler>!has[stream-list]]" variable="_NULL"><div class="stream-droppable-spacer"/></$list>
 		</$droppable>
 	</$tiddler>
