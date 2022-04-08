@@ -1,0 +1,9 @@
+created: 20220406202503194
+key: 
+modified: 20220406202954146
+sq-contextmenu-name: Collapse all
+sq-contextmenu-subtitle: 
+tags: $:/tags/streams/contextmenu
+title: $:/plugins/sq/streams/keyboard-shortcuts/collapse-all
+
+<<collapse-all-actions>>
