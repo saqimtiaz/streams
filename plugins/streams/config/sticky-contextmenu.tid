@@ -1,0 +1,6 @@
+title: $:/config/sq/streams/sticky-contextmenu
+description: Context menu does not close when clicking inside it
+caption: Sticky context menu
+settings-template: $:/plugins/sq/streams/ui/templates/settings/input-switch
+
+yes
