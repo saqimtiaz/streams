@@ -7,9 +7,18 @@ tags: [[$:/tags/Stylesheet]]
 	margin-left: -2.5em;
 }
 
+.stream-above-nodes {
+	margin-left: 2.5em;
+	max-width: {{$:/config/sq/streams/node-max-width}}px;
+}
+
 @media only screen and (max-width: 600px) {
 	.stream-root {
 		margin-left: -1em;
+	}
+	
+	.stream-above-nodes {
+		margin-left: 1em;
 	}
 }
 

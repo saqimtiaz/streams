@@ -37,7 +37,12 @@ title: $:/plugins/sq/streams/nodes-list-template
 		enable={{$:/config/sq/streams/swipe-enabled}}
 		swipethreshold={{$:/config/sq/streams/swipe-threshold}}
 	>
-	<div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [<currentTiddler>!has[stream-list]then[stream-newlist]] +[join[ ]] }}}>
+	<div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [<currentTiddler>!has[stream-list]then[stream-newlist]] +[join[ ]] }}} data-stream-root-title=<<stream-root-title>> >
+		<div class="stream-above-nodes">
+			<$list filter="[all[shadows+tiddlers]tag[$:/tags/streams/above-stream-nodes]]">
+				<$transclude mode="block"/>
+			</$list>
+		</div>
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 		<$list filter="[all[current]match<stream-root-title>]" variable="_NULL">
 			<!-- if we are the root, add a button to add more nodes-->
