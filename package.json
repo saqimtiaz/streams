@@ -35,7 +35,7 @@
     "build-prerelease-beta": "node ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --output ./output/prerelease/ --build beta",
     "update-tw": "npm install --save tiddlywiki-prerelease@github:Jermolene/TiddlyWiki5 && npm install --save tiddlywiki",
     "dev": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki/tiddlywiki.js . --listen port=7111",
-    "dev-prerelease": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --listen port=7111",
+    "dev-prerelease": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki-prerelease/tiddlywiki.js . --listen host=0.0.0.0 port=7111",
     "release": "git diff HEAD --quiet && ( standard-version --skip.commit --skip.tag && ./scripts/create-release-note.js && ./scripts/publish.js ) || (tput setaf 1; echo 'ERROR: Git repository is dirty')",
     "release:clean": "rm CHANGELOG-temp-PREV.md && rm CHANGELOG-temp-NEW.md",
     "push": "git push origin main"
