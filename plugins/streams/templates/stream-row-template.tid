@@ -50,7 +50,6 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 <$reveal
 	tag="div"
 	type="nomatch"
-	stateTitle=<<row-children-visibility-state>>
 	stateTitle={{{ [<row-children-visibility-state>] [<streams-collapseall-state>] :and[is[tiddler]!sort[modified]first[]] :else[<row-children-visibility-state>] }}}
 	text="hide"
 	class="stream-row-children"
