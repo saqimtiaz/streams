@@ -1,0 +1,15 @@
+created: 20220409025633951
+modified: 20220409140239663
+parent: thoughts/20220409101310372
+stream-type: default
+tags: $:/tags/streams/above-stream-nodes
+title: $:/plugins/sq/search-in-streams/template
+type: text/vnd.tiddlywiki
+
+\define cancel-search-actions()
+<$action-deletetiddler $tiddler={{{ [[$:/temp/volatile/streams/search/]addsuffix<stream-root-title>] }}}/>
+\end
+
+<$keyboard key="Escape" actions=<<cancel-search-actions>> >
+<$edit-text tiddler={{{ [[$:/temp/volatile/streams/search/]addsuffix<stream-root-title>] }}} placeholder="Search this stream..." default="" tag="input" class="tc-edit-texteditor"/>
+</$keyboard>

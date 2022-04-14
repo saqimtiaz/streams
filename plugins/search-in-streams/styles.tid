@@ -1,0 +1,32 @@
+created: 20220409103146903
+modified: 20220409135029967
+parent: thoughts/20220409101310372
+stream-type: default
+tags: $:/tags/Stylesheet
+title: $:/plugins/sq/search-in-streams/styles
+type: text/vnd.tiddlywiki
+
+
+
+<$list filter="[prefix[$:/temp/volatile/streams/search/]] :filter[get[text]minlength[1]]" variable="searchTiddler">
+
+<$let stream-root-title={{{ [<searchTiddler>removeprefix[$:/temp/volatile/streams/search/]] }}} search-term={{{ [<searchTiddler>get[text]] }}} search-results={{{ [<stream-root-title>get-stream-nodes[]] :and[search:text<search-term>] :and[format:titlelist[]join[ ]] }}}>
+
+[data-stream-root-title="<$text text=<<stream-root-title>>/>"] [data-node-title] {display: none; opacity:0;}
+
+<$list filter="[<stream-root-title>get-stream-nodes[]] :and[search:text<search-term>] :and[get-stream-root:includeall[]]">
+[data-stream-root-title="<$text text=<<stream-root-title>>/>"]  [data-node-title="<$text text=<<currentTiddler>>/>"]{
+display: block;
+opacity:1;
+}
+
+</$list>
+
+<$list filter="[enlist<search-results>]">
+[data-stream-root-title="<$text text=<<stream-root-title>>/>"]  [data-node-title="<$text text=<<currentTiddler>>/>"]{
+background-color: #b4f0eb;
+transition: background-color 250ms ease;
+}
+</$list>
+</$let>
+</$list>

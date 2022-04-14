@@ -42,7 +42,7 @@ title: $:/plugins/sq/streams/action-macros
 
 \define node-ctrl-btn-actions()
 <$list filter="[<dom-data-btn-role>match[stream-node-visibility]]" variable="NULL">
-<$action-setfield $tiddler=<<dom-data-rowchildren-visibility-state>> text={{{ [<dom-data-rowchildren-visibility-state>get[text]match[hide]then[show]else[hide]] }}} />
+<$action-setfield $tiddler=<<dom-data-rowchildren-visibility-state>> text={{{ [<dom-data-rowchildren-visibility-state>] [<streams-collapseall-state>] :and[is[tiddler]!sort[modified]first[]] :else[<dom-data-rowchildren-visibility-state>] :and[get[text]match[show]then[hide]else[show]] }}} />
 </$list>
 <$list filter="[<dom-data-btn-role>match[stream-node-decorator]]" variable="NULL">
 <$action-navigate $to=<<dom-data-node-title>>/>
