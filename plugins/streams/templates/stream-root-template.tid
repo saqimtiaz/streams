@@ -3,9 +3,13 @@ title: $:/plugins/sq/streams/templates/stream-root-template
 \whitespace trim
 <$vars dropTargetTiddler=<<currentTiddler>> >
 	<$list filter="[list[!!stream-list]!is[missing]]">
-		<$set name="enable-dnd" filter="[<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]]" select="0">
+		<$let
+			enable-dnd={{{ [<enable-dnd>match[no]] ~[<drag-title-state>get[text]match<currentTiddler>then[no]] }}}
+			row-children-visibility-state={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}}
+		>
+		<!-- row-children-visibility-state should be a macro or subfilter for reuse in action macros, will also make it easier to switch between state and persistent tiddlers-->
 			{{||$:/plugins/sq/streams/templates/stream-row-template}}
-		</$set>
+		</$let>
 	</$list>
 	<$tiddler tiddler="">
 		<!-- to drop after the last child of any list level-->

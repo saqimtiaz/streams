@@ -2,12 +2,28 @@ title: $:/plugins/sq/streams/action-macros
 
 \whitespace trim
 
+\define collapse-row-actions()
+<$list filter="[<currentTiddler>get-stream-nodes[]]">
+    <$action-setfield $tiddler={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}} text="hide"/>
+</$list>
+\end
+
+<!-- config option for whether we use state tiddlers or persistent tiddlers-->
+<!-- config option for whether default collapse state is collapsed or shown-->
+<!-- how can I temporarily show all nodes when search is active? -->
+\define expand-row-actions()
+<$list filter="[<currentTiddler>get-stream-nodes[]]">
+    <$action-setfield $tiddler={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}} text="show"/>
+</$list>
+\end
+
 \define collapse-all-actions()
 <$action-setfield $tiddler=<<streams-collapseall-state>> text="hide"/>
 \end
 
 \define expand-all-actions()
 <$action-deletetiddler $tiddler=<<streams-collapseall-state>>/>
+    <!-- we might not need to delete the following but can since the default state of showing everythng doesnt need any state tiddlers to be present --> <!-- otherwise would need to set those state tiddlers to show -->
  <$action-deletetiddler $filter="[prefix[$:/state/sq/streams/visibility/]] :filter[removeprefix[$:/state/sq/streams/visibility/]prefix<stream-root-title>]"/>
 \end
 
@@ -42,10 +58,10 @@ title: $:/plugins/sq/streams/action-macros
 
 \define node-ctrl-btn-actions()
 <$list filter="[<dom-data-btn-role>match[stream-node-visibility]]" variable="NULL">
-<$action-setfield $tiddler=<<dom-data-rowchildren-visibility-state>> text={{{ [<dom-data-rowchildren-visibility-state>] [<streams-collapseall-state>] :and[is[tiddler]!sort[modified]first[]] :else[<dom-data-rowchildren-visibility-state>] :and[get[text]match[show]then[hide]else[show]] }}} />
+    <$action-setfield $tiddler=<<dom-data-rowchildren-visibility-state>> text={{{ [<dom-data-rowchildren-visibility-state>] [<streams-collapseall-state>] :and[is[tiddler]!sort[modified]first[]]  :and[get[text]match[hide]then[show]else[hide]] }}} />
 </$list>
 <$list filter="[<dom-data-btn-role>match[stream-node-decorator]]" variable="NULL">
-<$action-navigate $to=<<dom-data-node-title>>/>
+    <$action-navigate $to=<<dom-data-node-title>>/>
 </$list>
 \end
 

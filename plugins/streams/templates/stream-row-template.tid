@@ -1,10 +1,6 @@
 title: $:/plugins/sq/streams/templates/stream-row-template
 
 \whitespace trim
-<$qualify
-	name="row-children-visibility-state"
-	title={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}}
->
 <$draggable
 			tag="div"
 			tiddler=<<currentTiddler>>
@@ -57,4 +53,3 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 </$reveal>
 </$draggable>
-</$qualify>

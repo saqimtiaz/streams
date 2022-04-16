@@ -1,0 +1,7 @@
+key: 
+sq-contextmenu-name: Expand row
+sq-contextmenu-subtitle: 
+tags: $:/tags/streams/contextmenu
+title: $:/plugins/sq/streams/keyboard-shortcuts/expand-row
+
+<<expand-row-actions>>

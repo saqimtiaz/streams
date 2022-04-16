@@ -1,0 +1,7 @@
+key: 
+sq-contextmenu-name: Collapse row
+sq-contextmenu-subtitle: 
+tags: $:/tags/streams/contextmenu
+title: $:/plugins/sq/streams/keyboard-shortcuts/collapse-row
+
+<<collapse-row-actions>>
