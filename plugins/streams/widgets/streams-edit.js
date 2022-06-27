@@ -25,7 +25,9 @@ exports.prototype.getEditorType = function() {
 		}
 		return editorType;
 	}
-	editorType = this.wiki.getTiddlerText(EDITOR_MAPPING_PREFIX + type);
+	if(typeof EDITOR_MAPPING_PREFIX !== 'undefined' && EDITOR_MAPPING_PREFIX) {
+		editorType = this.wiki.getTiddlerText(EDITOR_MAPPING_PREFIX + type);
+	}
 	if(!editorType) {
 		var typeInfo = $tw.config.contentTypeInfo[type];
 		if(typeInfo && typeInfo.encoding === "base64") {
