@@ -65,7 +65,7 @@ title: $:/plugins/sq/streams/action-macros
 			[<dom-data-rowchildren-visibility-state>] [<streams-collapseall-state>] 
 				:and[is[tiddler]!sort[modified]first[]]
 				:map[{!!text}match[hide]then[show]else<currentTiddler>] :and[!is[blank]]
-				:map[!match[show]get[text]match[show]then[hide]] :and[!is[blank]]
+				:map[!match[show]get[text]match[show]then[hide]else[show]] :and[!is[blank]]
 				:else[{stateDefault}match[hide]then[show]else[hide]] 
 		}}} 
 	>
