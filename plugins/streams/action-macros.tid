@@ -4,7 +4,7 @@ title: $:/plugins/sq/streams/action-macros
 
 \define collapse-row-actions()
 <$list filter="[<currentTiddler>get-stream-nodes[]]">
-    <$action-setfield $tiddler={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}} text="hide"/>
+	<$action-setfield $tiddler={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}} text="hide"/>
 </$list>
 \end
 
@@ -13,7 +13,7 @@ title: $:/plugins/sq/streams/action-macros
 <!-- how can I temporarily show all nodes when search is active? -->
 \define expand-row-actions()
 <$list filter="[<currentTiddler>get-stream-nodes[]]">
-    <$action-setfield $tiddler={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}} text="show"/>
+	<$action-setfield $tiddler={{{ [[$:/state/sq/streams/visibility/]addsuffix<currentTiddler>] }}} text="show"/>
 </$list>
 \end
 
@@ -23,7 +23,7 @@ title: $:/plugins/sq/streams/action-macros
 
 \define expand-all-actions()
 <$action-deletetiddler $tiddler=<<streams-collapseall-state>>/>
-    <!-- we might not need to delete the following but can since the default state of showing everythng doesnt need any state tiddlers to be present --> <!-- otherwise would need to set those state tiddlers to show -->
+	<!-- we might not need to delete the following but can since the default state of showing everythng doesnt need any state tiddlers to be present --> <!-- otherwise would need to set those state tiddlers to show -->
  <$action-deletetiddler $filter="[prefix[$:/state/sq/streams/visibility/]] :filter[removeprefix[$:/state/sq/streams/visibility/]prefix<stream-root-title>]"/>
 \end
 
@@ -59,10 +59,19 @@ title: $:/plugins/sq/streams/action-macros
 
 \define node-ctrl-btn-actions()
 <$list filter="[<dom-data-btn-role>match[stream-node-visibility]]" variable="NULL">
-    <$action-setfield $tiddler=<<dom-data-rowchildren-visibility-state>> text={{{ [<dom-data-rowchildren-visibility-state>] [<streams-collapseall-state>] :and[is[tiddler]!sort[modified]first[]]  :and[get[text]match[hide]then[show]else[hide]] }}} />
+	<$action-setfield
+		$tiddler=<<dom-data-rowchildren-visibility-state>>
+		text={{{
+			[<dom-data-rowchildren-visibility-state>] [<streams-collapseall-state>] 
+				:and[is[tiddler]!sort[modified]first[]]
+				:map[{!!text}match[hide]then[show]else<currentTiddler>] :and[!is[blank]]
+				:map[!match[show]get[text]match[show]then[hide]] :and[!is[blank]]
+				:else[{stateDefault}match[hide]then[show]else[hide]] 
+		}}} 
+	>
 </$list>
 <$list filter="[<dom-data-btn-role>match[stream-node-decorator]]" variable="NULL">
-    <$action-navigate $to=<<dom-data-node-title>>/>
+	<$action-navigate $to=<<dom-data-node-title>>/>
 </$list>
 \end
 
@@ -101,11 +110,11 @@ title: $:/plugins/sq/streams/action-macros
 \define unindent-node-actions()
 <!-- handle unindenting a node -->
 <$vars new-parent={{{ [{!!parent}get[parent]] }}} new-next-node={{{ [{!!parent}get[parent]get[stream-list]enlist-input[]is[tiddler]after{!!parent}] }}}>
-    <$list filter="[<new-parent>minlength[1]]" variable="_NULL">
-        <$action-listops $tiddler=<<new-parent>> $field="stream-list" $subfilter="+[is[tiddler]] +[insertbefore:new-next-node<currentTiddler>]"/>
-        <$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
-        <$action-setfield $tiddler=<<currentTiddler>> parent=<<new-parent>> />
-    </$list>
+	<$list filter="[<new-parent>minlength[1]]" variable="_NULL">
+		<$action-listops $tiddler=<<new-parent>> $field="stream-list" $subfilter="+[is[tiddler]] +[insertbefore:new-next-node<currentTiddler>]"/>
+		<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[is[tiddler]] -[<currentTiddler>]"/>
+		<$action-setfield $tiddler=<<currentTiddler>> parent=<<new-parent>> />
+	</$list>
 </$vars>
 \end
 
@@ -113,7 +122,7 @@ title: $:/plugins/sq/streams/action-macros
 \define demote-node-actions()
 <!-- move a node below the next node -->
 <$list filter="[{!!parent}get[stream-list]enlist-input[]after<currentTiddler>]" variable="next-node">
-    <$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[insertbefore:currentTiddler<next-node>]"/>
+	<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[insertbefore:currentTiddler<next-node>]"/>
 </$list>
 \end
 
@@ -121,7 +130,7 @@ title: $:/plugins/sq/streams/action-macros
 \define promote-node-actions()
 <!-- move a node above the previous node -->
 <$list filter="[{!!parent}get[stream-list]enlist-input[]before<currentTiddler>]" variable="previous-node">
-    <$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[insertbefore:previous-node<currentTiddler>]"/>
+	<$action-listops $tiddler={{!!parent}} $field="stream-list" $subfilter="+[insertbefore:previous-node<currentTiddler>]"/>
 </$list>
 \end
 
@@ -292,7 +301,7 @@ title: $:/plugins/sq/streams/action-macros
 <!-- handles moving down in the nodes with the keyboard -->
 <!--if children, get the first child-->
 <$list filter="[<currentTiddler>get[stream-list]enlist-input[]is[tiddler]first[]]" variable="next-node">
-    <$action-setfield $tiddler=<<row-edit-state>> text=<<next-node>> />
+	<$action-setfield $tiddler=<<row-edit-state>> text=<<next-node>> />
 </$list>
 <!-- if no children-->
 <!--- get closest ancestor with next sibling -->

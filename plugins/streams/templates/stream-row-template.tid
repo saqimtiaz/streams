@@ -14,13 +14,17 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 	actions=<<stream-drop-actions>>
 	tag="div"
 	class={{{ 
-		[<row-children-visibility-state>] [<streams-collapseall-state>] :and[is[tiddler]!sort[modified]first[]] :else[<row-children-visibility-state>] 		:and[get[text]match[hide]then[stream-row-children-collapsed]else[]]
-		stream-droppable
-		[list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]]
-		stream-row
-		:and[join[ ]]
-		}}}
-		data-node-tags={{!!tags}}
+			[<row-children-visibility-state>] [<streams-collapseall-state>]
+				:and[is[tiddler]!sort[modified]first[]]
+				:map[{!!text}match[hide]then[stream-row-children-collapsed]else<currentTiddler>] :and[!is[blank]]
+				:map[!match[stream-row-children-collapsed]get[text]match[show]then[stream-row-children-visible]] :and[!is[blank]]
+				:else[{stateDefault}match[hide]then[stream-row-children-collapsed]else[stream-row-children-visible]]
+			stream-droppable
+			stream-row
+			[list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]]
+			:and[join[ ]]
+	}}}
+	data-node-tags={{!!tags}}
 	enable={{{[<drag-title-nextsibling-state>get[text]match<currentTiddler>then[no]] ~[<enable-dnd>]}}}
 	disabledClass="stream-node-disabled"
 	data-node-title=<<currentTiddler>>
@@ -47,7 +51,8 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 	tag="div"
 	type="nomatch"
 	stateTitle={{{ [<row-children-visibility-state>] [<streams-collapseall-state>] :and[is[tiddler]!sort[modified]first[]] :else[<row-children-visibility-state>] }}}
-	text="hide"
+	text={{{ [{forceRowState}!is[blank]else[hide]] }}}
+	default={{stateDefault}}
 	class="stream-row-children"
 >
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
