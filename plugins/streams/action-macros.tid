@@ -50,6 +50,7 @@ title: $:/plugins/sq/streams/action-macros
 
 
 \define oncontext-menu-actions()
+<$action-popup/>
 <$action-setfield $tiddler=<<contextmenu-state>> $field="current" $value=<<dom-data-contextmenu-title>>/>
 <$action-setfield $tiddler=<<contextmenu-state>> $field="position" $value="left"/>
 <$action-popup $coords=<<tv-popup-coords>> $state=<<contextmenu-state>>/>
