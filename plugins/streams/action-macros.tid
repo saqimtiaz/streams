@@ -22,7 +22,8 @@ title: $:/plugins/sq/streams/action-macros
 \end
 
 \define expand-all-actions()
-<$action-deletetiddler $tiddler=<<streams-collapseall-state>>/>
+<!--<$action-deletetiddler $tiddler=<<streams-collapseall-state>>/>-->
+<$action-setfield $tiddler=<<streams-collapseall-state>> text="show"/>
 	<!-- we might not need to delete the following but can since the default state of showing everythng doesnt need any state tiddlers to be present --> <!-- otherwise would need to set those state tiddlers to show -->
  <$action-deletetiddler $filter="[prefix[$:/state/sq/streams/visibility/]] :filter[removeprefix[$:/state/sq/streams/visibility/]prefix<stream-root-title>]"/>
 \end
