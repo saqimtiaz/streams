@@ -19,6 +19,7 @@ title: $:/plugins/sq/streams/action-macros
 
 \define collapse-all-actions()
 <$action-setfield $tiddler=<<streams-collapseall-state>> text="hide"/>
+<$action-deletetiddler $filter="[prefix[$:/state/sq/streams/visibility/]] :filter[removeprefix[$:/state/sq/streams/visibility/]prefix<stream-root-title>]"/>
 \end
 
 \define expand-all-actions()
