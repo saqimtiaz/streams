@@ -17,7 +17,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 			[<row-children-visibility-state>] [<streams-collapseall-state>]
 				:and[is[tiddler]!sort[modified]first[]]
 				:map[{!!text}match[hide]then[stream-row-children-collapsed]else<currentTiddler>] :and[!is[blank]]
-				:map[!match[stream-row-children-collapsed]get[text]match[show]then[stream-row-children-visible]] :and[!is[blank]]
+				:map[!match[stream-row-children-collapsed]get[text]match[show]then[stream-row-children-visible]else[stream-row-children-collapsed]] :and[!is[blank]]
 				:else[{stateDefault}match[hide]then[stream-row-children-collapsed]else[stream-row-children-visible]]
 			stream-droppable
 			stream-row
