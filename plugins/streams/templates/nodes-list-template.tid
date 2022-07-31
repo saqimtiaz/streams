@@ -11,7 +11,6 @@ title: $:/plugins/sq/streams/nodes-list-template
 	streams-collapseall-state={{{ [[$:/state/sq/streams/visibility/all/]addsuffix<currentTiddler>] }}}
 	children-collapse-default={{{ [[$:/config/sq/streams/children-collapse-default]get[text]match[yes]then[hide]else[show]] }}}
 	children-collapse-match-state=<<qualify "$:/state/sq/streams/children-collapse-match-text">>
-	children-collapse-match-text={{{ [<children-collapse-match-state>get[text]!is[blank]else[hide]] }}}
 >
 	<$eventcatcher
 		events="click"
@@ -44,6 +43,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 				<$transclude mode="block"/>
 			</$list>
 		</div>
+		<$let children-collapse-match-text={{{ [<children-collapse-match-state>get[text]!is[blank]else[hide]] }}}>
 		{{||$:/plugins/sq/streams/templates/stream-root-template}}
 		<$list filter="[all[current]match<stream-root-title>]" variable="_NULL">
 			<!-- if we are the root, add a button to add more nodes-->
@@ -69,7 +69,8 @@ title: $:/plugins/sq/streams/nodes-list-template
 			<$set name="currentTiddler" filter={{{[<contextmenu-state>get[current]]}}}>
 				{{||$:/plugins/sq/streams/contextmenu/contextmenu-template}}
 			</$set>
-		</$list>	
+		</$list>
+		</$let>
 	</div>
 	</$swiper>
 	</$eventcatcher>
