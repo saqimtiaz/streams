@@ -1,12 +1,5 @@
-created: 20220409103146903
-modified: 20220409135029967
-parent: thoughts/20220409101310372
-stream-type: default
 tags: $:/tags/Stylesheet
 title: $:/plugins/sq/search-in-streams/styles
-type: text/vnd.tiddlywiki
-
-
 
 <$list filter="[prefix[$:/temp/volatile/streams/search/]] :filter[get[text]minlength[1]]" variable="searchTiddler">
 

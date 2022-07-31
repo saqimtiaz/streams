@@ -1,15 +1,36 @@
-created: 20220409025633951
-modified: 20220409140239663
-parent: thoughts/20220409101310372
-stream-type: default
 tags: $:/tags/streams/above-stream-nodes
 title: $:/plugins/sq/search-in-streams/template
-type: text/vnd.tiddlywiki
 
 \define cancel-search-actions()
-<$action-deletetiddler $tiddler={{{ [[$:/temp/volatile/streams/search/]addsuffix<stream-root-title>] }}}/>
+<$action-deletetiddler $filter="[<search-tiddler>] [<children-collapse-match-state>]"/>
 \end
 
-<$keyboard key="Escape" actions=<<cancel-search-actions>> >
-<$edit-text tiddler={{{ [[$:/temp/volatile/streams/search/]addsuffix<stream-root-title>] }}} placeholder="Search this stream..." default="" tag="input" class="tc-edit-texteditor"/>
-</$keyboard>
+\define search-input-actions()
+<$list
+	filter="[<actionValue>length[]compare:number:gteq[3]]"
+	variable="null"
+>
+	<$action-setfield $tiddler=<<children-collapse-match-state>> text="alwaysvisible"/>
+</$list>
+<$list
+	filter="[<actionValue>length[]match[0]]"
+	variable="null"
+>
+	<<cancel-search-actions>>
+</$list>
+\end
+
+<$let
+	search-tiddler={{{ [[$:/temp/volatile/streams/search/]addsuffix<stream-root-title>] }}}
+>
+	<$keyboard key="Escape" actions=<<cancel-search-actions>> >
+		<$edit-text
+			tiddler={{{ [[$:/temp/volatile/streams/search/]addsuffix<stream-root-title>] }}}
+			inputActions=<<search-input-actions>>
+			placeholder="Search this stream..."
+			default=""
+			tag="input"
+			class="tc-edit-texteditor"
+		/>
+	</$keyboard>
+</$let>
