@@ -9,7 +9,6 @@ title: $:/plugins/sq/streams/action-macros
 \end
 
 <!-- config option for whether we use state tiddlers or persistent tiddlers-->
-<!-- config option for whether default collapse state is collapsed or shown-->
 <!-- how can I temporarily show all nodes when search is active? -->
 \define expand-row-actions()
 <$list filter="[<currentTiddler>get-stream-nodes[]]">
@@ -68,7 +67,7 @@ title: $:/plugins/sq/streams/action-macros
 				:and[is[tiddler]!sort[modified]first[]]
 				:map[{!!text}match[hide]then[show]else<currentTiddler>] :and[!is[blank]]
 				:map[!match[show]get[text]match[show]then[hide]else[show]] :and[!is[blank]]
-				:else[<row-collapse-default>match[hide]then[show]else[hide]] 
+				:else[<children-collapse-default>match[hide]then[show]else[hide]] 
 		}}} 
 	/>
 </$list>

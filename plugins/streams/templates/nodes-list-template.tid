@@ -9,7 +9,9 @@ title: $:/plugins/sq/streams/nodes-list-template
 	drag-title-state=<<qualify "$:/state/sq/streams/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">>
 	streams-collapseall-state={{{ [[$:/state/sq/streams/visibility/all/]addsuffix<currentTiddler>] }}}
-	row-collapse-default={{{ [[$:/config/sq/streams/row-collapse-default]get[text]match[yes]then[hide]else[show]] }}}
+	children-collapse-default={{{ [[$:/config/sq/streams/children-collapse-default]get[text]match[yes]then[hide]else[show]] }}}
+	children-collapse-match-state=<<qualify "$:/state/sq/streams/children-collapse-match-text">>
+	children-collapse-match-text={{{ [<children-collapse-match-state>get[text]!is[blank]else[hide]] }}}
 >
 	<$eventcatcher
 		events="click"
