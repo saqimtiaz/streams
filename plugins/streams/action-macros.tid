@@ -68,7 +68,7 @@ title: $:/plugins/sq/streams/action-macros
 				:and[is[tiddler]!sort[modified]first[]]
 				:map[{!!text}match[hide]then[show]else<currentTiddler>] :and[!is[blank]]
 				:map[!match[show]get[text]match[show]then[hide]else[show]] :and[!is[blank]]
-				:else[{stateDefault}match[hide]then[show]else[hide]] 
+				:else[<row-collapse-default>match[hide]then[show]else[hide]] 
 		}}} 
 	/>
 </$list>

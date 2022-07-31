@@ -1,5 +1,3 @@
-created: 20171022203553093
-modified: 20171122050808722
 title: $:/plugins/sq/streams/nodes-list-template
 
 \import [[$:/plugins/sq/streams/action-macros]] [all[shadows+tiddlers]tag[$:/tags/streams/actionmacros]]  [all[shadows+tiddlers]tag[$:/tags/streams/user-actionmacros]]
@@ -11,6 +9,7 @@ title: $:/plugins/sq/streams/nodes-list-template
 	drag-title-state=<<qualify "$:/state/sq/streams/current-drag-title">>
 	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">>
 	streams-collapseall-state={{{ [[$:/state/sq/streams/visibility/all/]addsuffix<currentTiddler>] }}}
+	row-collapse-default={{{ [[$:/config/sq/streams/row-collapse-default]get[text]match[yes]then[hide]else[show]] }}}
 >
 	<$eventcatcher
 		events="click"

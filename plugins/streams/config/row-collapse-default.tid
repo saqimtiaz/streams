@@ -1,0 +1,6 @@
+title: $:/config/sq/streams/row-collapse-default
+description: Child nodes are collapsed by default
+caption: Toggle whether child nodes are visible or collapsed by default
+settings-template: $:/plugins/sq/streams/ui/templates/settings/input-switch
+
+no
