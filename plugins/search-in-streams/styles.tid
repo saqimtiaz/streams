@@ -23,3 +23,65 @@ transition: background-color 250ms ease;
 </$list>
 </$let>
 </$list>
+
+.streams-search-box {
+	background: <<color foreground>>50;
+	border-radius: 30px;
+}
+
+input.streams-search-input {
+	outline: none;
+	border: none;
+	background: none;
+	width: 0;
+	padding: 0;
+	color: #fff;
+	float: left;
+	font-size: 15px;
+	transition: .3s;
+	line-height: 30px;
+	background: transparent;
+}
+
+.streams-search-input::placeholder {
+	color: #eee;
+}
+
+.streams-search-btn {
+	color: #fff;
+	float: left;
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	transition: .3s;
+}
+
+.streams-search-box.streams-search-btn svg,
+a.streams-search-btn svg {
+	fill: white;
+	width: 18px;
+	height: 18px;
+}
+
+
+.streams-search-input:not(:placeholder-shown),
+.streams-search-input:focus {
+	width: 240px;
+	padding: 0 6px;
+	background: transparent;
+}
+
+.streams-search-box:hover {
+	background: <<color foreground>>80;
+}
+
+.streams-search-box:hover .streams-search-input {
+	width: 240px;
+	padding: 0 6px;
+	background: transparent;
+}
+

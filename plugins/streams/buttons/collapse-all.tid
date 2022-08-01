@@ -1,0 +1,7 @@
+title: $:/plugins/sq/streams/buttons/collapse-all
+tags: $:/tags/streams/above-stream-nodes
+condition: [<stream-root-title>get[stream-list]!is[blank]]
+
+<$button class="tc-btn-invisible" actions=<<collapse-all-actions>> tooltip="collapse all nodes">
+	{{collapse-all.svg}}
+</$button>

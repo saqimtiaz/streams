@@ -10,6 +10,22 @@ tags: [[$:/tags/Stylesheet]]
 .stream-above-nodes {
 	margin-left: 2.5em;
 	max-width: {{$:/config/sq/streams/node-max-width}}px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: right;
+}
+
+.stream-above-nodes button {
+	fill: <<color foreground>>50;
+}
+
+.stream-above-nodes button:hover {
+	fill: <<color foreground>>80;
+}
+
+.stream-above-nodes > * {
+	margin-left: 0.7em;
 }
 
 @media only screen and (max-width: 600px) {

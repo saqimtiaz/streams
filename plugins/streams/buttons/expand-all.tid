@@ -1,0 +1,7 @@
+title: $:/plugins/sq/streams/buttons/expand-all
+tags: $:/tags/streams/above-stream-nodes
+condition: [<stream-root-title>get[stream-list]!is[blank]]
+
+<$button class="tc-btn-invisible" actions=<<expand-all-actions>> tooltip="expand all nodes">
+	{{expand-all.svg}}
+</$button>

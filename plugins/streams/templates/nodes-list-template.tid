@@ -40,7 +40,9 @@ title: $:/plugins/sq/streams/nodes-list-template
 	<div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [<currentTiddler>!has[stream-list]then[stream-newlist]] +[join[ ]] }}} data-stream-root-title=<<stream-root-title>> >
 		<div class="stream-above-nodes">
 			<$list filter="[all[shadows+tiddlers]tag[$:/tags/streams/above-stream-nodes]]">
-				<$transclude mode="block"/>
+				<$list filter={{{ [{!!condition}!is[blank]] :else[{!!title}] }}} variable="list-condition">
+					<$transclude mode="inline"/>
+				</$list>
 			</$list>
 		</div>
 		<$let children-collapse-match-text={{{ [<children-collapse-match-state>get[text]!is[blank]else[hide]] }}}>
