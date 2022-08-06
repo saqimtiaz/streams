@@ -8,7 +8,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 			endactions=<<node-drag-end-actions>>
 			data-node-title=<<currentTiddler>>
 			selector=".stream-node-control"
-			class={{{[<drag-title-state>get[text]match<currentTiddler>then[stream-row-disabled]else[]] }}}
+			class={{{[<drag-title-state>get[text]match<currentTiddler>then[stream-row-disabled]else[]] 	stream-row :and[join[ ]]}}}
 >
 <$droppable 
 	actions=<<stream-drop-actions>>
@@ -20,7 +20,6 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 				:map[!match[stream-row-children-collapsed]get[text]match[show]then[stream-row-children-visible]else[stream-row-children-collapsed]] :and[!is[blank]]
 				:else[<children-collapse-default>match[hide]then[stream-row-children-collapsed]else[stream-row-children-visible]]
 			stream-droppable
-			stream-row
 			[list[!!stream-list]is[tiddler]then[]else[stream-row-nochildren]]
 			:and[join[ ]]
 	}}}
@@ -29,23 +28,21 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 	disabledClass="stream-node-disabled"
 	data-node-title=<<currentTiddler>>
 >
-	<div style="display:flex;flex-direction:row;">
-		<div class="stream-node-control sq-contextmenu-container tc-draggable" draggable="true" data-contextmenu-title=<<currentTiddler>>>
-			<button type="button" class="tc-btn-invisible stream-node-ctrl-btn stream-node-collapser" data-btn-role="stream-node-visibility" data-rowchildren-visibility-state=<<row-children-visibility-state>>>
-				{{$:/plugins/sq/streams/icons/node-expand-arrow}}
-			</button>
-			<div class="stream-node-handle tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-decorator" data-node-title=<<currentTiddler>>>
-					<div class="stream-node-handle-inner"/>
-			</div>
+	<div class="stream-node-control sq-contextmenu-container tc-draggable" draggable="true" data-contextmenu-title=<<currentTiddler>>>
+		<button type="button" class="tc-btn-invisible stream-node-ctrl-btn stream-node-collapser" data-btn-role="stream-node-visibility" data-rowchildren-visibility-state=<<row-children-visibility-state>>>
+			{{$:/plugins/sq/streams/icons/node-expand-arrow}}
+		</button>
+		<div class="stream-node-handle tc-btn-invisible stream-node-ctrl-btn" data-btn-role="stream-node-decorator" data-node-title=<<currentTiddler>>>
+				<div class="stream-node-handle-inner"/>
 		</div>
-		<div class="stream-node-block">
-			<$list filter="[<row-edit-state>get[text]!is[blank]else[]match<currentTiddler>]" variable="NULL" emptyMessage="""{{||$:/plugins/sq/streams/templates/stream-row-body}}""">
-				<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
-					{{||$:/plugins/sq/streams/editor-template}}
-				</$keyboard-plus>			
-			</$list>
-		</div>
-		</div>
+	</div>
+	<div class="stream-node-block">
+		<$list filter="[<row-edit-state>get[text]!is[blank]else[]match<currentTiddler>]" variable="NULL" emptyMessage="""{{||$:/plugins/sq/streams/templates/stream-row-body}}""">
+			<$keyboard-plus shortcutTag="$:/tags/streams/keyboard-shortcuts">
+				{{||$:/plugins/sq/streams/editor-template}}
+			</$keyboard-plus>			
+		</$list>
+	</div>
 </$droppable>
 <$reveal
 	tag="div"

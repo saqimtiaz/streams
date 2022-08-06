@@ -62,6 +62,11 @@ div.stream-dragactive div.stream-row-disabled {
 	background-color: <<color tiddler-editor-border>>;
 }
 
+.stream-row > .stream-droppable {
+	display: flex;
+	flex-direction: row;
+}
+
 .stream-droppable.tc-dragover::before {
 	content: "";
 	margin-left: 29px;
@@ -75,7 +80,7 @@ div.stream-dragactive div.stream-row-disabled {
 /*** avoid dragout issues in FF ***/
 .stream-dragactive .stream-droppable::before {
     content: "";
-    margin-left: 29px;
+/*    margin-left: 29px; */
     border: 0px solid transparent;
     display: block;
 }
