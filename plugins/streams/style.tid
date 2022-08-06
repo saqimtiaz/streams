@@ -69,7 +69,7 @@ div.stream-dragactive div.stream-row-disabled {
 
 .stream-droppable.tc-dragover::before {
 	content: "";
-	margin-left: 29px;
+/*	margin-left: 29px; */
 	line-height: 5px;
 	height: 5px;
 	border: 2px solid <<color dropzone-background>>;
