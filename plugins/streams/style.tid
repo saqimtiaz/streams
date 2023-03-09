@@ -67,10 +67,6 @@ div.stream-dragactive div.stream-row-disabled {
 	flex-direction: row;
 }
 
-.stream-droppable {
-	position: relative;
-}
-
 .stream-droppable::before {
 	content: "";
 	margin-left: 29px;
