@@ -67,22 +67,32 @@ div.stream-dragactive div.stream-row-disabled {
 	flex-direction: row;
 }
 
-.stream-droppable.tc-dragover::before {
-	content: "";
-/*	margin-left: 29px; */
-	line-height: 5px;
-	height: 5px;
-	border: 2px solid <<color dropzone-background>>;
-	background-color: <<color dropzone-background>>;
-	display: block;
+.stream-droppable {
+	position: relative;
 }
 
-/*** avoid dragout issues in FF ***/
-.stream-dragactive .stream-droppable::before {
-    content: "";
-/*    margin-left: 29px; */
-    border: 0px solid transparent;
-    display: block;
+.stream-droppable::before {
+	content: "";
+	margin-left: 29px;
+/*	left: 29px; */
+	line-height: 5px;
+	height: 5px;
+	display: block;
+	width: 100%;
+	position: absolute;
+}
+
+.stream-droppable.tc-dragover::before {
+	content: "";
+	margin-left: 29px;
+/*	left: 29px; */
+	line-height: 5px;
+	height: 5px;
+/*	border: 2px solid <<color dropzone-background>>;*/
+	background-color: <<color dropzone-background>>;
+	display: block;
+	width: 100%;
+	position: absolute;
 }
 
 .stream-droppable-spacer {
