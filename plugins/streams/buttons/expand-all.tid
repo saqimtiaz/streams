@@ -3,5 +3,5 @@ tags: $:/tags/streams/above-stream-nodes
 condition: [<stream-root-title>get[stream-list]!is[blank]]
 
 <$button class="tc-btn-invisible" actions=<<expand-all-actions>> tooltip="expand all nodes">
-	{{expand-all.svg}}
+	{{$:/plugins/sq/streams/svg/expand-all.svg}}
 </$button>
