@@ -164,12 +164,13 @@ Droppable widget
 		var self = this,
 			selectedNode = this.getSelectedNode(event);
 		// Check for being over a TEXTAREA or INPUT
+		this.resetState();
 		if(["TEXTAREA","INPUT"].indexOf(event.target.tagName) !== -1 || !selectedNode) {
 			return false;
 		}
 		var dataTransfer = event.dataTransfer;
 		// Remove highlighting
-		this.resetState();
+		//this.resetState();
 		var selectedNode = this.getSelectedNode(event),
 			variables = $tw.utils.collectDOMVariables(selectedNode,self.domNode,event);
 		// Try to import the various data types we understand
